@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USEP 66 — Dossier Pédagogique 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --usep-blue:       #0055A4;
+            --usep-blue-dark:  #003f7d;
+            --usep-blue-light: #e8f0fb;
+            --usep-yellow:     #FFD700;
+            --usep-yellow-dark:#e6c200;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(160deg, #ffffff 0%, #dceeff 60%, #eef5ff 100%);
+            background-attachment: fixed;
+            color: #1e293b;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        .montserrat { font-family: 'Montserrat', sans-serif; }
+
+        /* ── TOPBAR ── */
+        .topbar {
+            background: var(--usep-blue);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            background: white;
+            border-bottom: 3px solid var(--usep-yellow);
+            box-shadow: 0 2px 16px rgba(0,85,164,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-logo-badge {
+            background: var(--usep-blue);
+            color: var(--usep-yellow);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 1.05rem;
+            white-space: nowrap;
+        }
+        .nav-link {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #334155;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .nav-link:hover { background: var(--usep-blue-light); color: var(--usep-blue); }
+
+        /* ── TABS (PILL STYLE) ── */
+        .tabs-wrapper {
+            background: white;
+            border-radius: 999px;
+            padding: 5px;
+            display: inline-flex;
+            box-shadow: 0 2px 12px rgba(0,85,164,0.12);
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+        .tab-btn {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 9px 20px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            color: #64748b;
+            background: transparent;
+            transition: all 0.25s cubic-bezier(.4,0,.2,1);
+            white-space: nowrap;
+        }
+        .tab-btn:hover:not(.tab-pill-active) { color: var(--usep-blue); background: var(--usep-blue-light); }
+        .tab-pill-active {
+            background: var(--usep-blue) !important;
+            color: white !important;
+            box-shadow: 0 4px 14px rgba(0,85,164,0.3);
+        }
+
+        /* ── HERO HEADER ── */
+        .hero {
+            background: linear-gradient(135deg, var(--usep-blue) 0%, #1a6ec9 60%, #0095e8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 15% 85%, rgba(255,215,0,0.13) 0%, transparent 50%),
+                radial-gradient(circle at 85% 15%, rgba(255,255,255,0.07) 0%, transparent 50%);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--usep-yellow);
+            color: #1a1a1a;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 4px 14px;
+            border-radius: 999px;
+        }
+        .svg-float {
+            position: absolute;
+            opacity: 0.12;
+            pointer-events: none;
+        }
+
+        /* ── SECTION TITLE BAR ── */
+        .section-title-bar {
+            border-left: 5px solid var(--usep-yellow);
+            padding-left: 14px;
+        }
+
+        /* ── INFO CARDS (Généralités) ── */
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            border: 1.5px solid #e2e8f0;
+            box-shadow: 0 2px 10px rgba(0,85,164,0.05);
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+        .info-card:hover {
+            box-shadow: 0 10px 30px rgba(0,85,164,0.12);
+            transform: translateY(-3px);
+        }
+
+        /* ── SPORT SECTION BLOCK ── */
+        .sport-block {
+            background: white;
+            border-radius: 24px;
+            border: 1.5px solid #e2e8f0;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,85,164,0.05);
+        }
+        .sport-block-header {
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sport-block-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        /* ── ACTIVITY CARDS ── */
+        .activity-card {
+            background: white;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 14px;
+            cursor: pointer;
+            transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .activity-card:hover {
+            box-shadow: 0 10px 30px rgba(0,85,164,0.15);
+            transform: translateY(-5px);
+            border-color: #93c5fd;
+        }
+        .activity-card.match-card {
+            border: none;
+        }
+        .activity-card .card-step {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            padding: 2px 8px;
+            border-radius: 999px;
+            display: inline-block;
+            width: fit-content;
+        }
+        .activity-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.88rem;
+            margin: 0;
+        }
+        .activity-card .card-hint {
+            font-size: 0.72rem;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: auto;
+        }
+
+        /* ── CARDS SCROLL (responsive) ── */
+        .cards-scroll-wrapper {
+            position: relative;
+            padding: 16px 20px 20px;
+        }
+        .cards-scroll {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #93c5fd #f1f5f9;
+            padding-bottom: 10px;
+        }
+        .cards-scroll::-webkit-scrollbar { height: 4px; }
+        .cards-scroll::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 99px; }
+        .cards-scroll::-webkit-scrollbar-thumb { background: #bfdbfe; border-radius: 99px; }
+        .cards-scroll .activity-card {
+            flex: 0 0 200px;
+            scroll-snap-align: start;
+        }
+        /* Fade hint at right edge on mobile */
+        .cards-scroll-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 16px; right: 0; bottom: 20px;
+            width: 56px;
+            background: linear-gradient(to left, white 20%, transparent);
+            border-radius: 0 0 24px 0;
+            pointer-events: none;
+        }
+        .scroll-hint-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        /* On md+ screens : 4-col grid */
+        @media (min-width: 768px) {
+            .cards-scroll {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                overflow-x: visible;
+                scroll-snap-type: none;
+                padding-bottom: 0;
+            }
+            .cards-scroll .activity-card { flex: unset; }
+            .cards-scroll-wrapper::after { display: none; }
+            .scroll-hint-label { display: none; }
+        }
+
+        /* ── MODAL ── */
+        .modal { transition: opacity 0.25s ease; }
+        body.modal-active { overflow: hidden; }
+
+        .modal-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0,85,164,0.2);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            background: linear-gradient(135deg, var(--usep-blue-dark), var(--usep-blue));
+            border-radius: 20px 20px 0 0;
+            padding: 24px 28px 20px;
+        }
+        .modal-section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--usep-blue);
+            margin-bottom: 6px;
+        }
+        .modal-variable-box {
+            background: #fffbeb;
+            border-left: 4px solid var(--usep-yellow);
+            border-radius: 0 14px 14px 0;
+            padding: 14px 16px;
+        }
+
+        /* ── FIL ROUGE BADGE ── */
+        .fil-rouge-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            background: linear-gradient(90deg, #fff0f0, #fff8e1);
+            color: #b45309;
+            border: 1.5px solid #fbbf24;
+            padding: 2px 8px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+        .activity-card.has-fil-rouge {
+            border-color: #fcd34d;
+            box-shadow: 0 0 0 1px #fcd34d33;
+        }
+        .activity-card.has-fil-rouge:hover {
+            border-color: #f59e0b;
+            box-shadow: 0 10px 30px rgba(245,158,11,0.18);
+        }
+        /* Transfer table in Généralités */
+        .transfer-table th {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 10px 14px;
+            text-align: left;
+        }
+        .transfer-table td {
+            font-size: 0.8rem;
+            padding: 10px 14px;
+            vertical-align: middle;
+            border-top: 1px solid #f1f5f9;
+        }
+        .transfer-dot {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+
+
+        /* ── PRINT BASKET ── */
+        .card-checkbox-wrapper {
+            position: absolute;
+            top: 10px; right: 10px;
+            z-index: 10;
+        }
+        .card-checkbox {
+            width: 20px; height: 20px;
+            accent-color: var(--usep-blue);
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .activity-card { position: relative; }
+        .activity-card.in-basket {
+            border-color: var(--usep-blue) !important;
+            background: var(--usep-blue-light) !important;
+        }
+        .activity-card.in-basket h4 { color: var(--usep-blue); }
+
+        /* Floating basket button */
+        #print-basket-btn {
+            position: fixed;
+            bottom: 28px; right: 28px;
+            background: var(--usep-blue);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 14px 22px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 24px rgba(0,85,164,0.35);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 200;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        #print-basket-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,85,164,0.45); }
+        #print-basket-btn.hidden-btn { display: none; }
+        #basket-count {
+            background: var(--usep-yellow);
+            color: #1a1a1a;
+            font-weight: 900;
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+        }
+        #select-all-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: var(--usep-blue-light);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            font-size: 0.82rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--usep-blue);
+        }
+
+        /* ── PRINT BASKET MODAL ── */
+        #basket-modal {
+            transition: opacity 0.2s;
+        }
+        #basket-modal.hidden-btn { display: none; }
+
+        /* ── PRINT ── */
+        @media print {
+            .no-print { display: none !important; }
+            .tab-content { display: block !important; }
+            body { background: white; }
+            .navbar, .topbar { position: static; }
+            .cards-scroll {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr) !important;
+                overflow: visible !important;
+            }
+            .cards-scroll-wrapper::after { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOPBAR -->
+    <div class="topbar no-print py-1.5 px-5 flex items-center justify-between">
+        <span>USEP 66 — Pyrénées-Orientales</span>
+        <div class="flex gap-5">
+            <span class="hidden sm:inline"><i class="fas fa-envelope mr-1"></i> usep66@usep.org</span>
+            <a href="https://usep66.org" target="_blank" class="underline opacity-80 hover:opacity-100">usep66.org</a>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar no-print px-5 py-3">
+        <div class="max-w-6xl mx-auto flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3 shrink-0">
+                <span class="nav-logo-badge">USEP <span class="text-white font-normal text-xs">66</span></span>
+                <span class="hidden lg:block text-slate-400 text-xs font-medium montserrat">Union Sportive de l'Enseignement du Premier degré</span>
+            </div>
+            <div class="hidden md:flex items-center gap-1">
+                <a href="#" class="nav-link">Accueil</a>
+                <a href="#" class="nav-link">Rencontres</a>
+                <a href="#" class="nav-link">Ressources</a>
+                <a href="#" class="nav-link">Actualités</a>
+                <a href="#" class="nav-link">Contact</a>
+            </div>
+            <button onclick="openBasketModal()" id="nav-basket-btn" class="no-print shrink-0 flex items-center gap-2 text-xs font-bold montserrat uppercase tracking-wider px-3 py-2 rounded-lg transition" style="color:var(--usep-blue);background:var(--usep-blue-light)">
+                <i class="fas fa-print"></i>
+                <span class="hidden sm:inline">Imprimer</span>
+                <span id="nav-basket-count" class="hidden w-5 h-5 rounded-full text-xs font-black flex items-center justify-center" style="background:var(--usep-yellow);color:#1a1a1a">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero py-14 px-5 mb-10 relative">
+        <!-- SVG décos -->
+        <svg class="svg-float" style="width:150px;top:8%;right:5%;transform:rotate(15deg)" viewBox="0 0 100 60">
+            <ellipse cx="50" cy="30" rx="47" ry="27" stroke="#FFD700" stroke-width="3.5" fill="none"/>
+            <path d="M3 30 Q26 10 50 30 Q74 50 97 30" stroke="#FFD700" stroke-width="2.5" fill="none"/>
+            <path d="M50 3 Q30 26 50 57 Q70 26 50 3" stroke="#FFD700" stroke-width="2.5" fill="none"/>
+        </svg>
+        <svg class="svg-float" style="width:80px;bottom:10%;left:5%" viewBox="0 0 60 80">
+            <polygon points="30,4 55,76 5,76" stroke="#FFD700" stroke-width="3.5" fill="none" stroke-linejoin="round"/>
+            <line x1="13" y1="56" x2="47" y2="56" stroke="#FFD700" stroke-width="2.5"/>
+        </svg>
+        <svg class="svg-float" style="width:105px;top:18%;left:10%;opacity:0.1" viewBox="0 0 120 40">
+            <rect x="4" y="12" width="68" height="17" rx="8.5" stroke="white" stroke-width="2.5" fill="none"/>
+            <circle cx="90" cy="21" r="13" stroke="white" stroke-width="2.5" fill="none"/>
+            <circle cx="90" cy="21" r="5" stroke="white" stroke-width="2" fill="none"/>
+            <line x1="73" y1="21" x2="79" y2="21" stroke="white" stroke-width="2.5"/>
+        </svg>
+        <svg class="svg-float" style="width:120px;bottom:6%;right:12%;opacity:0.08" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" stroke="#FFD700" stroke-width="3" fill="none"/>
+            <polygon points="50,10 62,34 88,34 68,52 76,78 50,62 24,78 32,52 12,34 38,34" stroke="#FFD700" stroke-width="2" fill="none" stroke-linejoin="round"/>
+        </svg>
+
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <span class="hero-badge mb-4 inline-block">Rencontres Départementales · Avril 2026</span>
+            <h1 class="montserrat text-4xl md:text-5xl font-black text-white leading-tight mb-3 mt-4" style="text-shadow:0 2px 16px rgba(0,0,0,0.2)">
+                Vers les Sports Collectifs
+            </h1>
+            <p class="text-blue-100 text-base md:text-lg font-medium mb-6">Dossier Pédagogique Interactif · Circonscription de Prades</p>
+            <div class="flex flex-wrap justify-center gap-4 text-white text-sm">
+                <span class="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
+                    <i class="fas fa-map-marker-alt" style="color:var(--usep-yellow)"></i>
+                    Estavar (C2, 9 avril) &amp; Matemale (C3, 10 avril)
+                </span>
+                <span class="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
+                    <i class="fas fa-layer-group" style="color:var(--usep-yellow)"></i>
+                    4 plateaux · Rotation 30 min
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6">
+
+        <!-- TABS NAV -->
+        <div class="flex justify-center mb-10 no-print">
+            <div class="tabs-wrapper">
+                <button onclick="switchTab('gen')" id="tab-gen-btn" class="tab-btn tab-pill-active">
+                    <i class="fas fa-graduation-cap mr-1.5"></i>Généralités
+                </button>
+                <button onclick="switchTab('c2')" id="tab-c2-btn" class="tab-btn">
+                    <i class="fas fa-child mr-1.5"></i>Cycle 2 — Estavar
+                </button>
+                <button onclick="switchTab('c3')" id="tab-c3-btn" class="tab-btn">
+                    <i class="fas fa-running mr-1.5"></i>Cycle 3 — Matemale
+                </button>
+            </div>
+        </div>
+
+        <!-- ═══════════ GÉNÉRALITÉS ═══════════ -->
+        <section id="content-gen" class="tab-content">
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="info-card p-6" style="border-top: 4px solid var(--usep-blue)">
+                    <h3 class="montserrat font-extrabold text-base mb-3" style="color:var(--usep-blue)">
+                        <i class="fas fa-layer-group mr-2" style="color:var(--usep-blue)"></i>La Progression
+                    </h3>
+                    <p class="text-sm text-slate-600 mb-4">Inspirée de la trame départementale, elle guide l'élève de la manipulation à la réversibilité (Étapes 1 à 5).</p>
+                    <div class="space-y-2">
+                        <div class="text-xs rounded-lg px-3 py-2" style="background:var(--usep-blue-light);color:var(--usep-blue);font-weight:600">C2 : Focus Étapes 1 à 3</div>
+                        <div class="text-xs rounded-lg px-3 py-2" style="background:var(--usep-blue-light);color:var(--usep-blue);font-weight:600">C3 : Focus Étapes 3 à 5</div>
+                    </div>
+                </div>
+                <div class="info-card p-6" style="border-top: 4px solid var(--usep-yellow)">
+                    <h3 class="montserrat font-extrabold text-base mb-3 text-amber-800">
+                        <i class="fas fa-clock mr-2" style="color:var(--usep-blue)"></i>Déroulé de la Journée
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="montserrat font-bold text-xs uppercase tracking-wider mb-2" style="color:var(--usep-blue)">Matin — 4 rotations de 30 min</p>
+                            <div class="space-y-1.5">
+                                <div class="flex items-center gap-2 text-xs bg-slate-50 rounded-lg px-3 py-2"><span class="w-5 h-5 rounded-full flex items-center justify-center text-white font-black text-xs shrink-0" style="background:var(--usep-blue)">1</span> Plateau 1 · 30 min</div>
+                                <div class="flex items-center gap-2 text-xs bg-slate-50 rounded-lg px-3 py-2"><span class="w-5 h-5 rounded-full flex items-center justify-center text-white font-black text-xs shrink-0" style="background:var(--usep-blue)">2</span> Plateau 2 · 30 min</div>
+                                <div class="flex items-center gap-2 text-xs bg-slate-50 rounded-lg px-3 py-2"><span class="w-5 h-5 rounded-full flex items-center justify-center text-white font-black text-xs shrink-0" style="background:var(--usep-blue)">3</span> Plateau 3 · 30 min</div>
+                                <div class="flex items-center gap-2 text-xs bg-slate-50 rounded-lg px-3 py-2"><span class="w-5 h-5 rounded-full flex items-center justify-center text-white font-black text-xs shrink-0" style="background:var(--usep-blue)">4</span> Plateau 4 · 30 min</div>
+                            </div>
+                        </div>
+                        <div class="border-t pt-3">
+                            <p class="montserrat font-bold text-xs uppercase tracking-wider mb-2" style="color:#b45309">Après-midi — Tournoi multisports</p>
+                            <div class="rounded-xl px-3 py-2 text-xs" style="background:#fffbeb;color:#92400e;font-weight:600">
+                                <i class="fas fa-trophy mr-1.5" style="color:var(--usep-yellow)"></i> 4 matchs · 1 par discipline · Score cumulé
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-card p-6" style="border-top: 4px solid #1e293b">
+                    <h3 class="montserrat font-extrabold text-base mb-3 text-slate-900">
+                        <i class="fas fa-map-marker-alt mr-2" style="color:var(--usep-blue)"></i>Sites Validés
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center gap-2">
+                            <span class="text-sm font-semibold">C2 : Estavar (9 Avril)</span>
+                            <span class="text-xs px-2 py-1 rounded-full" style="background:var(--usep-blue-light);color:var(--usep-blue);font-weight:700">Périmètre central</span>
+                        </div>
+                        <div class="flex justify-between items-center gap-2">
+                            <span class="text-sm font-semibold">C3 : Matemale (10 Avril)</span>
+                            <span class="text-xs px-2 py-1 rounded-full" style="background:var(--usep-blue-light);color:var(--usep-blue);font-weight:700">Plateau Capcir</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Étapes recap -->
+            <div class="info-card p-6 mb-8">
+                <h3 class="montserrat font-extrabold text-base mb-5" style="color:var(--usep-blue)">
+                    <i class="fas fa-stairs mr-2"></i>La Trame des 5 Étapes
+                </h3>
+                <div class="grid sm:grid-cols-5 gap-3">
+                    <div class="rounded-2xl p-4 text-center" style="background:#dcfce7">
+                        <div class="montserrat font-black text-2xl" style="color:#166534">1</div>
+                        <div class="text-xs font-bold mt-1 text-green-800">Parmi les autres</div>
+                        <div class="text-xs text-green-700 mt-1">Manipulation libre</div>
+                    </div>
+                    <div class="rounded-2xl p-4 text-center border-2" style="background:#dcfce7;border-color:#166534">
+                        <div class="montserrat font-black text-2xl" style="color:#166534">2</div>
+                        <div class="text-xs font-bold mt-1 text-green-800">Coopérer</div>
+                        <div class="text-xs text-green-700 mt-1">Échange partenaire</div>
+                    </div>
+                    <div class="rounded-2xl p-4 text-center" style="background:#fef9c3">
+                        <div class="montserrat font-black text-2xl" style="color:#854d0e">3</div>
+                        <div class="text-xs font-bold mt-1 text-amber-800">Opposition directe</div>
+                        <div class="text-xs text-amber-700 mt-1">Adversaire gênant</div>
+                    </div>
+                    <div class="rounded-2xl p-4 text-center" style="background:#fee2e2">
+                        <div class="montserrat font-black text-2xl" style="color:#991b1b">4</div>
+                        <div class="text-xs font-bold mt-1 text-red-800">Attaque / Défense</div>
+                        <div class="text-xs text-red-700 mt-1">Rôles fixes</div>
+                    </div>
+                    <div class="rounded-2xl p-4 text-center" style="background:#991b1b">
+                        <div class="montserrat font-black text-2xl text-white">5</div>
+                        <div class="text-xs font-bold mt-1 text-red-100">Réversibilité</div>
+                        <div class="text-xs text-red-200 mt-1">Transition rapide</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ ENCART SITUATIONS FIL ROUGE ══ -->
+            <div class="info-card overflow-hidden mb-2">
+                <!-- Header -->
+                <div class="p-5 pb-4" style="background:linear-gradient(135deg,#78350f,#b45309)">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style="background:var(--usep-yellow)">
+                            <i class="fas fa-rotate text-lg" style="color:#78350f"></i>
+                        </div>
+                        <div>
+                            <h3 class="montserrat font-black text-lg text-white leading-tight">Les Situations Fil Rouge</h3>
+                            <p class="text-amber-200 text-xs mt-1 font-medium">Pourquoi retrouver la même situation dans plusieurs disciplines ?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Corps -->
+                <div class="p-6 space-y-6">
+
+                    <!-- Explication pédagogique -->
+                    <div class="rounded-2xl p-5 border-l-4" style="background:#fffbeb;border-color:var(--usep-yellow)">
+                        <p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-3" style="color:#92400e">Le principe</p>
+                        <p class="text-sm text-slate-700 leading-relaxed mb-3">
+                            Tous les sports collectifs partagent des <strong>invariants tactiques communs</strong> : progresser vers la cible, conserver le ballon, défendre en groupe. Retrouver la même structure de jeu dans plusieurs disciplines n'est pas une redondance — c'est volontaire.
+                        </p>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Lorsqu'un élève reconnaît qu'il joue <em>"les Déménageurs"</em> en rugby, puis en football, puis en hockey, il réalise que ce qu'il a appris n'est pas lié à un engin mais à une <strong>compétence tactique</strong>. Ce mécanisme s'appelle le <strong>transfert inter-disciplines</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Bénéfices pour les enseignants -->
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <div class="rounded-2xl p-4 text-center" style="background:var(--usep-blue-light)">
+                            <i class="fas fa-brain text-2xl mb-2" style="color:var(--usep-blue)"></i>
+                            <p class="montserrat font-bold text-xs mb-1" style="color:var(--usep-blue)">Pour les élèves</p>
+                            <p class="text-xs text-slate-600">Ils consolident un concept tactique à travers des contextes variés, sans repartir de zéro à chaque plateau.</p>
+                        </div>
+                        <div class="rounded-2xl p-4 text-center" style="background:#fef9c3">
+                            <i class="fas fa-chalkboard-user text-2xl mb-2 text-amber-700"></i>
+                            <p class="montserrat font-bold text-xs mb-1 text-amber-800">Pour les enseignants</p>
+                            <p class="text-xs text-slate-600">Un seul temps d'explication suffit : les règles sont identiques, seul l'engin change. La gestion est simplifiée.</p>
+                        </div>
+                        <div class="rounded-2xl p-4 text-center" style="background:#f0fdf4">
+                            <i class="fas fa-arrows-rotate text-2xl mb-2 text-emerald-700"></i>
+                            <p class="montserrat font-bold text-xs mb-1 text-emerald-800">Pour la rencontre</p>
+                            <p class="text-xs text-slate-600">Les rotations entre plateaux sont plus fluides : les élèves s'adaptent vite à un contexte déjà connu.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tableau de correspondance -->
+                    <div>
+                        <p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-3" style="color:var(--usep-blue)">Tableau de correspondance des situations fil rouge</p>
+                        <div class="rounded-2xl overflow-hidden border border-slate-100">
+                            <table class="transfer-table w-full text-sm">
+                                <thead style="background:var(--usep-blue)">
+                                    <tr>
+                                        <th class="text-white">Situation fil rouge</th>
+                                        <th class="text-white">Objectif tactique</th>
+                                        <th class="text-white text-center">Rugby</th>
+                                        <th class="text-white text-center">Football</th>
+                                        <th class="text-white text-center">Hockey</th>
+                                        <th class="text-white text-center">Tchouk.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background:#fffbeb">
+                                        <td>
+                                            <span class="fil-rouge-badge"><i class="fas fa-rotate"></i> Les Déménageurs</span>
+                                        </td>
+                                        <td class="text-slate-600 text-xs">Progresser vers son camp avec l'engin · Étape 2</td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#dcfce7;color:#166534" title="Rugby C2">✓</span></td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#dcfce7;color:#166534" title="Football C2">✓</span></td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#dcfce7;color:#166534" title="Hockey C2">✓</span></td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#f1f5f9;color:#94a3b8">—</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="fil-rouge-badge"><i class="fas fa-rotate"></i> Conservation / Toro</span>
+                                        </td>
+                                        <td class="text-slate-600 text-xs">Garder le ballon en supériorité numérique · Étape 3</td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#f1f5f9;color:#94a3b8">—</span></td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#fef9c3;color:#854d0e" title="Football C3">✓</span></td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#fef9c3;color:#854d0e" title="Hockey C3">✓</span></td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#f1f5f9;color:#94a3b8">—</span></td>
+                                    </tr>
+                                    <tr style="background:#fffbeb">
+                                        <td>
+                                            <span class="fil-rouge-badge"><i class="fas fa-rotate"></i> Contre-Attaque Éclair</span>
+                                        </td>
+                                        <td class="text-slate-600 text-xs">Transition défense → attaque rapide · Étape 4</td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#f1f5f9;color:#94a3b8">—</span></td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#fee2e2;color:#991b1b" title="Football C3">✓</span></td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#fee2e2;color:#991b1b" title="Hockey C3">✓</span></td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#f1f5f9;color:#94a3b8">—</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="fil-rouge-badge"><i class="fas fa-rotate"></i> Le Rideau de Fer</span>
+                                        </td>
+                                        <td class="text-slate-600 text-xs">Défense collective en ligne coulissante · Étape 4</td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#fee2e2;color:#991b1b" title="Rugby C3">✓</span></td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#fee2e2;color:#991b1b" title="Football C3">✓</span></td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#f1f5f9;color:#94a3b8">—</span></td>
+                                        <td class="text-center"><span class="transfer-dot" style="background:#f1f5f9;color:#94a3b8">—</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2 italic">Les ✓ colorés indiquent dans quel cycle la situation est présente (vert = C2, jaune = C3 étape 3, rouge = C3 étape 4).</p>
+                    </div>
+
+                    <!-- Conseil pratique -->
+                    <div class="rounded-2xl p-4 flex gap-4 items-start" style="background:var(--usep-blue-light)">
+                        <i class="fas fa-lightbulb text-xl mt-0.5 shrink-0" style="color:var(--usep-yellow)"></i>
+                        <div>
+                            <p class="montserrat font-bold text-sm mb-1" style="color:var(--usep-blue)">Conseil pour la mise en œuvre</p>
+                            <p class="text-sm text-slate-600">Lors du bilan de fin de rencontre, posez cette question aux élèves : <em>"Avez-vous reconnu une situation que vous avez déjà jouée aujourd'hui dans une autre discipline ?"</em> Ce moment de verbalisation est clé pour ancrer le transfert.</p>
+                        </div>
+                    </div>
+
+            <!-- PRINT THEORY CHECKBOX -->
+            <div id="theory-print-option" class="info-card p-5 flex items-center gap-4 no-print" style="border-top:4px solid var(--usep-blue);cursor:pointer" onclick="toggleTheory()">
+                <input type="checkbox" id="include-theory" class="card-checkbox w-5 h-5 shrink-0" onclick="event.stopPropagation();toggleTheory()">
+                <div>
+                    <p class="montserrat font-bold text-sm" style="color:var(--usep-blue)"><i class="fas fa-file-lines mr-2"></i>Inclure les principes théoriques dans l'impression</p>
+                    <p class="text-xs text-slate-500 mt-0.5">Trame des 5 étapes, situations fil rouge et conseil pédagogique — ajoutés en page 1 du dossier imprimé.</p>
+                </div>
+            </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ CYCLE 2 ═══════════ -->
+        <section id="content-c2" class="tab-content hidden">
+            <h2 class="montserrat font-black text-2xl mb-8 section-title-bar" style="color:var(--usep-blue)">
+                Plateaux Cycle 2 <span class="font-normal text-slate-500">— Estavar</span>
+            </h2>
+            <div class="space-y-6">
+
+                <!-- P1 RUGBY C2 -->
+                <div class="sport-block">
+                    <div class="sport-block-header" style="background:linear-gradient(135deg,#047857,#059669)">
+                        <span class="sport-block-title text-white flex items-center gap-2">
+                            <i class="fas fa-rugby-ball" style="color:var(--usep-yellow)"></i>P1. Rugby à Toucher
+                        </span>
+                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
+                    </div>
+                    <div class="cards-scroll-wrapper">
+                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
+                        <div class="cards-scroll">
+                            <div onclick="openModal('r1-c2')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('r1-c2', this.checked)" data-id="r1-c2"></label>
+                                <span class="card-step" style="background:#dcfce7;color:#166534">Étape 1</span>
+                                <h4>Queue du Diable</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('r2-c2')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('r2-c2', this.checked)" data-id="r2-c2"></label>
+                                <span class="card-step" style="background:#dcfce7;color:#166534;border:1.5px solid #166534">Étape 2</span>
+                                <h4>La Rivière</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('r3-c2')" class="activity-card has-fil-rouge">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('r3-c2', this.checked)" data-id="r3-c2"></label>
+                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
+                                <h4>Déménageurs</h4>
+                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('r4-c2')" class="activity-card match-card" style="background:#047857;color:white">
+                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
+                                <h4 style="color:white">Match 4v4 Toucher</h4>
+                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- P2 FOOTBALL C2 -->
+                <div class="sport-block">
+                    <div class="sport-block-header" style="background:linear-gradient(135deg,#0369a1,#0284c7)">
+                        <span class="sport-block-title text-white flex items-center gap-2">
+                            <i class="fas fa-futbol" style="color:var(--usep-yellow)"></i>P2. Football Adapté
+                        </span>
+                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
+                    </div>
+                    <div class="cards-scroll-wrapper">
+                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
+                        <div class="cards-scroll">
+                            <div onclick="openModal('f1-c2')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('f1-c2', this.checked)" data-id="f1-c2"></label>
+                                <span class="card-step" style="background:#dcfce7;color:#166534">Étape 1</span>
+                                <h4>Béret Slalom</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('f2-c2')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('f2-c2', this.checked)" data-id="f2-c2"></label>
+                                <span class="card-step" style="background:#dcfce7;color:#166534;border:1.5px solid #166534">Étape 2</span>
+                                <h4>L'Horloge</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('f3-c2')" class="activity-card has-fil-rouge">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('f3-c2', this.checked)" data-id="f3-c2"></label>
+                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
+                                <h4>Déménageurs Pied</h4>
+                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('f4-c2')" class="activity-card match-card" style="background:#0369a1;color:white">
+                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
+                                <h4 style="color:white">Match sans Gardien</h4>
+                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- P3 TCHOUKBALL C2 -->
+                <div class="sport-block">
+                    <div class="sport-block-header" style="background:linear-gradient(135deg,#c2410c,#ea580c)">
+                        <span class="sport-block-title text-white flex items-center gap-2">
+                            <i class="fas fa-bullseye" style="color:var(--usep-yellow)"></i>P3. Tchoukball
+                        </span>
+                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
+                    </div>
+                    <div class="cards-scroll-wrapper">
+                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
+                        <div class="cards-scroll">
+                            <div onclick="openModal('t1-c2')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('t1-c2', this.checked)" data-id="t1-c2"></label>
+                                <span class="card-step" style="background:#dcfce7;color:#166534">Étape 1</span>
+                                <h4>Chasse au Rebond</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('t2-c2')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('t2-c2', this.checked)" data-id="t2-c2"></label>
+                                <span class="card-step" style="background:#dcfce7;color:#166534;border:1.5px solid #166534">Étape 2</span>
+                                <h4>Passe &amp; Tir</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('t3-c2')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('t3-c2', this.checked)" data-id="t3-c2"></label>
+                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
+                                <h4>Zones Interdites</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('t4-c2')" class="activity-card match-card" style="background:#c2410c;color:white">
+                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
+                                <h4 style="color:white">Match 3v3</h4>
+                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- P4 HOCKEY C2 -->
+                <div class="sport-block">
+                    <div class="sport-block-header" style="background:linear-gradient(135deg,#334155,#475569)">
+                        <span class="sport-block-title text-white flex items-center gap-2">
+                            <i class="fas fa-hockey-puck" style="color:var(--usep-yellow)"></i>P4. Hockey (Jeux de crosse)
+                        </span>
+                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
+                    </div>
+                    <div class="cards-scroll-wrapper">
+                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
+                        <div class="cards-scroll">
+                            <div onclick="openModal('hy1-c2')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('hy1-c2', this.checked)" data-id="hy1-c2"></label>
+                                <span class="card-step" style="background:#dcfce7;color:#166534">Étape 1</span>
+                                <h4>Le Slalom Géant</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('hy2-c2')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('hy2-c2', this.checked)" data-id="hy2-c2"></label>
+                                <span class="card-step" style="background:#dcfce7;color:#166534;border:1.5px solid #166534">Étape 2</span>
+                                <h4>La Balle à l'un</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('hy3-c2')" class="activity-card has-fil-rouge">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('hy3-c2', this.checked)" data-id="hy3-c2"></label>
+                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
+                                <h4>Déménageurs Crosse</h4>
+                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('hy4-c2')" class="activity-card match-card" style="background:#334155;color:white">
+                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
+                                <h4 style="color:white">Match aux Portes</h4>
+                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ═══════════ CYCLE 3 ═══════════ -->
+        <section id="content-c3" class="tab-content hidden">
+            <h2 class="montserrat font-black text-2xl mb-8 section-title-bar" style="color:var(--usep-blue)">
+                Plateaux Cycle 3 <span class="font-normal text-slate-500">— Matemale</span>
+            </h2>
+            <div class="space-y-6">
+
+                <!-- P1 FOOTBALL C3 -->
+                <div class="sport-block">
+                    <div class="sport-block-header" style="background:linear-gradient(135deg,#0c4a6e,#0369a1)">
+                        <span class="sport-block-title text-white flex items-center gap-2">
+                            <i class="fas fa-futbol" style="color:var(--usep-yellow)"></i>P1. Football Tactique
+                        </span>
+                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
+                    </div>
+                    <div class="cards-scroll-wrapper">
+                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
+                        <div class="cards-scroll">
+                            <div onclick="openModal('f1-c3')" class="activity-card has-fil-rouge">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('f1-c3', this.checked)" data-id="f1-c3"></label>
+                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
+                                <h4>Conservation 3v1</h4>
+                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('f2-c3')" class="activity-card has-fil-rouge">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('f2-c3', this.checked)" data-id="f2-c3"></label>
+                                <span class="card-step" style="background:#fee2e2;color:#991b1b">Étape 4</span>
+                                <h4>Contre-Attaque</h4>
+                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('f3-c3')" class="activity-card has-fil-rouge">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('f3-c3', this.checked)" data-id="f3-c3"></label>
+                                <span class="card-step" style="background:#fee2e2;color:#991b1b">Étape 4</span>
+                                <h4>Défense en Ligne</h4>
+                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('f4-c3')" class="activity-card match-card" style="background:#0c4a6e;color:white">
+                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
+                                <h4 style="color:white">Match Appuis</h4>
+                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- P2 HOCKEY C3 -->
+                <div class="sport-block">
+                    <div class="sport-block-header" style="background:linear-gradient(135deg,#334155,#475569)">
+                        <span class="sport-block-title text-white flex items-center gap-2">
+                            <i class="fas fa-hockey-puck" style="color:var(--usep-yellow)"></i>P2. Hockey Tactique
+                        </span>
+                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
+                    </div>
+                    <div class="cards-scroll-wrapper">
+                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
+                        <div class="cards-scroll">
+                            <div onclick="openModal('hy1-c3')" class="activity-card has-fil-rouge">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('hy1-c3', this.checked)" data-id="hy1-c3"></label>
+                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
+                                <h4>Toro à la crosse</h4>
+                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('hy2-c3')" class="activity-card has-fil-rouge">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('hy2-c3', this.checked)" data-id="hy2-c3"></label>
+                                <span class="card-step" style="background:#fee2e2;color:#991b1b">Étape 4</span>
+                                <h4>Contre-Attaque Éclair</h4>
+                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('hy3-c3')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('hy3-c3', this.checked)" data-id="hy3-c3"></label>
+                                <span class="card-step" style="background:#991b1b;color:white">Étape 5</span>
+                                <h4>Repli Défensif</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('hy4-c3')" class="activity-card match-card" style="background:#334155;color:white">
+                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
+                                <h4 style="color:white">Match 5v5</h4>
+                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- P3 RUGBY C3 -->
+                <div class="sport-block">
+                    <div class="sport-block-header" style="background:linear-gradient(135deg,#065f46,#047857)">
+                        <span class="sport-block-title text-white flex items-center gap-2">
+                            <i class="fas fa-rugby-ball" style="color:var(--usep-yellow)"></i>P3. Rugby Stratégie
+                        </span>
+                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
+                    </div>
+                    <div class="cards-scroll-wrapper">
+                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
+                        <div class="cards-scroll">
+                            <div onclick="openModal('r1-c3')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('r1-c3', this.checked)" data-id="r1-c3"></label>
+                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
+                                <h4>Fixer pour donner</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('r2-c3')" class="activity-card has-fil-rouge">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('r2-c3', this.checked)" data-id="r2-c3"></label>
+                                <span class="card-step" style="background:#fee2e2;color:#991b1b">Étape 4</span>
+                                <h4>Le Rideau de Fer</h4>
+                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('r3-c3')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('r3-c3', this.checked)" data-id="r3-c3"></label>
+                                <span class="card-step" style="background:#991b1b;color:white">Étape 5</span>
+                                <h4>Play the ball</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('r4-c3')" class="activity-card match-card" style="background:#065f46;color:white">
+                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
+                                <h4 style="color:white">Rugby à 5</h4>
+                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- P4 TCHOUKBALL C3 -->
+                <div class="sport-block">
+                    <div class="sport-block-header" style="background:linear-gradient(135deg,#9a3412,#c2410c)">
+                        <span class="sport-block-title text-white flex items-center gap-2">
+                            <i class="fas fa-crosshairs" style="color:var(--usep-yellow)"></i>P4. Tchoukball Tactique
+                        </span>
+                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
+                    </div>
+                    <div class="cards-scroll-wrapper">
+                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
+                        <div class="cards-scroll">
+                            <div onclick="openModal('t1-c3')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('t1-c3', this.checked)" data-id="t1-c3"></label>
+                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
+                                <h4>L'Angle Mort</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('t2-c3')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('t2-c3', this.checked)" data-id="t2-c3"></label>
+                                <span class="card-step" style="background:#fee2e2;color:#991b1b">Étape 4</span>
+                                <h4>Blocage de Tir</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('t3-c3')" class="activity-card">
+                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('t3-c3', this.checked)" data-id="t3-c3"></label>
+                                <span class="card-step" style="background:#991b1b;color:white">Étape 5</span>
+                                <h4>Attaque Bilatérale</h4>
+                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                            </div>
+                            <div onclick="openModal('t4-c3')" class="activity-card match-card" style="background:#9a3412;color:white">
+                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
+                                <h4 style="color:white">Tournoi 5v5</h4>
+                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="max-w-6xl mx-auto mt-16 mb-10 px-4">
+        <div class="rounded-3xl p-6 text-center" style="background:var(--usep-blue)">
+            <div class="montserrat font-black text-base mb-1" style="color:var(--usep-yellow)">USEP 66 · Pyrénées-Orientales</div>
+            <p class="text-blue-200 text-sm">© 2026 — Dossier Pédagogique Interactif, Circonscription de Prades</p>
+            <p class="text-blue-300 text-xs mt-1 italic">Contenu finalisé le 20/02/2026 · Rencontres d'avril 2026</p>
+            <a href="https://usep66.org" target="_blank" class="mt-3 inline-block text-xs font-bold underline montserrat" style="color:var(--usep-yellow)">usep66.org</a>
+        </div>
+    </footer>
+
+    <!-- FLOATING BASKET BUTTON -->
+    <button id="print-basket-btn" class="hidden-btn no-print" onclick="openBasketModal()">
+        <i class="fas fa-print"></i>
+        <span>Panier d'impression</span>
+        <span id="basket-count">0</span>
+    </button>
+
+    <!-- BASKET MODAL -->
+    <div id="basket-modal" class="hidden-btn modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50 p-4 no-print">
+        <div class="absolute w-full h-full bg-slate-900/70 backdrop-blur-sm" onclick="closeBasketModal()"></div>
+        <div class="modal-card w-full max-w-lg mx-auto relative z-50">
+            <div class="modal-header">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-blue-200 text-xs font-bold uppercase tracking-widest montserrat mb-1">Impression à la carte</p>
+                        <h2 class="montserrat text-xl font-black text-white">Panier d'impression</h2>
+                    </div>
+                    <button onclick="closeBasketModal()" class="text-blue-200 hover:text-white transition ml-4 mt-1">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-6 space-y-4">
+                <div id="basket-list" class="space-y-2 max-h-56 overflow-y-auto"></div>
+                <div class="border-t pt-4 space-y-3">
+                    <label class="flex items-center gap-3 cursor-pointer rounded-xl p-3 hover:bg-slate-50 border">
+                        <input type="checkbox" id="include-theory-basket" class="card-checkbox w-5 h-5 shrink-0">
+                        <div>
+                            <p class="montserrat font-bold text-sm" style="color:var(--usep-blue)">Inclure la page théorique</p>
+                            <p class="text-xs text-slate-500">Trame des 5 étapes + situations fil rouge + conseil pédagogique</p>
+                        </div>
+                    </label>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="clearBasket()" class="flex-1 py-2.5 rounded-xl border border-slate-200 text-sm font-bold montserrat text-slate-500 hover:bg-slate-50 transition">
+                        <i class="fas fa-trash mr-2"></i>Vider
+                    </button>
+                    <button onclick="preparePrint()" class="flex-2 py-2.5 px-6 rounded-xl text-sm font-bold montserrat text-white transition" style="background:var(--usep-blue);flex:2">
+                        <i class="fas fa-print mr-2"></i>Imprimer <span id="basket-print-count">0</span> fiche(s)
+                    </button>
+                </div>
+                <p class="text-xs text-slate-400 text-center italic">Cochez les fiches souhaitées directement sur les cartes pour les ajouter au panier.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <div id="detail-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50 p-4">
+        <div class="modal-overlay absolute w-full h-full bg-slate-900/70 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="modal-card w-full max-w-2xl mx-auto relative z-50">
+            <div class="modal-header">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-blue-200 text-xs font-bold uppercase tracking-widest montserrat mb-1">Fiche Situation</p>
+                        <h2 class="montserrat text-2xl font-black text-white" id="modal-title">Situation</h2>
+                    </div>
+                    <button onclick="closeModal()" class="text-blue-200 hover:text-white transition ml-4 mt-1">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="modal-body" class="p-6 space-y-5"></div>
+        </div>
+    </div>
+
+    
+    
+    <script>
+        /* ═══════════════════════════════════════════════════
+           SITUATIONS DATA — 32 fiches complètes
+        ═══════════════════════════════════════════════════ */
+        var situations = {
+
+            /* HOCKEY C2 */
+            "hy1-c2": {
+                title: "Le Slalom Géant",
+                etape: "Étape 1",
+                goal: "Découvrir la crosse et contrôler la balle en se déplaçant.",
+                but: "Conduire la balle le long d'un parcours de plots en quinconce sans la perdre, de plus en plus vite.",
+                setup: "Couloir de 15 m, 6 plots en quinconce espacés de 1,5 m. 1 crosse et 1 balle par élève. Groupes de 4, départ en navette.",
+                rules: "Balle toujours au sol. Crosse jamais levée au-dessus du genou (sécurité). En cas de balle perdue au-delà de 2 m : repartir du plot précédent.",
+                variables: "Faciliter : plots plus espacés (2 m), balle légèrement plus grosse. Complexifier : alterner main directrice et main d'appui, chronométrer chaque passage, ajouter un chasseur mobile qui tente d'intercepter.",
+                rolesSociaux: "Maître du Temps : lève le bras au top départ. Bon Compteur : note les temps sur ardoise."
+            },
+            "hy2-c2": {
+                title: "La Balle à l'un",
+                etape: "Étape 2",
+                goal: "Réaliser une passe précise à la crosse vers un partenaire statique.",
+                but: "En duo face à face (6 m), réussir 10 passes consécutives sans que la balle ne sorte d'un couloir de 2 m de large.",
+                setup: "Couloir matérialisé par 2 cordes au sol. 1 balle par duo, 1 crosse chacun.",
+                rules: "Balle toujours au sol. On frappe, on ne pousse pas. Le receveur ne se déplace pas (pieds fixés).",
+                variables: "Faciliter : agrandir le couloir à 3 m. Complexifier : réduire à 1,5 m, imposer la main faible, alterner passes à gauche et à droite du partenaire.",
+                rolesSociaux: "Arbitre : compte les passes à voix haute et signale les sorties de couloir."
+            },
+            "hy3-c2": {
+                title: "Déménageurs Crosse",
+                etape: "Étape 2-3",
+                goal: "Conduire la balle vers un camp adverse malgré une pression légère.",
+                but: "Ramener le plus de balles dans son camp en les conduisant à la crosse. L'équipe avec le plus de balles après 3 min gagne.",
+                setup: "Terrain 20x10 m partagé en 2. Ballons au centre. 2 équipes de 5. 1 crosse/joueur.",
+                rules: "1 balle à la fois. Toucher sur la balle (pas sur le joueur) = balle libérée sur place. Crosse sous le genou.",
+                variables: "Faciliter : aucun défenseur dans sa propre moitié. Complexifier : introduire 2 défenseurs fixes côté adverse.",
+                rolesSociaux: "Arbitre : vérifie les touches illicites. Bon Compteur : note le score toutes les minutes.",
+                filRouge: "Même logique en <strong>Rugby</strong> (Déménageurs) et <strong>Football</strong> (Déménageurs Pied) au C2 — seul l'engin change !"
+            },
+            "hy4-c2": {
+                title: "Match aux Portes",
+                etape: "Match de référence",
+                goal: "Utiliser la crosse pour s'orienter vers différentes cibles dispersées.",
+                but: "Marquer en faisant passer la balle entre deux plots (porte) à hauteur de cheville. 4v4, terrain 20x10 m.",
+                setup: "4 portes (2 plots espacés de 1,5 m) disposées aléatoirement sur le terrain. Pas de gardien. Toutes les portes sont attaquables dans les 2 sens.",
+                rules: "Balle toujours au sol. On ne peut pas stationner devant une porte. Crosse sous le genou. Remise en jeu par frappe depuis la ligne de touche.",
+                variables: "Une porte franchie par une passe directe (sans conduite) compte double. Ajouter une porte centrale comptant triple.",
+                rolesSociaux: "Jeune Officiel : siffle les sorties et explique la décision à voix haute."
+            },
+
+            /* HOCKEY C3 */
+            "hy1-c3": {
+                title: "Toro à la crosse",
+                etape: "Étape 3",
+                goal: "Conserver la balle en supériorité numérique malgré un défenseur actif.",
+                but: "3 (ou 4) attaquants en carré (8x8 m) se font des passes à la crosse. Le chasseur central tente d'intercepter. Objectif : 8 passes consécutives.",
+                setup: "Carré de plots 8x8 m. 3 attaquants + 1 défenseur central. 1 balle, 1 crosse par joueur.",
+                rules: "Balle toujours au sol. Pas de passe directe vers celui qu'on vient de recevoir (triangle obligatoire). Le défenseur change après interception ou 8 passes réussies.",
+                variables: "Faciliter : agrandir à 10x10 m, 4 attaquants. Complexifier : 2 touches de balle max, réduire à 6x6 m.",
+                rolesSociaux: "Observateur : compte les passes consécutives à voix haute pour que l'équipe visualise la progression.",
+                filRouge: "Même structure en <strong>Football</strong> (Conservation 3v1 / Toro) au C3 — garder le ballon en supériorité, quel que soit l'engin."
+            },
+            "hy2-c3": {
+                title: "Contre-Attaque Éclair",
+                etape: "Étape 4-5",
+                goal: "Déclencher une transition défense vers attaque rapide après récupération de balle.",
+                but: "Dès la récupération en zone défensive, passer en 3 frappes maximum et marquer dans le but adverse. Chrono : 10 secondes.",
+                setup: "Terrain 30x15 m avec 2 buts. Jeu 4v4. Un arbitre-élève gère le chrono des 10 s.",
+                rules: "Crosse sous le genou. Passes obligatoires avant de franchir la ligne médiane. But refusé si plus de 10 s s'écoulent depuis la récupération.",
+                variables: "Faciliter : allonger à 15 s, supprimer la contrainte de passes avant la médiane. Complexifier : 8 s, deuxième défenseur harceleur.",
+                rolesSociaux: "Maître du Temps : chronomètre les 10 s à voix haute et annonce 'Trop tard !' si dépassé.",
+                filRouge: "Même logique en <strong>Football</strong> (Contre-Attaque Éclair) au C3 — la transition défense vers attaque est un invariant commun à tous les sports collectifs."
+            },
+            "hy3-c3": {
+                title: "Jeu des Intervalles",
+                etape: "Étape 4",
+                goal: "Utiliser les espaces entre les défenseurs pour faire circuler la balle.",
+                but: "Faire passer la balle à la crosse depuis la zone 1 jusqu'à la zone 3 sans que les 2 défenseurs fixes en zone 2 ne l'interceptent.",
+                setup: "Terrain divisé en 3 bandes de 8 m. 3 attaquants en Z1, 2 défenseurs fixes en Z2, 1 réceptionneur en Z3.",
+                rules: "Les défenseurs ne peuvent pas sortir de la zone 2. Le réceptionneur doit rester en Z3. Balle au sol uniquement.",
+                variables: "Faciliter : 1 seul défenseur en Z2. Complexifier : défenseurs semi-mobiles (peuvent avancer sur 1 m), ajouter un temps limite de 15 s.",
+                rolesSociaux: "Observateur : identifie quel intervalle a été utilisé (gauche, centre, droite) et le note pour le bilan."
+            },
+            "hy4-c3": {
+                title: "Match 5v5 (Règles USEP)",
+                etape: "Match de référence",
+                goal: "Appliquer les règles du hockey USEP dans une opposition collective structurée.",
+                but: "Marquer dans le but adverse. Match en 2x8 min. Score cumulé sur l'ensemble de la journée.",
+                setup: "Terrain 30x15 m. Buts de 2x1 m. 5v5. Auto-arbitrage avec Jeune Officiel tournant.",
+                rules: "Crosse sous le genou. Pas de contact corps-à-corps. Remise en jeu depuis la ligne si balle sortie. Pas de gardien.",
+                variables: "But compté double si tous les attaquants sont dans le camp adverse au moment du tir.",
+                rolesSociaux: "Jeune Officiel : gère les remises en jeu et note le score. Maître du Temps : deux bips à la mi-temps."
+            },
+
+            /* FOOTBALL C2 */
+            "f1-c2": {
+                title: "Béret Slalom",
+                etape: "Étape 1",
+                goal: "Conduire le ballon au pied dans un espace dirigé en réagissant à un signal.",
+                but: "Au signal (numéro crié), aller chercher son ballon au centre, franchir un slalom de 4 plots et marquer dans un petit but avant l'adversaire.",
+                setup: "2 colonnes face à face à 15 m. 1 ballon au centre par paire. 4 plots en slalom. Ballon taille 3 ou 4, légèrement dégonflé.",
+                rules: "Conduite uniquement au pied. Plot tombé = retour au plot précédent. Pas de crampons.",
+                variables: "Faciliter : supprimer le slalom, conduite directe. Complexifier : pied faible uniquement, réduire le couloir à 1 m.",
+                rolesSociaux: "Maître du Temps : crie les numéros de manière aléatoire."
+            },
+            "f2-c2": {
+                title: "L'Horloge",
+                etape: "Étape 2",
+                goal: "Enchaîner les passes rapidement en équipe pendant qu'un adversaire course.",
+                but: "L'équipe A en cercle (6 passes = 1 point) pendant que l'équipe B envoie un coureur faire le tour du terrain. On inverse tous les 2 min.",
+                setup: "Cercle de 8 m de diamètre. Coureur sur un périmètre de 30 m. Ballon taille 3.",
+                rules: "Pas de déplacement avec le ballon. Passes dans n'importe quel ordre. Le coureur ne peut pas interrompre les passes.",
+                variables: "Faciliter : autoriser un contrôle avant de passer. Complexifier : 2 touches max, réduire le cercle à 6 m.",
+                rolesSociaux: "Bon Compteur : place un plot pour chaque série de 6 passes réussies."
+            },
+            "f3-c2": {
+                title: "Déménageurs Pied",
+                etape: "Étape 2-3",
+                goal: "Conduire le ballon au pied vers son camp sous légère pression adverse.",
+                but: "Ramener le plus de ballons dans son camp en conduisant au pied. Ballon au-delà de la ligne de fond = point. 3 min.",
+                setup: "Terrain 20x10 m. Ballons au centre. 2 équipes de 5. Ballon taille 3.",
+                rules: "1 ballon à la fois par joueur. Interception autorisée uniquement sur le ballon, pas de contact. Pas de crampons.",
+                variables: "Faciliter : aucun défenseur dans son propre camp. Complexifier : 2 défenseurs fixes côté adverse.",
+                rolesSociaux: "Arbitre : signale les contacts illicites. Bon Compteur : comptabilise les ballons rentrés.",
+                filRouge: "Même logique en <strong>Rugby</strong> (Déménageurs) et <strong>Hockey</strong> (Déménageurs Crosse) au C2 — seul l'engin change !"
+            },
+            "f4-c2": {
+                title: "Match sans Gardien",
+                etape: "Match de référence",
+                goal: "S'organiser pour tirer et défendre sans rôle de gardien.",
+                but: "Marquer dans un but de 3 m. 4v4 sur terrain 20x12 m. 2x6 min.",
+                setup: "Petit terrain avec 2 buts sans gardien. Ballon taille 3 légèrement dégonflé. Remise en jeu à la main depuis la touche.",
+                rules: "Pas de crampons. Tir uniquement depuis l'extérieur d'une zone de 3 m devant le but. Contact minimal.",
+                variables: "But valable uniquement si précédé d'une passe à un partenaire. Ajouter un joker neutre qui joue toujours avec l'équipe en possession.",
+                rolesSociaux: "Jeune Officiel : siffle et explique. Bon Compteur : note les buteurs."
+            },
+
+            /* FOOTBALL C3 */
+            "f1-c3": {
+                title: "Conservation 3v1 (Toro)",
+                etape: "Étape 3",
+                goal: "Conserver le ballon sous pression en utilisant les appuis et le soutien.",
+                but: "3 attaquants dans un carré 10x10 m réalisent 10 passes consécutives malgré 1 défenseur. Objectif cumulé sur 5 min.",
+                setup: "Carré 10x10 m. 3 attaquants + 1 défenseur. Ballon taille 4. Le défenseur change après interception ou 10 passes.",
+                rules: "2 touches de balle maximum. Pas de passe en retour immédiat vers celui qui vient de passer. Sortie de zone = perte de balle.",
+                variables: "Faciliter : 4 attaquants (4v1), 3 touches. Complexifier : 1 touche, carré 8x8 m.",
+                rolesSociaux: "Arbitre : compte les passes et valide les interceptions. Observateur : note les positions des joueurs lors des pertes de balle.",
+                filRouge: "Même structure en <strong>Hockey</strong> (Toro à la crosse) au C3 — garder le ballon en supériorité, quel que soit l'engin."
+            },
+            "f2-c3": {
+                title: "Contre-Attaque Éclair",
+                etape: "Étape 4-5",
+                goal: "Déclencher une transition défense vers attaque rapide pour prendre de vitesse la défense adverse.",
+                but: "Dès récupération du ballon, faire maximum 4 passes pour finir au but. Un chrono de 10 s démarre à la récupération.",
+                setup: "Terrain 30x20 m. 4v4 + gardiens. Arbitre-élève gère le chrono.",
+                rules: "Maximum 4 passes avant le tir. Si le chrono atteint 10 s sans tir : remise en jeu pour l'équipe adverse. Pas de crampons.",
+                variables: "Faciliter : 6 passes, 15 s. Complexifier : 3 passes, 8 s, obligation d'avoir tous les attaquants en camp adverse.",
+                rolesSociaux: "Maître du Temps : chronomètre les 10 s à voix haute. Observateur : note si la transition est déclenchée immédiatement après récupération.",
+                filRouge: "Même logique en <strong>Hockey</strong> (Contre-Attaque Éclair) au C3 — la transition défense vers attaque est un invariant tactique commun."
+            },
+            "f3-c3": {
+                title: "Défense en Ligne — Le Rideau",
+                etape: "Étape 4",
+                goal: "Organiser une défense collective qui coulisse et monte ensemble pour fermer les espaces.",
+                but: "3 défenseurs en ligne doivent empêcher 3 attaquants de franchir la ligne de but avec le ballon. Les défenseurs montent au signal 'Rideau !'.",
+                setup: "Couloir 20x10 m. 3 défenseurs alignés sur une ligne à 10 m du but. 3 attaquants en face. Ballon taille 4.",
+                rules: "Défenseurs : pas le droit de se séparer de plus de 3 m. Ils montent ensemble ou pas du tout. Attaquants : pas de tir avant la ligne des 5 m.",
+                variables: "Faciliter : 4 défenseurs pour 3 attaquants. Complexifier : défenseurs partent de la ligne de but (retard imposé).",
+                rolesSociaux: "Observateur : note si la ligne défensive a bien coulissé côté ballon (critère : les 3 défenseurs restent dans la même largeur).",
+                filRouge: "Même logique en <strong>Rugby</strong> (Le Rideau de Fer) au C3 — coulisser ensemble côté ballon pour fermer les espaces est un invariant tactique commun."
+            },
+            "f4-c3": {
+                title: "Match avec Appuis",
+                etape: "Match de référence",
+                goal: "Utiliser les espaces et les appuis latéraux pour ouvrir le jeu.",
+                but: "Match 5v5. 2 joueurs jokers neutres sur les lignes de touche jouent toujours avec l'équipe en possession. Terrain 35x25 m.",
+                setup: "Ballon taille 4. Buts de 4 m. Jokers : restent sur les lignes, ne peuvent pas marquer.",
+                rules: "Jokers : maximum 2 touches avant de redonner. Pas de crampons. Match 2x8 min.",
+                variables: "Rendre les jokers adverses après perte de balle (pression). But compté double si précédé d'une passe à un joker.",
+                rolesSociaux: "Jeune Officiel : gère le temps et le score. Maître du Temps : bip à mi-temps."
+            },
+
+            /* RUGBY C2 */
+            "r1-c2": {
+                title: "La Queue du Diable",
+                etape: "Étape 1",
+                goal: "Courir en protégeant son foulard tout en tentant d'attraper ceux des autres.",
+                but: "Chaque élève a un foulard glissé dans son dos. But : conserver son foulard et en attraper d'autres. Celui qui en a le plus après 2 min gagne.",
+                setup: "Zone carrée 15x15 m. 1 foulard par élève. Ballon non obligatoire en phase 1 (jeu de poursuite pur). Ballon ovale taille 3 en phase 2.",
+                rules: "Le foulard arraché doit être remis par l'arbitre. Sortie de zone = foulard perdu. Pas de contact physique (interdit de retenir).",
+                variables: "Faciliter : zone plus grande (20x20). Complexifier : les élèves portent le ballon ovale en même temps, ce qui réduit la mobilité.",
+                rolesSociaux: "Arbitre : vérifie les sorties de zone et les contacts illicites."
+            },
+            "r2-c2": {
+                title: "La Rivière",
+                etape: "Étape 2",
+                goal: "Avancer collectivement par passes latérales en arrière malgré un obstacle central.",
+                but: "L'équipe traverse un couloir de 20x5 m avec un crocodile fixe au milieu. But : aplatir le ballon dans la zone d'en-but adverse.",
+                setup: "Couloir 20x5 m. 1 défenseur fixe (ne peut faire qu'un pas sur chaque côté). Équipe de 4 attaquants. Ballon ovale taille 3.",
+                rules: "Passes uniquement en arrière ou latérales. Le porteur touché doit poser le ballon au sol immédiatement. Pas de plaquage.",
+                variables: "Faciliter : 2 défenseurs fixes mais immobiles. Complexifier : 1 défenseur semi-mobile (peut se déplacer sur 2 m), réduire la largeur à 4 m.",
+                rolesSociaux: "Observateur : note combien de passes ont été nécessaires pour traverser."
+            },
+            "r3-c2": {
+                title: "Déménageurs Rugby",
+                etape: "Étape 2-3",
+                goal: "Porter et protéger le ballon ovale pour progresser vers son camp sous pression.",
+                but: "Ramener le plus de ballons ovales dans son camp en les portant. Toucher sur le porteur = pose du ballon sur place. 3 min.",
+                setup: "Terrain 20x10 m. 6 ballons au centre. 2 équipes de 5. Ballon ovale taille 3.",
+                rules: "1 ballon à la fois. Toucher (2 mains sur le porteur) = le porteur pose le ballon immédiatement. Le ballon peut être repris par n'importe qui.",
+                variables: "Faciliter : aucun défenseur dans son propre camp. Complexifier : passe obligatoire avant d'entrer dans son camp.",
+                rolesSociaux: "Arbitre : valide les touches (2 mains). Bon Compteur : note les ballons rentrés toutes les minutes.",
+                filRouge: "Même logique en <strong>Football</strong> (Déménageurs Pied) et <strong>Hockey</strong> (Déménageurs Crosse) au C2 — seul l'engin change !"
+            },
+            "r4-c2": {
+                title: "Match 4v4 Toucher",
+                etape: "Match de référence",
+                goal: "Appliquer les règles du rugby à toucher dans un match collectif.",
+                but: "Aplatir le ballon dans la zone d'en-but adverse. 4v4 sur terrain 25x15 m. 2x6 min.",
+                setup: "Ballon ovale taille 3. En-buts de 5 m de profondeur. Remise en jeu au centre après chaque essai.",
+                rules: "Passe uniquement en arrière ou latérale. Toucher = pose du ballon + reprise de jeu immédiate. Pas de plaquage. 3 touches maximum par possession.",
+                variables: "Obligation de 3 passes avant d'aller en en-but. Joker neutre sur les côtés pour aider l'attaque.",
+                rolesSociaux: "Jeune Officiel : siffle les passes en avant et les touches non libérées. Bon Compteur : note les essais."
+            },
+
+            /* RUGBY C3 */
+            "r1-c3": {
+                title: "Fixer pour donner",
+                etape: "Étape 3",
+                goal: "Créer un surnombre en attirant le défenseur sur le porteur pour libérer un partenaire.",
+                but: "En 3v2 dans un couloir 15x8 m, le porteur attire le défenseur sur lui puis donne à l'ailier libre pour aplatir.",
+                setup: "Couloir 15x8 m. 3 attaquants + 2 défenseurs. Ballon ovale taille 3.",
+                rules: "Le porteur doit attendre que le défenseur soit à moins de 2 m avant de passer. Passe uniquement en arrière.",
+                variables: "Faciliter : 4v2. Complexifier : 3v3, couloir rétréci à 6 m.",
+                rolesSociaux: "Observateur : note si le porteur a bien fixé (défenseur à moins de 2 m) avant de passer."
+            },
+            "r2-c3": {
+                title: "Le Rideau de Fer",
+                etape: "Étape 4",
+                goal: "Organiser une défense collective en ligne montante au signal.",
+                but: "4 défenseurs en ligne montent ensemble dès que l'arbitre crie Toucher pour empêcher le porteur d'avancer.",
+                setup: "Terrain 20x15 m. 4v4. Ballon ovale taille 3. Arbitre-élève avec sifflet.",
+                rules: "Interdiction de reculer pour les défenseurs. La ligne doit rester alignée (pas d'écart supérieur à 3 m). Défenseur cassant la ligne = faute, 5 m offerts.",
+                variables: "Faciliter : signal anticipé. Complexifier : signal retardé de 2 s.",
+                rolesSociaux: "Observateur : mesure si la ligne est bien alignée (critère : tous les défenseurs dans la même largeur de terrain).",
+                filRouge: "Même logique en <strong>Football</strong> (Défense en Ligne) au C3 — coulisser ensemble côté ballon pour fermer les espaces est un invariant tactique commun."
+            },
+            "r3-c3": {
+                title: "Play-the-ball",
+                etape: "Étape 5",
+                goal: "Libérer le ballon rapidement après un toucher pour relancer l'attaque en continu.",
+                but: "Après toucher, le porteur pose le ballon au sol et le passe en arrière en moins de 2 secondes. Le soutien doit être présent.",
+                setup: "Terrain 30x20 m. 5v5 avec règle play-the-ball. Ballon ovale taille 3. Arbitre-élève chronomètre les 2 s.",
+                rules: "2 s pour poser et passer après toucher. Ballon mal libéré = possession adverse. Maximum 4 play-the-ball consécutifs avant de changer de tactique.",
+                variables: "Faciliter : 3 s, soutien désigné (toujours le joueur numéroté 2). Complexifier : 1,5 s, défenseur harceleur autorisé à gêner sans toucher.",
+                rolesSociaux: "Maître du Temps : chronomètre les 2 s à voix haute (1, 2 !) pour habituer les joueurs."
+            },
+            "r4-c3": {
+                title: "Match Rugby à 5",
+                etape: "Match de référence",
+                goal: "Appliquer les principes collectifs (fixer, soutien, rideau) dans un match.",
+                but: "Aplatir en en-but adverse. 5v5 sur grand terrain 35x20 m. 2x8 min.",
+                setup: "Ballon ovale taille 3. Règle play-the-ball. En-buts de 5 m. Jeune Officiel tournant.",
+                rules: "Toucher = pose du ballon + play-the-ball en 2 s. Passe en arrière uniquement. Essai collectif (précédé de 2 passes) compté double.",
+                variables: "Joker neutre sur les côtés. But de bonus si l'essai est précédé d'un play-the-ball réussi.",
+                rolesSociaux: "Jeune Officiel : gère les play-the-ball et annonce Temps à mi-match. Bon Compteur : note essais simples et doubles."
+            },
+
+            /* TCHOUKBALL C2 */
+            "t1-c2": {
+                title: "Chasse au Rebond",
+                etape: "Étape 1",
+                goal: "Découvrir l'effet du rebond sur le cadre incliné et anticiper la trajectoire.",
+                but: "Le lanceur tire sur le cadre depuis 3 m. Il doit rattraper sa propre balle avant qu'elle touche le sol. 10 essais, comptabiliser les réussites.",
+                setup: "1 cadre de rebond incliné. Tireur à 3 m, zone interdite de 3 m matérialisée. Ballon mousse ou handball petit format.",
+                rules: "La balle doit toucher le cadre. Pas de sortie de la zone interdite pour récupérer. Si la balle est attrapée = 1 point. Sol = 0.",
+                variables: "Faciliter : distance à 2 m, balle plus grosse. Complexifier : rattraper à 1 main, tirer depuis un angle (côté droit ou gauche du cadre).",
+                rolesSociaux: "Bon Compteur : note les réussites sur ardoise. Maître du Temps : 2 min par lanceur."
+            },
+            "t2-c2": {
+                title: "Passe et Tir",
+                etape: "Étape 2",
+                goal: "Enchaîner une passe précise puis un tir sur cadre en coopération.",
+                but: "A passe à B (à 4 m). B tire sur le cadre. A se replace pour réceptionner le rebond. Succès = rebond rattrapé par A. 8 séquences.",
+                setup: "1 cadre. A à 5 m, B à 4 m face au cadre. Zone interdite matérialisée. Ballon handball petit format.",
+                rules: "La passe doit précéder le tir. A ne peut entrer dans la zone interdite. B ne peut faire plus de 3 pas avec la balle.",
+                variables: "Faciliter : A peut se placer librement pour le rebond. Complexifier : ajouter C qui reçoit le rebond et relance à A (chaîne à 3).",
+                rolesSociaux: "Arbitre : valide si la séquence est bien passe PUIS tir (dans l'ordre)."
+            },
+            "t3-c2": {
+                title: "Zones Interdites",
+                etape: "Étape 3",
+                goal: "Attaquer un cadre protégé par une zone interdite en respectant les contraintes d'espace.",
+                but: "L'attaquant doit tirer sur le cadre depuis l'extérieur de la zone interdite (demi-lune de 3 m). Un défenseur se place en dehors de la zone pour intercepter le rebond.",
+                setup: "1 cadre. Zone interdite demi-lune de 3 m matérialisée au sol. 1 attaquant + 1 défenseur.",
+                rules: "Aucun joueur ne peut entrer dans la zone. Tir uniquement à la main. Le défenseur ne peut pas interrompre le tir (il défend uniquement sur le rebond).",
+                variables: "Faciliter : défenseur statique. Complexifier : 2 défenseurs mobiles, zones interdites agrandies à 4 m.",
+                rolesSociaux: "Arbitre : signale les entrées en zone interdite."
+            },
+            "t4-c2": {
+                title: "Mini-Match 3v3",
+                etape: "Match de référence",
+                goal: "Appliquer les règles de base du Tchoukball dans une opposition collective.",
+                but: "Marquer des points en tirant sur le cadre (si la balle touche le sol sans être rattrapée). 3v3, terrain 15x10 m, 2 cadres (un de chaque côté).",
+                setup: "Terrain 15x10 m. 2 cadres face à face. Zone interdite 3 m devant chaque cadre. Ballon mousse.",
+                rules: "Pas de dribble. Pas d'interception directe (on défend sur le rebond). 3 pas max avant tir ou passe. Zones interdites strictement respectées.",
+                variables: "1 cadre seulement pour simplifier. But double si tiré depuis le côté (angle supérieur à 45 degrés).",
+                rolesSociaux: "Jeune Officiel : siffle les entrées en zone et les dribbles. Bon Compteur : note les points."
+            },
+
+            /* TCHOUKBALL C3 */
+            "t1-c3": {
+                title: "L'Angle Mort",
+                etape: "Étape 3",
+                goal: "Choisir l'angle de tir optimal pour que le rebond soit inatteignable par les défenseurs.",
+                but: "L'attaquant tente de tirer depuis un angle tel que le rebond parte dans la zone morte (côté ou arrière du cadre). Le défenseur tente de lire et d'intercepter. 5 tentatives.",
+                setup: "1 cadre. Attaquant libre de se déplacer. 2 défenseurs fixes en dehors de la zone interdite.",
+                rules: "Interdiction de tirer deux fois de suite depuis le même angle. L'attaquant doit se déplacer entre chaque tir. Zone interdite stricte.",
+                variables: "Faciliter : 1 seul défenseur. Complexifier : défenseurs mobiles, ajouter un délai de 3 s avant le tir.",
+                rolesSociaux: "Observateur : note quel angle a été le plus efficace (gauche, centre, droit) pour le bilan tactique."
+            },
+            "t2-c3": {
+                title: "Blocage de Tir",
+                etape: "Étape 4",
+                goal: "Organiser à 3 la couverture de la zone de rebond probable.",
+                but: "3 défenseurs en triangle couvrent la zone de rebond. L'attaquant tente de contourner. Score : 1 point si rebond rattrapé (défenseurs), 1 point si balle au sol (attaquant).",
+                setup: "1 cadre. 1 attaquant face à 3 défenseurs en triangle (un devant, deux sur les côtés).",
+                rules: "Les défenseurs ne peuvent pas entrer dans la zone interdite. Ils doivent maintenir la formation triangle. L'attaquant peut se déplacer librement.",
+                variables: "Faciliter : attaquant annonce le côté de tir avant de tirer. Complexifier : 2 attaquants alternent les tirs.",
+                rolesSociaux: "Observateur : évalue si le triangle se reconstitue après chaque tir (critère de réussite tactique)."
+            },
+            "t3-c3": {
+                title: "Attaque Bilatérale",
+                etape: "Étape 5",
+                goal: "Perturber la défense en changeant de cadre de tir de façon rapide et imprévisible.",
+                but: "2 cadres sur le terrain. L'équipe attaquante peut tirer sur n'importe quel cadre à tout moment. La défense doit couvrir les deux. 4v4.",
+                setup: "Terrain 20x15 m. 2 cadres sur les côtés opposés. Zones interdites de 3 m. 4 attaquants contre 4 défenseurs.",
+                rules: "Minimum 2 passes entre chaque changement de cadre. Pas de dribble. Défenseurs : ils ne peuvent pas plaquer, seulement se placer.",
+                variables: "Faciliter : annoncer le cadre visé à voix haute avant de tirer. Complexifier : 1 passe obligatoire en retrait avant chaque tir.",
+                rolesSociaux: "Observateur : note combien de fois l'équipe a réussi à changer de cadre (indicateur de variété tactique)."
+            },
+            "t4-c3": {
+                title: "Tournoi 5v5",
+                etape: "Match de référence",
+                goal: "Appliquer les règles internationales USEP adaptées dans une opposition complète.",
+                but: "Marquer sur les cadres adverses. 5v5 sur terrain 25x15 m. 2 cadres. Score cumulé sur la journée.",
+                setup: "Terrain 25x15 m. 2 cadres. Zones interdites de 3 m. Ballon handball. 5v5 + arbitre-élève.",
+                rules: "Règles strictes : 3 pas max, 3 secondes max de possession, zone interdite, pas d'interception directe, pas de dribble.",
+                variables: "Intégrer un arbitre officiel parmi les élèves avec carton jaune (avertissement) pour fautes répétées.",
+                rolesSociaux: "Jeune Officiel : applique le code 3-3 (3 pas, 3 s) et explique chaque décision. Bon Compteur : tableau de score affiché."
+            }
+        };
+
+        /* ═══ PRINT BASKET SYSTEM ═══ */
+        var printBasket = new Set();
+
+        function toggleBasket(id, checked) {
+            if (checked) { printBasket.add(id); } else { printBasket.delete(id); }
+            updateBasketUI();
+        }
+
+        function updateBasketUI() {
+            var count = printBasket.size;
+            var floatBtn = document.getElementById("print-basket-btn");
+            var countBadge = document.getElementById("basket-count");
+            var navCount = document.getElementById("nav-basket-count");
+            if (count > 0) {
+                floatBtn.classList.remove("hidden-btn");
+                countBadge.textContent = count;
+                navCount.textContent = count;
+                navCount.classList.remove("hidden");
+            } else {
+                floatBtn.classList.add("hidden-btn");
+                navCount.classList.add("hidden");
+            }
+            document.querySelectorAll(".activity-card").forEach(function(card) {
+                var cb = card.querySelector(".card-checkbox");
+                if (cb) {
+                    if (printBasket.has(cb.dataset.id)) { card.classList.add("in-basket"); }
+                    else { card.classList.remove("in-basket"); }
+                }
+            });
+        }
+
+        function clearBasket() {
+            printBasket.clear();
+            document.querySelectorAll(".card-checkbox").forEach(function(cb) { cb.checked = false; });
+            updateBasketUI();
+            closeBasketModal();
+        }
+
+        function openBasketModal() {
+            var modal = document.getElementById("basket-modal");
+            modal.classList.remove("hidden-btn", "opacity-0", "pointer-events-none");
+            var basketCb = document.getElementById("include-theory-basket");
+            var mainCb = document.getElementById("include-theory");
+            if (mainCb && basketCb) basketCb.checked = mainCb.checked;
+            var list = document.getElementById("basket-list");
+            var printCount = document.getElementById("basket-print-count");
+            if (printBasket.size === 0) {
+                list.innerHTML = "<p style=\"text-align:center;font-size:0.85rem;color:#94a3b8;padding:20px 0;font-style:italic\">Aucune fiche sélectionnée.<br>Cochez des cartes pour les ajouter.</p>";
+            } else {
+                list.innerHTML = "";
+                printBasket.forEach(function(id) {
+                    var d = situations[id];
+                    var row = document.createElement("div");
+                    row.style.cssText = "display:flex;align-items:center;justify-content:space-between;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:8px 12px;margin-bottom:6px";
+                    var info = document.createElement("div");
+                    var sp = document.createElement("span");
+                    sp.style.cssText = "font-size:0.65rem;font-weight:800;font-family:Montserrat,sans-serif;text-transform:uppercase;color:#0055A4;display:block";
+                    sp.textContent = d ? (d.etape || "") : "";
+                    var p = document.createElement("p");
+                    p.style.cssText = "font-size:0.85rem;font-weight:600;color:#334155;margin:2px 0 0";
+                    p.textContent = d ? d.title : id;
+                    info.appendChild(sp);
+                    info.appendChild(p);
+                    var btn = document.createElement("button");
+                    btn.style.cssText = "background:none;border:none;cursor:pointer;color:#94a3b8;font-size:1.1rem;padding:4px 8px;flex-shrink:0";
+                    btn.textContent = "✕";
+                    (function(bid) { btn.addEventListener("click", function() { removeFromBasket(bid); }); })(id);
+                    row.appendChild(info);
+                    row.appendChild(btn);
+                    list.appendChild(row);
+                });
+            }
+            if (printCount) printCount.textContent = printBasket.size;
+        }
+
+        function closeBasketModal() {
+            var modal = document.getElementById("basket-modal");
+            modal.classList.add("opacity-0", "pointer-events-none");
+            setTimeout(function() { modal.classList.add("hidden-btn"); }, 250);
+        }
+
+        function removeFromBasket(id) {
+            printBasket.delete(id);
+            var cb = document.querySelector(".card-checkbox[data-id=\"" + id + "\"]");
+            if (cb) cb.checked = false;
+            updateBasketUI();
+            openBasketModal();
+        }
+
+        function toggleTheory() {
+            var basketCb = document.getElementById("include-theory-basket");
+            var mainCb = document.getElementById("include-theory");
+            if (mainCb && basketCb) mainCb.checked = basketCb.checked;
+        }
+
+        function preparePrint() {
+            var includeTheory = document.getElementById("include-theory-basket");
+            var withTheory = includeTheory && includeTheory.checked;
+            var win = window.open("", "_blank", "width=900,height=700");
+            if (!win) { alert("Autorisez les pop-ups pour imprimer."); return; }
+
+            var theoryHtml = "";
+            if (withTheory) {
+                theoryHtml = "<div class=\"print-page theory-page\">"
+                    + "<div class=\"print-header\"><span class=\"print-discipline\">USEP 66 - Principes Pédagogiques</span><span class=\"print-etape\">Dossier 2026</span></div>"
+                    + "<h1 class=\"print-title\">Vers les Sports Collectifs</h1>"
+                    + "<h2 class=\"print-section-title\">La Trame des 5 Étapes</h2>"
+                    + "<table class=\"theory-table\"><thead><tr><th>Étape</th><th>Nom</th><th>Objectif</th><th>Cycle</th></tr></thead><tbody>"
+                    + "<tr><td>1</td><td>Parmi les autres</td><td>Manipulation libre, découverte de l'engin et de la cible</td><td>C2</td></tr>"
+                    + "<tr><td>2</td><td>Coopérer</td><td>Échange avec un partenaire sans gêne adverse</td><td>C2</td></tr>"
+                    + "<tr><td>3</td><td>Opposition directe</td><td>Agir malgré un adversaire gênant</td><td>C2 / C3</td></tr>"
+                    + "<tr><td>4</td><td>Attaque / Défense</td><td>Rôles fixes, organisation collective vers la cible</td><td>C3</td></tr>"
+                    + "<tr><td>5</td><td>Réversibilité</td><td>Transition rapide attaque vers défense</td><td>C3</td></tr>"
+                    + "</tbody></table>"
+                    + "<h2 class=\"print-section-title\" style=\"margin-top:20px\">Situations Fil Rouge</h2>"
+                    + "<table class=\"theory-table\"><thead><tr><th>Situation</th><th>Objectif tactique</th><th>Rugby</th><th>Football</th><th>Hockey</th><th>Tchouk.</th></tr></thead><tbody>"
+                    + "<tr><td>Les Déménageurs</td><td>Progresser avec l'engin - Étape 2</td><td>C2</td><td>C2</td><td>C2</td><td>—</td></tr>"
+                    + "<tr><td>Conservation / Toro</td><td>Garder le ballon en supériorité - Étape 3</td><td>—</td><td>C3</td><td>C3</td><td>—</td></tr>"
+                    + "<tr><td>Contre-Attaque Éclair</td><td>Transition défense vers attaque - Étape 4</td><td>—</td><td>C3</td><td>C3</td><td>—</td></tr>"
+                    + "<tr><td>Le Rideau de Fer</td><td>Défense collective en ligne - Étape 4</td><td>C3</td><td>C3</td><td>—</td><td>—</td></tr>"
+                    + "</tbody></table>"
+                    + "<div class=\"theory-tip\"><strong>Conseil :</strong> En fin de rencontre, demandez aux élèves : <em>Avez-vous reconnu une situation déjà jouée dans une autre discipline ?</em> Ce moment de verbalisation ancre le transfert.</div>"
+                    + "</div>";
+            }
+
+            var fichesHtml = "";
+            printBasket.forEach(function(id) {
+                var d = situations[id];
+                if (!d) return;
+                var discipline = id.startsWith("r") ? "Rugby" : id.startsWith("f") ? "Football" : id.startsWith("hy") ? "Hockey" : "Tchoukball";
+                var cycle = id.endsWith("c2") ? "Cycle 2" : "Cycle 3";
+                var filSection = d.filRouge ? "<div class=\"fiche-fil-rouge\"><strong>Fil rouge :</strong> " + d.filRouge + "</div>" : "";
+                var rolesSection = d.rolesSociaux ? "<div class=\"fiche-section roles\"><div class=\"fiche-label\">Rôles sociaux</div><div class=\"fiche-content\">" + d.rolesSociaux + "</div></div>" : "";
+                fichesHtml += "<div class=\"print-page\">"
+                    + "<div class=\"print-header\"><span class=\"print-discipline\">" + discipline + " · " + cycle + "</span><span class=\"print-etape\">" + (d.etape || "") + "</span></div>"
+                    + "<h1 class=\"print-title\">" + d.title + "</h1>"
+                    + filSection
+                    + "<div class=\"fiche-grid\">"
+                    + "<div class=\"fiche-section accent\"><div class=\"fiche-label\">Objectif prioritaire</div><div class=\"fiche-content\">" + d.goal + "</div></div>"
+                    + "<div class=\"fiche-section\"><div class=\"fiche-label\">But du jeu</div><div class=\"fiche-content\">" + d.but + "</div></div>"
+                    + "<div class=\"fiche-section\"><div class=\"fiche-label\">Dispositif et Installation</div><div class=\"fiche-content\">" + d.setup + "</div></div>"
+                    + "<div class=\"fiche-section\"><div class=\"fiche-label\">Règles</div><div class=\"fiche-content\">" + d.rules + "</div></div>"
+                    + "<div class=\"fiche-section variables\"><div class=\"fiche-label\">Variables d'évolution</div><div class=\"fiche-content\">" + d.variables + "</div></div>"
+                    + rolesSection
+                    + "</div>"
+                    + "<div class=\"print-footer\">USEP 66 · Dossier Pédagogique 2026 · usep66.org</div>"
+                    + "</div>";
+            });
+
+            var css = "@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap');"
+                + "* { box-sizing:border-box; margin:0; padding:0; }"
+                + "body { font-family:'Inter',sans-serif; background:white; color:#1e293b; }"
+                + ".print-page { width:100%; min-height:100vh; padding:28px 32px; page-break-after:always; display:flex; flex-direction:column; gap:14px; }"
+                + ".print-page:last-child { page-break-after:avoid; }"
+                + ".print-header { display:flex; justify-content:space-between; align-items:center; border-bottom:3px solid #0055A4; padding-bottom:8px; }"
+                + ".print-discipline { font-family:'Montserrat',sans-serif; font-weight:900; font-size:0.85rem; color:#0055A4; text-transform:uppercase; letter-spacing:0.06em; }"
+                + ".print-etape { background:#FFD700; color:#1a1a1a; font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.65rem; text-transform:uppercase; padding:3px 10px; border-radius:999px; }"
+                + ".print-title { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.5rem; color:#1e293b; }"
+                + ".fiche-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; flex:1; }"
+                + ".fiche-section { border:1.5px solid #e2e8f0; border-radius:10px; padding:10px 12px; }"
+                + ".fiche-section.accent { background:#e8f0fb; border-color:#bfdbfe; }"
+                + ".fiche-section.variables { background:#fffbeb; border-color:#fcd34d; grid-column:1 / -1; }"
+                + ".fiche-section.roles { background:#f0fdf4; border-color:#bbf7d0; grid-column:1 / -1; }"
+                + ".fiche-label { font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.08em; color:#0055A4; margin-bottom:4px; }"
+                + ".fiche-content { font-size:0.8rem; line-height:1.5; color:#334155; }"
+                + ".fiche-fil-rouge { background:#fff8e1; border-left:4px solid #FFD700; border-radius:0 10px 10px 0; padding:7px 10px; font-size:0.78rem; color:#92400e; }"
+                + ".print-footer { text-align:center; font-size:0.62rem; color:#94a3b8; border-top:1px solid #e2e8f0; padding-top:6px; margin-top:auto; }"
+                + ".print-section-title { font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.95rem; color:#0055A4; border-left:4px solid #FFD700; padding-left:8px; }"
+                + ".theory-table { width:100%; border-collapse:collapse; font-size:0.8rem; }"
+                + ".theory-table th { background:#0055A4; color:white; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.65rem; text-transform:uppercase; padding:7px 8px; text-align:left; }"
+                + ".theory-table td { border:1px solid #e2e8f0; padding:6px 8px; vertical-align:top; }"
+                + ".theory-table tr:nth-child(even) td { background:#f8fafc; }"
+                + ".theory-tip { background:#e8f0fb; border-radius:10px; padding:10px 12px; font-size:0.8rem; color:#334155; }"
+                + "@media print { .print-page { page-break-after:always; min-height:auto; padding:18px 22px; } .print-page:last-child { page-break-after:avoid; } }";
+
+            win.document.write("<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Fiches USEP 66</title><style>" + css + "</style></head><body>"
+                + theoryHtml + fichesHtml
+                + "<scr" + "ipt>window.onload=function(){setTimeout(function(){window.print();},800);}</" + "script>"
+                + "</body></html>");
+            win.document.close();
+            closeBasketModal();
+        }
+
+        /* ═══ TABS ═══ */
+        function switchTab(tabId) {
+            document.querySelectorAll(".tab-content").forEach(function(c) { c.classList.add("hidden"); });
+            document.querySelectorAll(".tab-btn").forEach(function(b) { b.classList.remove("tab-pill-active"); });
+            document.getElementById("content-" + tabId).classList.remove("hidden");
+            document.getElementById("tab-" + tabId + "-btn").classList.add("tab-pill-active");
+        }
+
+        /* ═══ MODAL ═══ */
+        function openModal(id) {
+            var data = situations[id] || { title:"Situation à venir", etape:"", goal:"Basée sur la trame départementale", but:"Détails en cours de rédaction.", setup:"Dispositif standard.", rules:"Règles adaptées au niveau.", variables:"Modifier l'espace ou le nombre de joueurs.", rolesSociaux:"" };
+            document.getElementById("modal-title").innerText = data.title;
+            var filRougeBlock = data.filRouge
+                ? "<div style=\"background:linear-gradient(90deg,#fff8e1,#fffbeb);border:1.5px solid #fcd34d;border-radius:14px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start\"><i class=\"fas fa-rotate\" style=\"color:#b45309;font-size:1rem;margin-top:2px;flex-shrink:0\"></i><div><p style=\"font-family:Montserrat,sans-serif;font-weight:800;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:#92400e;margin-bottom:4px\">Situation fil rouge — Transfert inter-disciplines</p><p style=\"font-size:0.85rem;color:#78350f\">" + data.filRouge + "</p></div></div>"
+                : "";
+            var rolesBlock = data.rolesSociaux
+                ? "<div style=\"background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:14px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start\"><i class=\"fas fa-users\" style=\"color:#16a34a;font-size:0.9rem;margin-top:2px;flex-shrink:0\"></i><div><p style=\"font-family:Montserrat,sans-serif;font-weight:800;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:#166534;margin-bottom:4px\">Rôles Sociaux</p><p style=\"font-size:0.85rem;color:#166534\">" + data.rolesSociaux + "</p></div></div>"
+                : "";
+            document.getElementById("modal-body").innerHTML =
+                "<div style=\"margin-bottom:4px\"><span style=\"font-family:Montserrat,sans-serif;font-weight:800;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.08em;color:#0055A4\">" + (data.etape || "") + "</span></div>"
+                + filRougeBlock
+                + "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:12px\">"
+                + "<div style=\"background:#e8f0fb;border-radius:14px;padding:12px 14px\"><p class=\"modal-section-title\">Objectif prioritaire</p><p style=\"font-size:0.85rem;font-weight:600;color:#334155\">" + data.goal + "</p></div>"
+                + "<div style=\"border:1.5px solid #e8f0fb;border-radius:14px;padding:12px 14px\"><p class=\"modal-section-title\">But du jeu</p><p style=\"font-size:0.85rem;color:#334155\">" + data.but + "</p></div>"
+                + "</div>"
+                + "<div style=\"background:#f8fafc;border:1px solid #f1f5f9;border-radius:14px;padding:12px 14px\"><p class=\"modal-section-title\">Dispositif &amp; Installation</p><p style=\"font-size:0.85rem;color:#475569;line-height:1.55\">" + data.setup + "</p></div>"
+                + "<div style=\"background:#f8fafc;border:1px solid #f1f5f9;border-radius:14px;padding:12px 14px\"><p class=\"modal-section-title\">Règles</p><p style=\"font-size:0.85rem;color:#475569;line-height:1.55\">" + data.rules + "</p></div>"
+                + "<div style=\"background:#fffbeb;border-left:4px solid #FFD700;border-radius:0 14px 14px 0;padding:12px 14px\"><p style=\"font-family:Montserrat,sans-serif;font-weight:800;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:#92400e;margin-bottom:4px\">Variables d'évolution</p><p style=\"font-size:0.85rem;color:#78350f;font-style:italic\">" + data.variables + "</p></div>"
+                + rolesBlock;
+            document.getElementById("detail-modal").classList.remove("opacity-0", "pointer-events-none");
+            document.body.classList.add("modal-active");
+        }
+
+        function closeModal() {
+            document.getElementById("detail-modal").classList.add("opacity-0", "pointer-events-none");
+            document.body.classList.remove("modal-active");
+        }
+
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape") { closeModal(); closeBasketModal(); }
+        });
+
+        switchTab("gen");
+    </script>
+</body>
+</html>

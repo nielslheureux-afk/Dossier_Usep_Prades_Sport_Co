@@ -513,7 +513,7 @@
         </svg>
 
         <div class="max-w-6xl mx-auto text-center relative z-10">
-            <span class="hero-badge mb-4 inline-block">Rencontres Départementales · Avril 2026</span>
+            <span class="hero-badge mb-4 inline-block">Rencontres de circonscription · Avril 2026</span>
             <h1 class="montserrat text-4xl md:text-5xl font-black text-white leading-tight mb-3 mt-4" style="text-shadow:0 2px 16px rgba(0,0,0,0.2)">
                 Vers les Sports Collectifs
             </h1>
@@ -555,7 +555,7 @@
                     <h3 class="montserrat font-extrabold text-base mb-3" style="color:var(--usep-blue)">
                         <i class="fas fa-layer-group mr-2" style="color:var(--usep-blue)"></i>La Progression
                     </h3>
-                    <p class="text-sm text-slate-600 mb-4">Inspirée de la trame départementale, elle guide l'élève de la manipulation à la réversibilité (Étapes 1 à 5).</p>
+                    <p class="text-sm text-slate-600 mb-4">Elle guide l'élève de la manipulation à la réversibilité (Étapes 1 à 5).</p>
                     <div class="space-y-2">
                         <div class="text-xs rounded-lg px-3 py-2" style="background:var(--usep-blue-light);color:var(--usep-blue);font-weight:600">C2 : Focus Étapes 1 à 3</div>
                         <div class="text-xs rounded-lg px-3 py-2" style="background:var(--usep-blue-light);color:var(--usep-blue);font-weight:600">C3 : Focus Étapes 3 à 5</div>
@@ -578,7 +578,7 @@
                         <div class="border-t pt-3">
                             <p class="montserrat font-bold text-xs uppercase tracking-wider mb-2" style="color:#b45309">Après-midi — Tournoi multisports</p>
                             <div class="rounded-xl px-3 py-2 text-xs" style="background:#fffbeb;color:#92400e;font-weight:600">
-                                <i class="fas fa-trophy mr-1.5" style="color:var(--usep-yellow)"></i> 4 matchs · 1 par discipline · Score cumulé
+                                <i class="fas fa-trophy mr-1.5" style="color:var(--usep-yellow)"></i> 1 mini-tournoi par discipline · Score cumulé
                             </div>
                         </div>
                     </div>
@@ -590,11 +590,11 @@
                     <div class="space-y-4">
                         <div class="flex justify-between items-center gap-2">
                             <span class="text-sm font-semibold">C2 : Estavar (9 Avril)</span>
-                            <span class="text-xs px-2 py-1 rounded-full" style="background:var(--usep-blue-light);color:var(--usep-blue);font-weight:700">Périmètre central</span>
+                            <span class="text-xs px-2 py-1 rounded-full" style="background:var(--usep-blue-light);color:var(--usep-blue);font-weight:700">École</span>
                         </div>
                         <div class="flex justify-between items-center gap-2">
                             <span class="text-sm font-semibold">C3 : Matemale (10 Avril)</span>
-                            <span class="text-xs px-2 py-1 rounded-full" style="background:var(--usep-blue-light);color:var(--usep-blue);font-weight:700">Plateau Capcir</span>
+                            <span class="text-xs px-2 py-1 rounded-full" style="background:var(--usep-blue-light);color:var(--usep-blue);font-weight:700">École</span>
                         </div>
                     </div>
                 </div>
@@ -1175,80 +1175,73 @@
     </div>
 
     
-    
     <script>
-        /* ═══════════════════════════════════════════════════
-           SITUATIONS DATA — 32 fiches complètes
-        ═══════════════════════════════════════════════════ */
-        var situations = {
+        const situations = {
 
-            /* HOCKEY C2 */
-            "hy1-c2": {
+            /* ═══════ HOCKEY / JEUX DE CROSSE ═══════ */
+
+            'hy1-c2': {
                 title: "Le Slalom Géant",
                 etape: "Étape 1",
                 goal: "Découvrir la crosse et contrôler la balle en se déplaçant.",
                 but: "Conduire la balle le long d'un parcours de plots en quinconce sans la perdre, de plus en plus vite.",
                 setup: "Couloir de 15 m, 6 plots en quinconce espacés de 1,5 m. 1 crosse et 1 balle par élève. Groupes de 4, départ en navette.",
                 rules: "Balle toujours au sol. Crosse jamais levée au-dessus du genou (sécurité). En cas de balle perdue au-delà de 2 m : repartir du plot précédent.",
-                variables: "Faciliter : plots plus espacés (2 m), balle légèrement plus grosse. Complexifier : alterner main directrice et main d'appui, chronométrer chaque passage, ajouter un chasseur mobile qui tente d'intercepter.",
+                variables: "Faciliter : plots plus espacés (2 m), balle légèrement plus grosse. Complexifier : alterner main directrice et main d'appui, chronométrer chaque passage, ajouter un 'chasseur' mobile qui tente d'intercepter.",
                 rolesSociaux: "Maître du Temps : lève le bras au top départ. Bon Compteur : note les temps sur ardoise."
             },
-            "hy2-c2": {
+            'hy2-c2': {
                 title: "La Balle à l'un",
                 etape: "Étape 2",
                 goal: "Réaliser une passe précise à la crosse vers un partenaire statique.",
                 but: "En duo face à face (6 m), réussir 10 passes consécutives sans que la balle ne sorte d'un couloir de 2 m de large.",
                 setup: "Couloir matérialisé par 2 cordes au sol. 1 balle par duo, 1 crosse chacun.",
                 rules: "Balle toujours au sol. On frappe, on ne pousse pas. Le receveur ne se déplace pas (pieds fixés).",
-                variables: "Faciliter : agrandir le couloir à 3 m. Complexifier : réduire à 1,5 m, imposer la main faible, alterner passes à gauche et à droite du partenaire.",
+                variables: "Faciliter : agrandir le couloir à 3 m. Complexifier : réduire à 1,5 m, imposer la main faible, alterner passes à gauche et à droite du partenaire pour l'obliger à bouger.",
                 rolesSociaux: "Arbitre : compte les passes à voix haute et signale les sorties de couloir."
             },
-            "hy3-c2": {
+            'hy3-c2': {
                 title: "Déménageurs Crosse",
-                etape: "Étape 2-3",
+                etape: "Étape 2–3",
                 goal: "Conduire la balle vers un camp adverse malgré une pression légère.",
                 but: "Ramener le plus de balles dans son camp en les conduisant à la crosse. L'équipe avec le plus de balles après 3 min gagne.",
-                setup: "Terrain 20x10 m partagé en 2. Ballons au centre. 2 équipes de 5. 1 crosse/joueur.",
+                setup: "Terrain 20×10 m partagé en 2. Ballons au centre. 2 équipes de 5. 1 crosse/joueur.",
                 rules: "1 balle à la fois. Toucher sur la balle (pas sur le joueur) = balle libérée sur place. Crosse sous le genou.",
                 variables: "Faciliter : aucun défenseur dans sa propre moitié. Complexifier : introduire 2 défenseurs fixes côté adverse.",
-                rolesSociaux: "Arbitre : vérifie les touches illicites. Bon Compteur : note le score toutes les minutes.",
                 filRouge: "Même logique en <strong>Rugby</strong> (Déménageurs) et <strong>Football</strong> (Déménageurs Pied) au C2 — seul l'engin change !"
             },
-            "hy4-c2": {
+            'hy4-c2': {
                 title: "Match aux Portes",
                 etape: "Match de référence",
                 goal: "Utiliser la crosse pour s'orienter vers différentes cibles dispersées.",
-                but: "Marquer en faisant passer la balle entre deux plots (porte) à hauteur de cheville. 4v4, terrain 20x10 m.",
+                but: "Marquer en faisant passer la balle entre deux plots (porte) à hauteur de cheville. 4v4, terrain 20×10 m.",
                 setup: "4 portes (2 plots espacés de 1,5 m) disposées aléatoirement sur le terrain. Pas de gardien. Toutes les portes sont attaquables dans les 2 sens.",
                 rules: "Balle toujours au sol. On ne peut pas stationner devant une porte. Crosse sous le genou. Remise en jeu par frappe depuis la ligne de touche.",
                 variables: "Une porte franchie par une passe directe (sans conduite) compte double. Ajouter une porte centrale comptant triple.",
                 rolesSociaux: "Jeune Officiel : siffle les sorties et explique la décision à voix haute."
             },
 
-            /* HOCKEY C3 */
-            "hy1-c3": {
+            'hy1-c3': {
                 title: "Toro à la crosse",
                 etape: "Étape 3",
                 goal: "Conserver la balle en supériorité numérique malgré un défenseur actif.",
-                but: "3 (ou 4) attaquants en carré (8x8 m) se font des passes à la crosse. Le chasseur central tente d'intercepter. Objectif : 8 passes consécutives.",
-                setup: "Carré de plots 8x8 m. 3 attaquants + 1 défenseur central. 1 balle, 1 crosse par joueur.",
+                but: "3 (ou 4) attaquants en cercle (carré 8×8 m) se font des passes à la crosse. Le chasseur central tente d'intercepter. Objectif : 8 passes consécutives.",
+                setup: "Carré de plots 8×8 m. 3 attaquants + 1 défenseur central. 1 balle, 1 crosse par joueur.",
                 rules: "Balle toujours au sol. Pas de passe directe vers celui qu'on vient de recevoir (triangle obligatoire). Le défenseur change après interception ou 8 passes réussies.",
-                variables: "Faciliter : agrandir à 10x10 m, 4 attaquants. Complexifier : 2 touches de balle max, réduire à 6x6 m.",
-                rolesSociaux: "Observateur : compte les passes consécutives à voix haute pour que l'équipe visualise la progression.",
+                variables: "Faciliter : agrandir à 10×10 m, 4 attaquants. Complexifier : 2 touches de balle max, réduire à 6×6 m.",
                 filRouge: "Même structure en <strong>Football</strong> (Conservation 3v1 / Toro) au C3 — garder le ballon en supériorité, quel que soit l'engin."
             },
-            "hy2-c3": {
+            'hy2-c3': {
                 title: "Contre-Attaque Éclair",
-                etape: "Étape 4-5",
-                goal: "Déclencher une transition défense vers attaque rapide après récupération de balle.",
+                etape: "Étape 4–5",
+                goal: "Déclencher une transition défense→attaque rapide après récupération de balle.",
                 but: "Dès la récupération en zone défensive, passer en 3 frappes maximum et marquer dans le but adverse. Chrono : 10 secondes.",
-                setup: "Terrain 30x15 m avec 2 buts. Jeu 4v4. Un arbitre-élève gère le chrono des 10 s.",
+                setup: "Terrain 30×15 m avec 2 buts. Jeu 4v4. Un arbitre élève gère le chrono des 10 s.",
                 rules: "Crosse sous le genou. Passes obligatoires avant de franchir la ligne médiane. But refusé si plus de 10 s s'écoulent depuis la récupération.",
                 variables: "Faciliter : allonger à 15 s, supprimer la contrainte de passes avant la médiane. Complexifier : 8 s, deuxième défenseur harceleur.",
-                rolesSociaux: "Maître du Temps : chronomètre les 10 s à voix haute et annonce 'Trop tard !' si dépassé.",
-                filRouge: "Même logique en <strong>Football</strong> (Contre-Attaque Éclair) au C3 — la transition défense vers attaque est un invariant commun à tous les sports collectifs."
+                filRouge: "Même logique en <strong>Football</strong> (Contre-Attaque Éclair) au C3 — la transition défense→attaque est un invariant commun à tous les sports collectifs."
             },
-            "hy3-c3": {
+            'hy3-c3': {
                 title: "Jeu des Intervalles",
                 etape: "Étape 4",
                 goal: "Utiliser les espaces entre les défenseurs pour faire circuler la balle.",
@@ -1258,29 +1251,30 @@
                 variables: "Faciliter : 1 seul défenseur en Z2. Complexifier : défenseurs semi-mobiles (peuvent avancer sur 1 m), ajouter un temps limite de 15 s.",
                 rolesSociaux: "Observateur : identifie quel intervalle a été utilisé (gauche, centre, droite) et le note pour le bilan."
             },
-            "hy4-c3": {
+            'hy4-c3': {
                 title: "Match 5v5 (Règles USEP)",
                 etape: "Match de référence",
                 goal: "Appliquer les règles du hockey USEP dans une opposition collective structurée.",
-                but: "Marquer dans le but adverse. Match en 2x8 min. Score cumulé sur l'ensemble de la journée.",
-                setup: "Terrain 30x15 m. Buts de 2x1 m. 5v5. Auto-arbitrage avec Jeune Officiel tournant.",
+                but: "Marquer dans le but adverse. Match en 2×8 min. Score cumulé sur l'ensemble de la journée.",
+                setup: "Terrain 30×15 m. Buts de 2×1 m. 5v5. Auto-arbitrage avec Jeune Officiel tourné.",
                 rules: "Crosse sous le genou. Pas de contact corps-à-corps. Remise en jeu depuis la ligne si balle sortie. Pas de gardien.",
                 variables: "But compté double si tous les attaquants sont dans le camp adverse au moment du tir.",
                 rolesSociaux: "Jeune Officiel : gère les remises en jeu et note le score. Maître du Temps : deux bips à la mi-temps."
             },
 
-            /* FOOTBALL C2 */
-            "f1-c2": {
+            /* ═══════ FOOTBALL ═══════ */
+
+            'f1-c2': {
                 title: "Béret Slalom",
                 etape: "Étape 1",
                 goal: "Conduire le ballon au pied dans un espace dirigé en réagissant à un signal.",
                 but: "Au signal (numéro crié), aller chercher son ballon au centre, franchir un slalom de 4 plots et marquer dans un petit but avant l'adversaire.",
-                setup: "2 colonnes face à face à 15 m. 1 ballon au centre par paire. 4 plots en slalom. Ballon taille 3 ou 4, légèrement dégonflé.",
+                setup: "2 colonnes face à face à 15 m. 1 ballon au centre par paire. 4 plots en slalom entre le ballon et chaque but. Ballon taille 3 ou 4, légèrement dégonflé.",
                 rules: "Conduite uniquement au pied. Plot tombé = retour au plot précédent. Pas de crampons.",
                 variables: "Faciliter : supprimer le slalom, conduite directe. Complexifier : pied faible uniquement, réduire le couloir à 1 m.",
                 rolesSociaux: "Maître du Temps : crie les numéros de manière aléatoire."
             },
-            "f2-c2": {
+            'f2-c2': {
                 title: "L'Horloge",
                 etape: "Étape 2",
                 goal: "Enchaîner les passes rapidement en équipe pendant qu'un adversaire course.",
@@ -1290,171 +1284,167 @@
                 variables: "Faciliter : autoriser un contrôle avant de passer. Complexifier : 2 touches max, réduire le cercle à 6 m.",
                 rolesSociaux: "Bon Compteur : place un plot pour chaque série de 6 passes réussies."
             },
-            "f3-c2": {
+            'f3-c2': {
                 title: "Déménageurs Pied",
-                etape: "Étape 2-3",
+                etape: "Étape 2–3",
                 goal: "Conduire le ballon au pied vers son camp sous légère pression adverse.",
                 but: "Ramener le plus de ballons dans son camp en conduisant au pied. Ballon au-delà de la ligne de fond = point. 3 min.",
-                setup: "Terrain 20x10 m. Ballons au centre. 2 équipes de 5. Ballon taille 3.",
+                setup: "Terrain 20×10 m. Ballons au centre. 2 équipes de 5. Ballon taille 3.",
                 rules: "1 ballon à la fois par joueur. Interception autorisée uniquement sur le ballon, pas de contact. Pas de crampons.",
                 variables: "Faciliter : aucun défenseur dans son propre camp. Complexifier : 2 défenseurs fixes côté adverse.",
-                rolesSociaux: "Arbitre : signale les contacts illicites. Bon Compteur : comptabilise les ballons rentrés.",
                 filRouge: "Même logique en <strong>Rugby</strong> (Déménageurs) et <strong>Hockey</strong> (Déménageurs Crosse) au C2 — seul l'engin change !"
             },
-            "f4-c2": {
+            'f4-c2': {
                 title: "Match sans Gardien",
                 etape: "Match de référence",
                 goal: "S'organiser pour tirer et défendre sans rôle de gardien.",
-                but: "Marquer dans un but de 3 m. 4v4 sur terrain 20x12 m. 2x6 min.",
+                but: "Marquer dans un but de 3 m. 4v4 sur terrain 20×12 m. 2×6 min.",
                 setup: "Petit terrain avec 2 buts sans gardien. Ballon taille 3 légèrement dégonflé. Remise en jeu à la main depuis la touche.",
                 rules: "Pas de crampons. Tir uniquement depuis l'extérieur d'une zone de 3 m devant le but. Contact minimal.",
                 variables: "But valable uniquement si précédé d'une passe à un partenaire. Ajouter un joker neutre qui joue toujours avec l'équipe en possession.",
-                rolesSociaux: "Jeune Officiel : siffle et explique. Bon Compteur : note les buteurs."
+                rolesSociaux: "Jeune Officiel : siffle hors-jeu et explique. Bon Compteur : note les buteurs."
             },
 
-            /* FOOTBALL C3 */
-            "f1-c3": {
+            'f1-c3': {
                 title: "Conservation 3v1 (Toro)",
                 etape: "Étape 3",
                 goal: "Conserver le ballon sous pression en utilisant les appuis et le soutien.",
-                but: "3 attaquants dans un carré 10x10 m réalisent 10 passes consécutives malgré 1 défenseur. Objectif cumulé sur 5 min.",
-                setup: "Carré 10x10 m. 3 attaquants + 1 défenseur. Ballon taille 4. Le défenseur change après interception ou 10 passes.",
+                but: "3 attaquants dans un carré 10×10 m réalisent 10 passes consécutives malgré 1 défenseur. Objectif cumulé sur 5 min.",
+                setup: "Carré 10×10 m. 3 attaquants + 1 défenseur. Ballon taille 4. Le défenseur change après interception ou 10 passes.",
                 rules: "2 touches de balle maximum. Pas de passe en retour immédiat vers celui qui vient de passer. Sortie de zone = perte de balle.",
-                variables: "Faciliter : 4 attaquants (4v1), 3 touches. Complexifier : 1 touche, carré 8x8 m.",
-                rolesSociaux: "Arbitre : compte les passes et valide les interceptions. Observateur : note les positions des joueurs lors des pertes de balle.",
+                variables: "Faciliter : 4 attaquants (4v1), 3 touches. Complexifier : 1 touche, carré 8×8 m.",
                 filRouge: "Même structure en <strong>Hockey</strong> (Toro à la crosse) au C3 — garder le ballon en supériorité, quel que soit l'engin."
             },
-            "f2-c3": {
+            'f2-c3': {
                 title: "Contre-Attaque Éclair",
-                etape: "Étape 4-5",
-                goal: "Déclencher une transition défense vers attaque rapide pour prendre de vitesse la défense adverse.",
+                etape: "Étape 4–5",
+                goal: "Déclencher une transition défense→attaque rapide pour prendre de vitesse la défense adverse.",
                 but: "Dès récupération du ballon, faire maximum 4 passes pour finir au but. Un chrono de 10 s démarre à la récupération.",
-                setup: "Terrain 30x20 m. 4v4 + gardiens. Arbitre-élève gère le chrono.",
+                setup: "Terrain 30×20 m. 4v4 + gardiens. Arbitre-élève gère le chrono.",
                 rules: "Maximum 4 passes avant le tir. Si le chrono atteint 10 s sans tir : remise en jeu pour l'équipe adverse. Pas de crampons.",
                 variables: "Faciliter : 6 passes, 15 s. Complexifier : 3 passes, 8 s, obligation d'avoir tous les attaquants en camp adverse.",
-                rolesSociaux: "Maître du Temps : chronomètre les 10 s à voix haute. Observateur : note si la transition est déclenchée immédiatement après récupération.",
-                filRouge: "Même logique en <strong>Hockey</strong> (Contre-Attaque Éclair) au C3 — la transition défense vers attaque est un invariant tactique commun."
+                filRouge: "Même logique en <strong>Hockey</strong> (Contre-Attaque Éclair) au C3 — la transition défense→attaque est un invariant tactique commun à tous les sports collectifs."
             },
-            "f3-c3": {
+            'f3-c3': {
                 title: "Défense en Ligne — Le Rideau",
                 etape: "Étape 4",
                 goal: "Organiser une défense collective qui coulisse et monte ensemble pour fermer les espaces.",
                 but: "3 défenseurs en ligne doivent empêcher 3 attaquants de franchir la ligne de but avec le ballon. Les défenseurs montent au signal 'Rideau !'.",
-                setup: "Couloir 20x10 m. 3 défenseurs alignés sur une ligne à 10 m du but. 3 attaquants en face. Ballon taille 4.",
+                setup: "Couloir 20×10 m. 3 défenseurs alignés sur une ligne à 10 m du but. 3 attaquants en face. Ballon taille 4.",
                 rules: "Défenseurs : pas le droit de se séparer de plus de 3 m. Ils montent ensemble ou pas du tout. Attaquants : pas de tir avant la ligne des 5 m.",
                 variables: "Faciliter : 4 défenseurs pour 3 attaquants. Complexifier : défenseurs partent de la ligne de but (retard imposé).",
                 rolesSociaux: "Observateur : note si la ligne défensive a bien coulissé côté ballon (critère : les 3 défenseurs restent dans la même largeur).",
                 filRouge: "Même logique en <strong>Rugby</strong> (Le Rideau de Fer) au C3 — coulisser ensemble côté ballon pour fermer les espaces est un invariant tactique commun."
             },
-            "f4-c3": {
+            'f4-c3': {
                 title: "Match avec Appuis",
                 etape: "Match de référence",
                 goal: "Utiliser les espaces et les appuis latéraux pour ouvrir le jeu.",
-                but: "Match 5v5. 2 joueurs jokers neutres sur les lignes de touche jouent toujours avec l'équipe en possession. Terrain 35x25 m.",
+                but: "Match 5v5. 2 joueurs jokers neutres sur les lignes de touche jouent toujours avec l'équipe en possession. Terrain 35×25 m.",
                 setup: "Ballon taille 4. Buts de 4 m. Jokers : restent sur les lignes, ne peuvent pas marquer.",
-                rules: "Jokers : maximum 2 touches avant de redonner. Pas de crampons. Match 2x8 min.",
-                variables: "Rendre les jokers adverses après perte de balle (pression). But compté double si précédé d'une passe à un joker.",
+                rules: "Jokers : maximum 2 touches avant de redonner. Pas de crampons. Match 2×8 min.",
+                variables: "Rendre les jokers adverses après perte de balle (pression). Ajouter une règle : but compté double si précédé d'une passe à un joker.",
                 rolesSociaux: "Jeune Officiel : gère le temps et le score. Maître du Temps : bip à mi-temps."
             },
 
-            /* RUGBY C2 */
-            "r1-c2": {
+            /* ═══════ RUGBY À TOUCHER ═══════ */
+
+            'r1-c2': {
                 title: "La Queue du Diable",
                 etape: "Étape 1",
-                goal: "Courir en protégeant son foulard tout en tentant d'attraper ceux des autres.",
-                but: "Chaque élève a un foulard glissé dans son dos. But : conserver son foulard et en attraper d'autres. Celui qui en a le plus après 2 min gagne.",
-                setup: "Zone carrée 15x15 m. 1 foulard par élève. Ballon non obligatoire en phase 1 (jeu de poursuite pur). Ballon ovale taille 3 en phase 2.",
+                goal: "Courir avec le ballon en protégeant son foulard tout en tentant d'attraper ceux des autres.",
+                but: "Chaque élève a un foulard glissé dans son dos (ceinture). But : conserver son foulard et en attraper d'autres. Celui qui en a le plus après 2 min gagne.",
+                setup: "Zone carrée 15×15 m. 1 foulard par élève. Ballon non obligatoire en phase 1 (jeu de poursuite pur). Ballon ovale taille 3 en phase 2.",
                 rules: "Le foulard arraché doit être remis par l'arbitre. Sortie de zone = foulard perdu. Pas de contact physique (interdit de retenir).",
-                variables: "Faciliter : zone plus grande (20x20). Complexifier : les élèves portent le ballon ovale en même temps, ce qui réduit la mobilité.",
+                variables: "Faciliter : zone plus grande (20×20). Complexifier : les élèves portent le ballon ovale en même temps, ce qui réduit la mobilité.",
                 rolesSociaux: "Arbitre : vérifie les sorties de zone et les contacts illicites."
             },
-            "r2-c2": {
+            'r2-c2': {
                 title: "La Rivière",
                 etape: "Étape 2",
                 goal: "Avancer collectivement par passes latérales en arrière malgré un obstacle central.",
-                but: "L'équipe traverse un couloir de 20x5 m avec un crocodile fixe au milieu. But : aplatir le ballon dans la zone d'en-but adverse.",
-                setup: "Couloir 20x5 m. 1 défenseur fixe (ne peut faire qu'un pas sur chaque côté). Équipe de 4 attaquants. Ballon ovale taille 3.",
+                but: "L'équipe traverse un couloir de 20×5 m avec un 'crocodile' fixe au milieu. But : aplatir le ballon dans la zone d'en-but adverse.",
+                setup: "Couloir 20×5 m. 1 défenseur fixe (ne peut faire qu'un pas sur chaque côté). Équipe de 4 attaquants. Ballon ovale taille 3.",
                 rules: "Passes uniquement en arrière ou latérales. Le porteur touché doit poser le ballon au sol immédiatement. Pas de plaquage.",
                 variables: "Faciliter : 2 défenseurs fixes mais immobiles. Complexifier : 1 défenseur semi-mobile (peut se déplacer sur 2 m), réduire la largeur à 4 m.",
                 rolesSociaux: "Observateur : note combien de passes ont été nécessaires pour traverser."
             },
-            "r3-c2": {
+            'r3-c2': {
                 title: "Déménageurs Rugby",
-                etape: "Étape 2-3",
+                etape: "Étape 2–3",
                 goal: "Porter et protéger le ballon ovale pour progresser vers son camp sous pression.",
                 but: "Ramener le plus de ballons ovales dans son camp en les portant. Toucher sur le porteur = pose du ballon sur place. 3 min.",
-                setup: "Terrain 20x10 m. 6 ballons au centre. 2 équipes de 5. Ballon ovale taille 3.",
+                setup: "Terrain 20×10 m. 6 ballons au centre. 2 équipes de 5. Ballon ovale taille 3.",
                 rules: "1 ballon à la fois. Toucher (2 mains sur le porteur) = le porteur pose le ballon immédiatement. Le ballon peut être repris par n'importe qui.",
                 variables: "Faciliter : aucun défenseur dans son propre camp. Complexifier : passe obligatoire avant d'entrer dans son camp.",
-                rolesSociaux: "Arbitre : valide les touches (2 mains). Bon Compteur : note les ballons rentrés toutes les minutes.",
                 filRouge: "Même logique en <strong>Football</strong> (Déménageurs Pied) et <strong>Hockey</strong> (Déménageurs Crosse) au C2 — seul l'engin change !"
             },
-            "r4-c2": {
+            'r4-c2': {
                 title: "Match 4v4 Toucher",
                 etape: "Match de référence",
                 goal: "Appliquer les règles du rugby à toucher dans un match collectif.",
-                but: "Aplatir le ballon dans la zone d'en-but adverse. 4v4 sur terrain 25x15 m. 2x6 min.",
+                but: "Aplatir le ballon dans la zone d'en-but adverse. 4v4 sur terrain 25×15 m. 2×6 min.",
                 setup: "Ballon ovale taille 3. En-buts de 5 m de profondeur. Remise en jeu au centre après chaque essai.",
                 rules: "Passe uniquement en arrière ou latérale. Toucher = pose du ballon + reprise de jeu immédiate. Pas de plaquage. 3 touches maximum par possession.",
                 variables: "Obligation de 3 passes avant d'aller en en-but. Joker neutre sur les côtés pour aider l'attaque.",
                 rolesSociaux: "Jeune Officiel : siffle les passes en avant et les touches non libérées. Bon Compteur : note les essais."
             },
 
-            /* RUGBY C3 */
-            "r1-c3": {
+            'r1-c3': {
                 title: "Fixer pour donner",
                 etape: "Étape 3",
                 goal: "Créer un surnombre en attirant le défenseur sur le porteur pour libérer un partenaire.",
-                but: "En 3v2 dans un couloir 15x8 m, le porteur attire le défenseur sur lui puis donne à l'ailier libre pour aplatir.",
-                setup: "Couloir 15x8 m. 3 attaquants + 2 défenseurs. Ballon ovale taille 3.",
+                but: "En 3v2 dans un couloir 15×8 m, le porteur attire le défenseur sur lui puis donne à l'ailier libre pour aplatir.",
+                setup: "Couloir 15×8 m. 3 attaquants + 2 défenseurs. Ballon ovale taille 3.",
                 rules: "Le porteur doit attendre que le défenseur soit à moins de 2 m avant de passer. Passe uniquement en arrière.",
-                variables: "Faciliter : 4v2. Complexifier : 3v3, couloir rétréci à 6 m.",
-                rolesSociaux: "Observateur : note si le porteur a bien fixé (défenseur à moins de 2 m) avant de passer."
+                variables: "Faciliter : 4v2. Complexifier : 3v3 (défenseur supplémentaire sur l'ailier), couloir rétréci à 6 m.",
+                rolesSociaux: "Observateur : note si le porteur a bien 'fixé' (défenseur à moins de 2 m) avant de passer."
             },
-            "r2-c3": {
+            'r2-c3': {
                 title: "Le Rideau de Fer",
                 etape: "Étape 4",
                 goal: "Organiser une défense collective en ligne montante au signal.",
-                but: "4 défenseurs en ligne montent ensemble dès que l'arbitre crie Toucher pour empêcher le porteur d'avancer.",
-                setup: "Terrain 20x15 m. 4v4. Ballon ovale taille 3. Arbitre-élève avec sifflet.",
-                rules: "Interdiction de reculer pour les défenseurs. La ligne doit rester alignée (pas d'écart supérieur à 3 m). Défenseur cassant la ligne = faute, 5 m offerts.",
-                variables: "Faciliter : signal anticipé. Complexifier : signal retardé de 2 s.",
+                but: "4 défenseurs en ligne montent ensemble dès que l'arbitre crie 'Toucher !' pour empêcher le porteur d'avancer.",
+                setup: "Terrain 20×15 m. 4v4. Ballon ovale taille 3. Arbitre-élève avec sifflet.",
+                rules: "Interdiction de reculer pour les défenseurs. La ligne doit rester alignée (pas d'écart > 3 m). Défenseur cassant la ligne = faute, 5 m offerts.",
+                variables: "Faciliter : signal anticipé (le défenseur peut voir le toucher arriver). Complexifier : signal retardé de 2 s.",
                 rolesSociaux: "Observateur : mesure si la ligne est bien alignée (critère : tous les défenseurs dans la même largeur de terrain).",
-                filRouge: "Même logique en <strong>Football</strong> (Défense en Ligne) au C3 — coulisser ensemble côté ballon pour fermer les espaces est un invariant tactique commun."
+                filRouge: "Même logique en <strong>Football</strong> (Défense en Ligne — Le Rideau) au C3 — coulisser ensemble côté ballon pour fermer les espaces est un invariant tactique commun."
             },
-            "r3-c3": {
+            'r3-c3': {
                 title: "Play-the-ball",
                 etape: "Étape 5",
                 goal: "Libérer le ballon rapidement après un toucher pour relancer l'attaque en continu.",
                 but: "Après toucher, le porteur pose le ballon au sol et le passe en arrière en moins de 2 secondes. Le soutien doit être présent.",
-                setup: "Terrain 30x20 m. 5v5 avec règle play-the-ball. Ballon ovale taille 3. Arbitre-élève chronomètre les 2 s.",
+                setup: "Terrain 30×20 m. 5v5 avec règle play-the-ball. Ballon ovale taille 3. Arbitre-élève chronomètre les 2 s.",
                 rules: "2 s pour poser et passer après toucher. Ballon mal libéré = possession adverse. Maximum 4 play-the-ball consécutifs avant de changer de tactique.",
                 variables: "Faciliter : 3 s, soutien désigné (toujours le joueur numéroté 2). Complexifier : 1,5 s, défenseur harceleur autorisé à gêner sans toucher.",
-                rolesSociaux: "Maître du Temps : chronomètre les 2 s à voix haute (1, 2 !) pour habituer les joueurs."
+                rolesSociaux: "Maître du Temps : chronomètre les 2 s à voix haute ('1, 2 !') pour habituer les joueurs."
             },
-            "r4-c3": {
+            'r4-c3': {
                 title: "Match Rugby à 5",
                 etape: "Match de référence",
                 goal: "Appliquer les principes collectifs (fixer, soutien, rideau) dans un match.",
-                but: "Aplatir en en-but adverse. 5v5 sur grand terrain 35x20 m. 2x8 min.",
+                but: "Aplatir en en-but adverse. 5v5 sur grand terrain 35×20 m. 2×8 min.",
                 setup: "Ballon ovale taille 3. Règle play-the-ball. En-buts de 5 m. Jeune Officiel tournant.",
                 rules: "Toucher = pose du ballon + play-the-ball en 2 s. Passe en arrière uniquement. Essai collectif (précédé de 2 passes) compté double.",
                 variables: "Joker neutre sur les côtés. But de bonus si l'essai est précédé d'un play-the-ball réussi.",
-                rolesSociaux: "Jeune Officiel : gère les play-the-ball et annonce Temps à mi-match. Bon Compteur : note essais simples et doubles."
+                rolesSociaux: "Jeune Officiel : gère les play-the-ball et annonce 'Temps !' à mi-match. Bon Compteur : note essais simples et doubles."
             },
 
-            /* TCHOUKBALL C2 */
-            "t1-c2": {
+            /* ═══════ TCHOUKBALL ═══════ */
+
+            't1-c2': {
                 title: "Chasse au Rebond",
                 etape: "Étape 1",
                 goal: "Découvrir l'effet du rebond sur le cadre incliné et anticiper la trajectoire.",
                 but: "Le lanceur tire sur le cadre depuis 3 m. Il doit rattraper sa propre balle avant qu'elle touche le sol. 10 essais, comptabiliser les réussites.",
-                setup: "1 cadre de rebond incliné. Tireur à 3 m, zone interdite de 3 m matérialisée. Ballon mousse ou handball petit format.",
+                setup: "1 cadre de rebond incliné. Tireur à 3 m, zone interdite de 3 m matérialisée. Ballon mousse ou ballon handball petit format.",
                 rules: "La balle doit toucher le cadre. Pas de sortie de la zone interdite pour récupérer. Si la balle est attrapée = 1 point. Sol = 0.",
                 variables: "Faciliter : distance à 2 m, balle plus grosse. Complexifier : rattraper à 1 main, tirer depuis un angle (côté droit ou gauche du cadre).",
                 rolesSociaux: "Bon Compteur : note les réussites sur ardoise. Maître du Temps : 2 min par lanceur."
             },
-            "t2-c2": {
+            't2-c2': {
                 title: "Passe et Tir",
                 etape: "Étape 2",
                 goal: "Enchaîner une passe précise puis un tir sur cadre en coopération.",
@@ -1464,7 +1454,7 @@
                 variables: "Faciliter : A peut se placer librement pour le rebond. Complexifier : ajouter C qui reçoit le rebond et relance à A (chaîne à 3).",
                 rolesSociaux: "Arbitre : valide si la séquence est bien passe PUIS tir (dans l'ordre)."
             },
-            "t3-c2": {
+            't3-c2': {
                 title: "Zones Interdites",
                 etape: "Étape 3",
                 goal: "Attaquer un cadre protégé par une zone interdite en respectant les contraintes d'espace.",
@@ -1474,19 +1464,18 @@
                 variables: "Faciliter : défenseur statique. Complexifier : 2 défenseurs mobiles, zones interdites agrandies à 4 m.",
                 rolesSociaux: "Arbitre : signale les entrées en zone interdite."
             },
-            "t4-c2": {
+            't4-c2': {
                 title: "Mini-Match 3v3",
                 etape: "Match de référence",
                 goal: "Appliquer les règles de base du Tchoukball dans une opposition collective.",
-                but: "Marquer des points en tirant sur le cadre (si la balle touche le sol sans être rattrapée). 3v3, terrain 15x10 m, 2 cadres (un de chaque côté).",
-                setup: "Terrain 15x10 m. 2 cadres face à face. Zone interdite 3 m devant chaque cadre. Ballon mousse.",
+                but: "Marquer des points en tirant sur le cadre (si la balle touche le sol sans être rattrapée). 3v3, terrain 15×10 m, 2 cadres (un de chaque côté).",
+                setup: "Terrain 15×10 m. 2 cadres face à face. Zone interdite 3 m devant chaque cadre. Ballon mousse.",
                 rules: "Pas de dribble. Pas d'interception directe (on défend sur le rebond). 3 pas max avant tir ou passe. Zones interdites strictement respectées.",
-                variables: "1 cadre seulement pour simplifier. But double si tiré depuis le côté (angle supérieur à 45 degrés).",
+                variables: "1 cadre seulement pour simplifier. But double si tiré depuis le côté (angle > 45°).",
                 rolesSociaux: "Jeune Officiel : siffle les entrées en zone et les dribbles. Bon Compteur : note les points."
             },
 
-            /* TCHOUKBALL C3 */
-            "t1-c3": {
+            't1-c3': {
                 title: "L'Angle Mort",
                 etape: "Étape 3",
                 goal: "Choisir l'angle de tir optimal pour que le rebond soit inatteignable par les défenseurs.",
@@ -1496,7 +1485,7 @@
                 variables: "Faciliter : 1 seul défenseur. Complexifier : défenseurs mobiles, ajouter un délai de 3 s avant le tir.",
                 rolesSociaux: "Observateur : note quel angle a été le plus efficace (gauche, centre, droit) pour le bilan tactique."
             },
-            "t2-c3": {
+            't2-c3': {
                 title: "Blocage de Tir",
                 etape: "Étape 4",
                 goal: "Organiser à 3 la couverture de la zone de rebond probable.",
@@ -1506,254 +1495,277 @@
                 variables: "Faciliter : attaquant annonce le côté de tir avant de tirer. Complexifier : 2 attaquants alternent les tirs.",
                 rolesSociaux: "Observateur : évalue si le triangle se reconstitue après chaque tir (critère de réussite tactique)."
             },
-            "t3-c3": {
+            't3-c3': {
                 title: "Attaque Bilatérale",
                 etape: "Étape 5",
                 goal: "Perturber la défense en changeant de cadre de tir de façon rapide et imprévisible.",
                 but: "2 cadres sur le terrain. L'équipe attaquante peut tirer sur n'importe quel cadre à tout moment. La défense doit couvrir les deux. 4v4.",
-                setup: "Terrain 20x15 m. 2 cadres sur les côtés opposés. Zones interdites de 3 m. 4 attaquants contre 4 défenseurs.",
+                setup: "Terrain 20×15 m. 2 cadres sur les côtés opposés. Zones interdites de 3 m. 4 attaquants contre 4 défenseurs.",
                 rules: "Minimum 2 passes entre chaque changement de cadre. Pas de dribble. Défenseurs : ils ne peuvent pas plaquer, seulement se placer.",
                 variables: "Faciliter : annoncer le cadre visé à voix haute avant de tirer. Complexifier : 1 passe obligatoire en retrait avant chaque tir.",
                 rolesSociaux: "Observateur : note combien de fois l'équipe a réussi à changer de cadre (indicateur de variété tactique)."
             },
-            "t4-c3": {
+            't4-c3': {
                 title: "Tournoi 5v5",
                 etape: "Match de référence",
                 goal: "Appliquer les règles internationales USEP adaptées dans une opposition complète.",
-                but: "Marquer sur les cadres adverses. 5v5 sur terrain 25x15 m. 2 cadres. Score cumulé sur la journée.",
-                setup: "Terrain 25x15 m. 2 cadres. Zones interdites de 3 m. Ballon handball. 5v5 + arbitre-élève.",
+                but: "Marquer sur les cadres adverses. 5v5 sur terrain 25×15 m. 2 cadres. Score cumulé sur la journée.",
+                setup: "Terrain 25×15 m. 2 cadres. Zones interdites de 3 m. Ballon handball. 5v5 + arbitre-élève.",
                 rules: "Règles strictes : 3 pas max, 3 secondes max de possession, zone interdite, pas d'interception directe, pas de dribble.",
                 variables: "Intégrer un arbitre officiel parmi les élèves avec carton jaune (avertissement) pour fautes répétées.",
                 rolesSociaux: "Jeune Officiel : applique le code 3-3 (3 pas, 3 s) et explique chaque décision. Bon Compteur : tableau de score affiché."
             }
         };
 
+
         /* ═══ PRINT BASKET SYSTEM ═══ */
         var printBasket = new Set();
 
         function toggleBasket(id, checked) {
-            if (checked) { printBasket.add(id); } else { printBasket.delete(id); }
+            if (checked) {
+                printBasket.add(id);
+            } else {
+                printBasket.delete(id);
+            }
             updateBasketUI();
         }
 
         function updateBasketUI() {
             var count = printBasket.size;
-            var floatBtn = document.getElementById("print-basket-btn");
-            var countBadge = document.getElementById("basket-count");
-            var navCount = document.getElementById("nav-basket-count");
+            // Update floating button
+            var floatBtn = document.getElementById('print-basket-btn');
+            var countBadge = document.getElementById('basket-count');
+            var navCount = document.getElementById('nav-basket-count');
             if (count > 0) {
-                floatBtn.classList.remove("hidden-btn");
+                floatBtn.classList.remove('hidden-btn');
                 countBadge.textContent = count;
                 navCount.textContent = count;
-                navCount.classList.remove("hidden");
+                navCount.classList.remove('hidden');
             } else {
-                floatBtn.classList.add("hidden-btn");
-                navCount.classList.add("hidden");
+                floatBtn.classList.add('hidden-btn');
+                navCount.classList.add('hidden');
             }
-            document.querySelectorAll(".activity-card").forEach(function(card) {
-                var cb = card.querySelector(".card-checkbox");
+            // Update card visual state
+            document.querySelectorAll('.activity-card').forEach(function(card) {
+                var cb = card.querySelector('.card-checkbox');
                 if (cb) {
-                    if (printBasket.has(cb.dataset.id)) { card.classList.add("in-basket"); }
-                    else { card.classList.remove("in-basket"); }
+                    if (printBasket.has(cb.dataset.id)) {
+                        card.classList.add('in-basket');
+                    } else {
+                        card.classList.remove('in-basket');
+                    }
                 }
             });
         }
 
         function clearBasket() {
             printBasket.clear();
-            document.querySelectorAll(".card-checkbox").forEach(function(cb) { cb.checked = false; });
+            document.querySelectorAll('.card-checkbox').forEach(function(cb) { cb.checked = false; });
             updateBasketUI();
             closeBasketModal();
         }
 
         function openBasketModal() {
-            var modal = document.getElementById("basket-modal");
-            modal.classList.remove("hidden-btn", "opacity-0", "pointer-events-none");
-            var basketCb = document.getElementById("include-theory-basket");
-            var mainCb = document.getElementById("include-theory");
+            var modal = document.getElementById('basket-modal');
+            modal.classList.remove('hidden-btn', 'opacity-0', 'pointer-events-none');
+            // Sync theory checkbox
+            var mainCb = document.getElementById('include-theory');
+            var basketCb = document.getElementById('include-theory-basket');
             if (mainCb && basketCb) basketCb.checked = mainCb.checked;
-            var list = document.getElementById("basket-list");
-            var printCount = document.getElementById("basket-print-count");
+            // Populate list
+            var list = document.getElementById('basket-list');
+            var printCount = document.getElementById('basket-print-count');
             if (printBasket.size === 0) {
-                list.innerHTML = "<p style=\"text-align:center;font-size:0.85rem;color:#94a3b8;padding:20px 0;font-style:italic\">Aucune fiche sélectionnée.<br>Cochez des cartes pour les ajouter.</p>";
+                list.innerHTML = '<p class="text-sm text-slate-400 italic text-center py-4">Aucune fiche sélectionnée.<br>Cochez des cartes pour les ajouter.</p>';
             } else {
-                list.innerHTML = "";
+                var html = '';
                 printBasket.forEach(function(id) {
                     var d = situations[id];
-                    var row = document.createElement("div");
-                    row.style.cssText = "display:flex;align-items:center;justify-content:space-between;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:8px 12px;margin-bottom:6px";
-                    var info = document.createElement("div");
-                    var sp = document.createElement("span");
-                    sp.style.cssText = "font-size:0.65rem;font-weight:800;font-family:Montserrat,sans-serif;text-transform:uppercase;color:#0055A4;display:block";
-                    sp.textContent = d ? (d.etape || "") : "";
-                    var p = document.createElement("p");
-                    p.style.cssText = "font-size:0.85rem;font-weight:600;color:#334155;margin:2px 0 0";
-                    p.textContent = d ? d.title : id;
-                    info.appendChild(sp);
-                    info.appendChild(p);
-                    var btn = document.createElement("button");
-                    btn.style.cssText = "background:none;border:none;cursor:pointer;color:#94a3b8;font-size:1.1rem;padding:4px 8px;flex-shrink:0";
-                    btn.textContent = "✕";
-                    (function(bid) { btn.addEventListener("click", function() { removeFromBasket(bid); }); })(id);
-                    row.appendChild(info);
-                    row.appendChild(btn);
-                    list.appendChild(row);
+                    var title = d ? d.title : id;
+                    var etape = d ? d.etape : '';
+                    html += '<div class="flex items-center justify-between rounded-lg px-3 py-2 bg-slate-50 border">'
+                        + '<div><span class="text-xs font-bold montserrat" style="color:var(--usep-blue)">' + etape + '</span>'
+                        + '<p class="text-sm font-semibold text-slate-700">' + title + '</p></div>'
+                        + '<button onclick="removeFromBasket('' + id + '')" class="text-slate-400 hover:text-red-500 transition ml-2"><i class="fas fa-times"></i></button>'
+                        + '</div>';
                 });
+                list.innerHTML = html;
             }
             if (printCount) printCount.textContent = printBasket.size;
         }
 
         function closeBasketModal() {
-            var modal = document.getElementById("basket-modal");
-            modal.classList.add("opacity-0", "pointer-events-none");
-            setTimeout(function() { modal.classList.add("hidden-btn"); }, 250);
+            var modal = document.getElementById('basket-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(function() { modal.classList.add('hidden-btn'); }, 250);
         }
 
         function removeFromBasket(id) {
             printBasket.delete(id);
-            var cb = document.querySelector(".card-checkbox[data-id=\"" + id + "\"]");
+            var cb = document.querySelector('.card-checkbox[data-id="' + id + '"]');
             if (cb) cb.checked = false;
             updateBasketUI();
-            openBasketModal();
+            openBasketModal(); // refresh modal
         }
 
         function toggleTheory() {
-            var basketCb = document.getElementById("include-theory-basket");
-            var mainCb = document.getElementById("include-theory");
-            if (mainCb && basketCb) mainCb.checked = basketCb.checked;
+            var main = document.getElementById('include-theory');
+            var basket = document.getElementById('include-theory-basket');
+            if (basket && main) main.checked = basket.checked;
         }
 
         function preparePrint() {
-            var includeTheory = document.getElementById("include-theory-basket");
+            var includeTheory = document.getElementById('include-theory-basket');
             var withTheory = includeTheory && includeTheory.checked;
-            var win = window.open("", "_blank", "width=900,height=700");
-            if (!win) { alert("Autorisez les pop-ups pour imprimer."); return; }
+            var win = window.open('', '_blank', 'width=900,height=700');
+            if (!win) { alert('Autorisez les pop-ups pour imprimer.'); return; }
 
-            var theoryHtml = "";
+            // Build theory page HTML
+            var theoryHtml = '';
             if (withTheory) {
-                theoryHtml = "<div class=\"print-page theory-page\">"
-                    + "<div class=\"print-header\"><span class=\"print-discipline\">USEP 66 - Principes Pédagogiques</span><span class=\"print-etape\">Dossier 2026</span></div>"
-                    + "<h1 class=\"print-title\">Vers les Sports Collectifs</h1>"
-                    + "<h2 class=\"print-section-title\">La Trame des 5 Étapes</h2>"
-                    + "<table class=\"theory-table\"><thead><tr><th>Étape</th><th>Nom</th><th>Objectif</th><th>Cycle</th></tr></thead><tbody>"
-                    + "<tr><td>1</td><td>Parmi les autres</td><td>Manipulation libre, découverte de l'engin et de la cible</td><td>C2</td></tr>"
-                    + "<tr><td>2</td><td>Coopérer</td><td>Échange avec un partenaire sans gêne adverse</td><td>C2</td></tr>"
-                    + "<tr><td>3</td><td>Opposition directe</td><td>Agir malgré un adversaire gênant</td><td>C2 / C3</td></tr>"
-                    + "<tr><td>4</td><td>Attaque / Défense</td><td>Rôles fixes, organisation collective vers la cible</td><td>C3</td></tr>"
-                    + "<tr><td>5</td><td>Réversibilité</td><td>Transition rapide attaque vers défense</td><td>C3</td></tr>"
-                    + "</tbody></table>"
-                    + "<h2 class=\"print-section-title\" style=\"margin-top:20px\">Situations Fil Rouge</h2>"
-                    + "<table class=\"theory-table\"><thead><tr><th>Situation</th><th>Objectif tactique</th><th>Rugby</th><th>Football</th><th>Hockey</th><th>Tchouk.</th></tr></thead><tbody>"
-                    + "<tr><td>Les Déménageurs</td><td>Progresser avec l'engin - Étape 2</td><td>C2</td><td>C2</td><td>C2</td><td>—</td></tr>"
-                    + "<tr><td>Conservation / Toro</td><td>Garder le ballon en supériorité - Étape 3</td><td>—</td><td>C3</td><td>C3</td><td>—</td></tr>"
-                    + "<tr><td>Contre-Attaque Éclair</td><td>Transition défense vers attaque - Étape 4</td><td>—</td><td>C3</td><td>C3</td><td>—</td></tr>"
-                    + "<tr><td>Le Rideau de Fer</td><td>Défense collective en ligne - Étape 4</td><td>C3</td><td>C3</td><td>—</td><td>—</td></tr>"
-                    + "</tbody></table>"
-                    + "<div class=\"theory-tip\"><strong>Conseil :</strong> En fin de rencontre, demandez aux élèves : <em>Avez-vous reconnu une situation déjà jouée dans une autre discipline ?</em> Ce moment de verbalisation ancre le transfert.</div>"
-                    + "</div>";
+                theoryHtml = '<div class="print-page theory-page">'
+                    + '<div class="print-header"><span class="print-discipline">USEP 66 · Principes Pédagogiques</span><span class="print-etape">Dossier 2026</span></div>'
+                    + '<h1 class="print-title">Vers les Sports Collectifs</h1>'
+                    + '<h2 class="print-section-title">La Trame des 5 Étapes</h2>'
+                    + '<table class="theory-table"><thead><tr><th>Étape</th><th>Nom</th><th>Objectif</th><th>Cycle</th></tr></thead><tbody>'
+                    + '<tr><td>1</td><td>Parmi les autres</td><td>Manipulation libre, découverte de l'engin et de la cible</td><td>C2</td></tr>'
+                    + '<tr><td>2</td><td>Coopérer</td><td>Échange avec un partenaire sans gêne adverse</td><td>C2</td></tr>'
+                    + '<tr><td>3</td><td>Opposition directe</td><td>Agir malgré un adversaire gênant (interception)</td><td>C2 / C3</td></tr>'
+                    + '<tr><td>4</td><td>Attaque / Défense</td><td>Rôles fixes, organisation collective vers la cible</td><td>C3</td></tr>'
+                    + '<tr><td>5</td><td>Réversibilité</td><td>Transition rapide attaque ↔ défense</td><td>C3</td></tr>'
+                    + '</tbody></table>'
+                    + '<h2 class="print-section-title" style="margin-top:24px">Situations Fil Rouge — Transfert Inter-disciplines</h2>'
+                    + '<table class="theory-table"><thead><tr><th>Situation</th><th>Objectif tactique</th><th>Rugby</th><th>Football</th><th>Hockey</th><th>Tchouk.</th></tr></thead><tbody>'
+                    + '<tr><td>Les Déménageurs</td><td>Progresser avec l'engin · Étape 2</td><td>C2 ✓</td><td>C2 ✓</td><td>C2 ✓</td><td>—</td></tr>'
+                    + '<tr><td>Conservation / Toro</td><td>Garder le ballon en supériorité · Étape 3</td><td>—</td><td>C3 ✓</td><td>C3 ✓</td><td>—</td></tr>'
+                    + '<tr><td>Contre-Attaque Éclair</td><td>Transition défense→attaque · Étape 4</td><td>—</td><td>C3 ✓</td><td>C3 ✓</td><td>—</td></tr>'
+                    + '<tr><td>Le Rideau de Fer</td><td>Défense collective en ligne · Étape 4</td><td>C3 ✓</td><td>C3 ✓</td><td>—</td><td>—</td></tr>'
+                    + '</tbody></table>'
+                    + '<div class="theory-tip"><strong>💡 Conseil de mise en œuvre :</strong> En fin de rencontre, demandez aux élèves : <em>"Avez-vous reconnu une situation déjà jouée dans une autre discipline ?"</em> Ce moment de verbalisation ancre le transfert.</div>'
+                    + '</div>';
             }
 
-            var fichesHtml = "";
+            // Build fiche pages
+            var fichesHtml = '';
             printBasket.forEach(function(id) {
                 var d = situations[id];
                 if (!d) return;
-                var discipline = id.startsWith("r") ? "Rugby" : id.startsWith("f") ? "Football" : id.startsWith("hy") ? "Hockey" : "Tchoukball";
-                var cycle = id.endsWith("c2") ? "Cycle 2" : "Cycle 3";
-                var filSection = d.filRouge ? "<div class=\"fiche-fil-rouge\"><strong>Fil rouge :</strong> " + d.filRouge + "</div>" : "";
-                var rolesSection = d.rolesSociaux ? "<div class=\"fiche-section roles\"><div class=\"fiche-label\">Rôles sociaux</div><div class=\"fiche-content\">" + d.rolesSociaux + "</div></div>" : "";
-                fichesHtml += "<div class=\"print-page\">"
-                    + "<div class=\"print-header\"><span class=\"print-discipline\">" + discipline + " · " + cycle + "</span><span class=\"print-etape\">" + (d.etape || "") + "</span></div>"
-                    + "<h1 class=\"print-title\">" + d.title + "</h1>"
-                    + filSection
-                    + "<div class=\"fiche-grid\">"
-                    + "<div class=\"fiche-section accent\"><div class=\"fiche-label\">Objectif prioritaire</div><div class=\"fiche-content\">" + d.goal + "</div></div>"
-                    + "<div class=\"fiche-section\"><div class=\"fiche-label\">But du jeu</div><div class=\"fiche-content\">" + d.but + "</div></div>"
-                    + "<div class=\"fiche-section\"><div class=\"fiche-label\">Dispositif et Installation</div><div class=\"fiche-content\">" + d.setup + "</div></div>"
-                    + "<div class=\"fiche-section\"><div class=\"fiche-label\">Règles</div><div class=\"fiche-content\">" + d.rules + "</div></div>"
-                    + "<div class=\"fiche-section variables\"><div class=\"fiche-label\">Variables d'évolution</div><div class=\"fiche-content\">" + d.variables + "</div></div>"
+                var filRougeSection = d.filRouge
+                    ? '<div class="fiche-fil-rouge"><strong>🔁 Fil rouge :</strong> ' + d.filRouge + '</div>'
+                    : '';
+                var rolesSection = d.rolesSociaux
+                    ? '<div class="fiche-section"><div class="fiche-label">Rôles sociaux</div><div class="fiche-content">' + d.rolesSociaux + '</div></div>'
+                    : '';
+                fichesHtml += '<div class="print-page">'
+                    + '<div class="print-header"><span class="print-discipline">' + (id.includes('r') ? 'Rugby' : id.includes('f') ? 'Football' : id.includes('hy') ? 'Hockey' : 'Tchoukball') + ' · ' + (id.includes('c2') ? 'Cycle 2' : 'Cycle 3') + '</span><span class="print-etape">' + d.etape + '</span></div>'
+                    + '<h1 class="print-title">' + d.title + '</h1>'
+                    + filRougeSection
+                    + '<div class="fiche-grid">'
+                    + '<div class="fiche-section accent"><div class="fiche-label">Objectif prioritaire</div><div class="fiche-content">' + d.goal + '</div></div>'
+                    + '<div class="fiche-section"><div class="fiche-label">But du jeu</div><div class="fiche-content">' + d.but + '</div></div>'
+                    + '<div class="fiche-section"><div class="fiche-label">Dispositif &amp; Installation</div><div class="fiche-content">' + d.setup + '</div></div>'
+                    + '<div class="fiche-section"><div class="fiche-label">Règles</div><div class="fiche-content">' + d.rules + '</div></div>'
+                    + '<div class="fiche-section variables"><div class="fiche-label">Variables d'évolution</div><div class="fiche-content">' + d.variables + '</div></div>'
                     + rolesSection
-                    + "</div>"
-                    + "<div class=\"print-footer\">USEP 66 · Dossier Pédagogique 2026 · usep66.org</div>"
-                    + "</div>";
+                    + '</div>'
+                    + '<div class="print-footer">USEP 66 · Dossier Pédagogique 2026 · usep66.org</div>'
+                    + '</div>';
             });
 
-            var css = "@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap');"
-                + "* { box-sizing:border-box; margin:0; padding:0; }"
-                + "body { font-family:'Inter',sans-serif; background:white; color:#1e293b; }"
-                + ".print-page { width:100%; min-height:100vh; padding:28px 32px; page-break-after:always; display:flex; flex-direction:column; gap:14px; }"
-                + ".print-page:last-child { page-break-after:avoid; }"
-                + ".print-header { display:flex; justify-content:space-between; align-items:center; border-bottom:3px solid #0055A4; padding-bottom:8px; }"
-                + ".print-discipline { font-family:'Montserrat',sans-serif; font-weight:900; font-size:0.85rem; color:#0055A4; text-transform:uppercase; letter-spacing:0.06em; }"
-                + ".print-etape { background:#FFD700; color:#1a1a1a; font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.65rem; text-transform:uppercase; padding:3px 10px; border-radius:999px; }"
-                + ".print-title { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.5rem; color:#1e293b; }"
-                + ".fiche-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; flex:1; }"
-                + ".fiche-section { border:1.5px solid #e2e8f0; border-radius:10px; padding:10px 12px; }"
-                + ".fiche-section.accent { background:#e8f0fb; border-color:#bfdbfe; }"
-                + ".fiche-section.variables { background:#fffbeb; border-color:#fcd34d; grid-column:1 / -1; }"
-                + ".fiche-section.roles { background:#f0fdf4; border-color:#bbf7d0; grid-column:1 / -1; }"
-                + ".fiche-label { font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.08em; color:#0055A4; margin-bottom:4px; }"
-                + ".fiche-content { font-size:0.8rem; line-height:1.5; color:#334155; }"
-                + ".fiche-fil-rouge { background:#fff8e1; border-left:4px solid #FFD700; border-radius:0 10px 10px 0; padding:7px 10px; font-size:0.78rem; color:#92400e; }"
-                + ".print-footer { text-align:center; font-size:0.62rem; color:#94a3b8; border-top:1px solid #e2e8f0; padding-top:6px; margin-top:auto; }"
-                + ".print-section-title { font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.95rem; color:#0055A4; border-left:4px solid #FFD700; padding-left:8px; }"
-                + ".theory-table { width:100%; border-collapse:collapse; font-size:0.8rem; }"
-                + ".theory-table th { background:#0055A4; color:white; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.65rem; text-transform:uppercase; padding:7px 8px; text-align:left; }"
-                + ".theory-table td { border:1px solid #e2e8f0; padding:6px 8px; vertical-align:top; }"
-                + ".theory-table tr:nth-child(even) td { background:#f8fafc; }"
-                + ".theory-tip { background:#e8f0fb; border-radius:10px; padding:10px 12px; font-size:0.8rem; color:#334155; }"
-                + "@media print { .print-page { page-break-after:always; min-height:auto; padding:18px 22px; } .print-page:last-child { page-break-after:avoid; } }";
+            var printCSS = `
+                @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
+                * { box-sizing: border-box; margin: 0; padding: 0; }
+                body { font-family: 'Inter', sans-serif; background: white; color: #1e293b; }
+                .print-page { width: 100%; min-height: 100vh; padding: 32px 36px; page-break-after: always; display: flex; flex-direction: column; gap: 18px; }
+                .print-page:last-child { page-break-after: avoid; }
+                .print-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #0055A4; padding-bottom: 10px; }
+                .print-discipline { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.9rem; color: #0055A4; text-transform: uppercase; letter-spacing: 0.06em; }
+                .print-etape { background: #FFD700; color: #1a1a1a; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
+                .print-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.6rem; color: #1e293b; }
+                .fiche-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+                .fiche-section { border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; }
+                .fiche-section.accent { background: #e8f0fb; border-color: #bfdbfe; }
+                .fiche-section.variables { background: #fffbeb; border-color: #fcd34d; grid-column: 1 / -1; }
+                .fiche-label { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; color: #0055A4; margin-bottom: 5px; }
+                .fiche-content { font-size: 0.82rem; line-height: 1.55; color: #334155; }
+                .fiche-fil-rouge { background: #fff8e1; border-left: 4px solid #FFD700; border-radius: 0 10px 10px 0; padding: 8px 12px; font-size: 0.8rem; color: #92400e; }
+                .print-footer { margin-top: auto; text-align: center; font-size: 0.65rem; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 8px; }
+                /* Theory page */
+                .theory-page { gap: 14px; }
+                .theory-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+                .theory-table th { background: #0055A4; color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; padding: 8px 10px; text-align: left; }
+                .theory-table td { border: 1px solid #e2e8f0; padding: 7px 10px; vertical-align: top; }
+                .theory-table tr:nth-child(even) td { background: #f8fafc; }
+                .print-section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: #0055A4; border-left: 4px solid #FFD700; padding-left: 10px; }
+                .theory-tip { background: #e8f0fb; border-radius: 10px; padding: 12px 14px; font-size: 0.82rem; color: #334155; margin-top: 4px; }
+                @media print {
+                    .print-page { page-break-after: always; min-height: auto; padding: 20px 24px; }
+                    .print-page:last-child { page-break-after: avoid; }
+                }
+            `;
 
-            win.document.write("<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Fiches USEP 66</title><style>" + css + "</style></head><body>"
+            win.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Fiches USEP 66</title>'
+                + '<style>' + printCSS + '</style></head><body>'
                 + theoryHtml + fichesHtml
-                + "<scr" + "ipt>window.onload=function(){setTimeout(function(){window.print();},800);}</" + "script>"
-                + "</body></html>");
+                + '<script>window.onload = function() { setTimeout(function() { window.print(); }, 600); };<\/script>'
+                + '</body></html>');
             win.document.close();
             closeBasketModal();
         }
 
-        /* ═══ TABS ═══ */
         function switchTab(tabId) {
-            document.querySelectorAll(".tab-content").forEach(function(c) { c.classList.add("hidden"); });
-            document.querySelectorAll(".tab-btn").forEach(function(b) { b.classList.remove("tab-pill-active"); });
-            document.getElementById("content-" + tabId).classList.remove("hidden");
-            document.getElementById("tab-" + tabId + "-btn").classList.add("tab-pill-active");
+            document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.add('hidden'); });
+            document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('tab-pill-active'); });
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            document.getElementById('tab-' + tabId + '-btn').classList.add('tab-pill-active');
         }
 
-        /* ═══ MODAL ═══ */
         function openModal(id) {
-            var data = situations[id] || { title:"Situation à venir", etape:"", goal:"Basée sur la trame départementale", but:"Détails en cours de rédaction.", setup:"Dispositif standard.", rules:"Règles adaptées au niveau.", variables:"Modifier l'espace ou le nombre de joueurs.", rolesSociaux:"" };
-            document.getElementById("modal-title").innerText = data.title;
+            var data = situations[id] || {
+                title: "Situation à venir",
+                etape: "—",
+                goal: "Basée sur la trame départementale",
+                but: "Détails en cours de rédaction.",
+                setup: "Dispositif standard.",
+                rules: "Règles adaptées au niveau.",
+                variables: "Modifier l'espace ou le nombre de joueurs.",
+                rolesSociaux: ""
+            };
+            document.getElementById('modal-title').innerText = data.title;
             var filRougeBlock = data.filRouge
-                ? "<div style=\"background:linear-gradient(90deg,#fff8e1,#fffbeb);border:1.5px solid #fcd34d;border-radius:14px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start\"><i class=\"fas fa-rotate\" style=\"color:#b45309;font-size:1rem;margin-top:2px;flex-shrink:0\"></i><div><p style=\"font-family:Montserrat,sans-serif;font-weight:800;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:#92400e;margin-bottom:4px\">Situation fil rouge — Transfert inter-disciplines</p><p style=\"font-size:0.85rem;color:#78350f\">" + data.filRouge + "</p></div></div>"
-                : "";
+                ? '<div class="rounded-2xl p-4 flex gap-3 items-start" style="background:linear-gradient(90deg,#fff8e1,#fffbeb);border:1.5px solid #fcd34d"><i class="fas fa-rotate text-lg mt-0.5 shrink-0" style="color:#b45309"></i><div><p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-1" style="color:#92400e">Situation fil rouge — Transfert inter-disciplines</p><p class="text-sm text-amber-900">' + data.filRouge + '</p></div></div>'
+                : '';
             var rolesBlock = data.rolesSociaux
-                ? "<div style=\"background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:14px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start\"><i class=\"fas fa-users\" style=\"color:#16a34a;font-size:0.9rem;margin-top:2px;flex-shrink:0\"></i><div><p style=\"font-family:Montserrat,sans-serif;font-weight:800;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:#166534;margin-bottom:4px\">Rôles Sociaux</p><p style=\"font-size:0.85rem;color:#166534\">" + data.rolesSociaux + "</p></div></div>"
-                : "";
-            document.getElementById("modal-body").innerHTML =
-                "<div style=\"margin-bottom:4px\"><span style=\"font-family:Montserrat,sans-serif;font-weight:800;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.08em;color:#0055A4\">" + (data.etape || "") + "</span></div>"
+                ? '<div class="rounded-2xl p-4 flex gap-3 items-start" style="background:#f0fdf4;border:1.5px solid #bbf7d0"><i class="fas fa-users text-base mt-0.5 shrink-0" style="color:#16a34a"></i><div><p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-1" style="color:#166534">Rôles Sociaux</p><p class="text-sm text-green-900">' + data.rolesSociaux + '</p></div></div>'
+                : '';
+            document.getElementById('modal-body').innerHTML =
+                '<div class="flex items-center gap-2 mb-1">'
+                + '<span class="montserrat font-extrabold text-xs uppercase tracking-widest" style="color:var(--usep-blue)">' + (data.etape || '') + '</span>'
+                + '</div>'
                 + filRougeBlock
-                + "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:12px\">"
-                + "<div style=\"background:#e8f0fb;border-radius:14px;padding:12px 14px\"><p class=\"modal-section-title\">Objectif prioritaire</p><p style=\"font-size:0.85rem;font-weight:600;color:#334155\">" + data.goal + "</p></div>"
-                + "<div style=\"border:1.5px solid #e8f0fb;border-radius:14px;padding:12px 14px\"><p class=\"modal-section-title\">But du jeu</p><p style=\"font-size:0.85rem;color:#334155\">" + data.but + "</p></div>"
-                + "</div>"
-                + "<div style=\"background:#f8fafc;border:1px solid #f1f5f9;border-radius:14px;padding:12px 14px\"><p class=\"modal-section-title\">Dispositif &amp; Installation</p><p style=\"font-size:0.85rem;color:#475569;line-height:1.55\">" + data.setup + "</p></div>"
-                + "<div style=\"background:#f8fafc;border:1px solid #f1f5f9;border-radius:14px;padding:12px 14px\"><p class=\"modal-section-title\">Règles</p><p style=\"font-size:0.85rem;color:#475569;line-height:1.55\">" + data.rules + "</p></div>"
-                + "<div style=\"background:#fffbeb;border-left:4px solid #FFD700;border-radius:0 14px 14px 0;padding:12px 14px\"><p style=\"font-family:Montserrat,sans-serif;font-weight:800;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:#92400e;margin-bottom:4px\">Variables d'évolution</p><p style=\"font-size:0.85rem;color:#78350f;font-style:italic\">" + data.variables + "</p></div>"
+                + '<div class="grid sm:grid-cols-2 gap-4">'
+                + '<div class="rounded-2xl p-4" style="background:var(--usep-blue-light)"><p class="modal-section-title">Objectif prioritaire</p><p class="text-slate-700 font-semibold text-sm">' + data.goal + '</p></div>'
+                + '<div class="rounded-2xl p-4 border-2" style="border-color:var(--usep-blue-light)"><p class="modal-section-title">But du jeu</p><p class="text-slate-700 text-sm">' + data.but + '</p></div>'
+                + '</div>'
+                + '<div class="rounded-2xl p-4 border border-slate-100 bg-slate-50"><p class="modal-section-title">Dispositif &amp; Installation</p><p class="text-slate-600 text-sm leading-relaxed">' + data.setup + '</p></div>'
+                + '<div class="rounded-2xl p-4 border border-slate-100 bg-slate-50"><p class="modal-section-title">Règles</p><p class="text-slate-600 text-sm leading-relaxed">' + data.rules + '</p></div>'
+                + '<div class="modal-variable-box"><p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-2" style="color:#92400e"><i class="fas fa-sliders mr-1.5" style="color:var(--usep-yellow)"></i>Variables d\'évolution</p><p class="text-sm text-amber-900 italic">' + data.variables + '</p></div>'
                 + rolesBlock;
-            document.getElementById("detail-modal").classList.remove("opacity-0", "pointer-events-none");
-            document.body.classList.add("modal-active");
+
+            var modal = document.getElementById('detail-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            document.body.classList.add('modal-active');
         }
 
         function closeModal() {
-            document.getElementById("detail-modal").classList.add("opacity-0", "pointer-events-none");
-            document.body.classList.remove("modal-active");
+            var modal = document.getElementById('detail-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            document.body.classList.remove('modal-active');
         }
 
-        document.addEventListener("keydown", function(e) {
-            if (e.key === "Escape") { closeModal(); closeBasketModal(); }
-        });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { closeModal(); closeBasketModal(); } });
 
-        switchTab("gen");
+        switchTab('gen');
     </script>
 </body>
 </html>

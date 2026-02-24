@@ -3,21 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USEP 66 — Dossier Pédagogique 2026</title>
+    <title id="page-title">USEP — Dossier Pédagogique</title><!-- ← mis à jour automatiquement par CONFIG -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
+        /* ══════════════════════════════════════════════════════════════════
+           MOTEUR — NE PAS MODIFIER CETTE SECTION
+           Tout ce qui est ici est partagé par tous les dossiers.
+           Les couleurs viennent du bloc CONFIG ci-dessous (variables CSS).
+        ══════════════════════════════════════════════════════════════════ */
+
         :root {
-            --usep-blue:       #0055A4;
-            --usep-blue-dark:  #003f7d;
-            --usep-blue-light: #e8f0fb;
-            --usep-yellow:     #FFD700;
-            --usep-yellow-dark:#e6c200;
+            /* Ces variables sont écrasées par le bloc CONFIG en JS */
+            --theme-primary:       #0055A4;
+            --theme-primary-dark:  #003f7d;
+            --theme-primary-light: #e8f0fb;
+            --theme-accent:        #FFD700;
+            --theme-accent-dark:   #e6c200;
         }
 
         * { box-sizing: border-box; }
-
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(160deg, #ffffff 0%, #dceeff 60%, #eef5ff 100%);
@@ -26,12 +33,11 @@
             min-height: 100vh;
             scroll-behavior: smooth;
         }
-
         .montserrat { font-family: 'Montserrat', sans-serif; }
 
         /* ── TOPBAR ── */
         .topbar {
-            background: var(--usep-blue);
+            background: var(--theme-primary);
             color: white;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.7rem;
@@ -43,15 +49,15 @@
         /* ── NAVBAR ── */
         .navbar {
             background: white;
-            border-bottom: 3px solid var(--usep-yellow);
+            border-bottom: 3px solid var(--theme-accent);
             box-shadow: 0 2px 16px rgba(0,85,164,0.08);
             position: sticky;
             top: 0;
             z-index: 100;
         }
         .nav-logo-badge {
-            background: var(--usep-blue);
-            color: var(--usep-yellow);
+            background: var(--theme-primary);
+            color: var(--theme-accent);
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
             letter-spacing: -0.02em;
@@ -72,7 +78,7 @@
             transition: background 0.2s, color 0.2s;
             white-space: nowrap;
         }
-        .nav-link:hover { background: var(--usep-blue-light); color: var(--usep-blue); }
+        .nav-link:hover { background: var(--theme-primary-light); color: var(--theme-primary); }
 
         /* ── TABS (PILL STYLE) ── */
         .tabs-wrapper {
@@ -99,16 +105,16 @@
             transition: all 0.25s cubic-bezier(.4,0,.2,1);
             white-space: nowrap;
         }
-        .tab-btn:hover:not(.tab-pill-active) { color: var(--usep-blue); background: var(--usep-blue-light); }
+        .tab-btn:hover:not(.tab-pill-active) { color: var(--theme-primary); background: var(--theme-primary-light); }
         .tab-pill-active {
-            background: var(--usep-blue) !important;
+            background: var(--theme-primary) !important;
             color: white !important;
             box-shadow: 0 4px 14px rgba(0,85,164,0.3);
         }
 
         /* ── HERO HEADER ── */
         .hero {
-            background: linear-gradient(135deg, var(--usep-blue) 0%, #1a6ec9 60%, #0095e8 100%);
+            background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-mid, #1a6ec9) 60%, var(--theme-primary-light2, #0095e8) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -122,7 +128,7 @@
         }
         .hero-badge {
             display: inline-block;
-            background: var(--usep-yellow);
+            background: var(--theme-accent);
             color: #1a1a1a;
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
@@ -139,10 +145,7 @@
         }
 
         /* ── SECTION TITLE BAR ── */
-        .section-title-bar {
-            border-left: 5px solid var(--usep-yellow);
-            padding-left: 14px;
-        }
+        .section-title-bar { border-left: 5px solid var(--theme-accent); padding-left: 14px; }
 
         /* ── INFO CARDS (Généralités) ── */
         .info-card {
@@ -196,9 +199,7 @@
             transform: translateY(-5px);
             border-color: #93c5fd;
         }
-        .activity-card.match-card {
-            border: none;
-        }
+        .activity-card.match-card { border: none; }
         .activity-card .card-step {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.65rem;
@@ -226,10 +227,7 @@
         }
 
         /* ── CARDS SCROLL (responsive) ── */
-        .cards-scroll-wrapper {
-            position: relative;
-            padding: 16px 20px 20px;
-        }
+        .cards-scroll-wrapper { position: relative; padding: 16px 20px 20px; }
         .cards-scroll {
             display: flex;
             gap: 12px;
@@ -243,11 +241,7 @@
         .cards-scroll::-webkit-scrollbar { height: 4px; }
         .cards-scroll::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 99px; }
         .cards-scroll::-webkit-scrollbar-thumb { background: #bfdbfe; border-radius: 99px; }
-        .cards-scroll .activity-card {
-            flex: 0 0 200px;
-            scroll-snap-align: start;
-        }
-        /* Fade hint at right edge on mobile */
+        .cards-scroll .activity-card { flex: 0 0 200px; scroll-snap-align: start; }
         .cards-scroll-wrapper::after {
             content: '';
             position: absolute;
@@ -269,8 +263,6 @@
             gap: 4px;
             margin-bottom: 8px;
         }
-
-        /* On md+ screens : 4-col grid */
         @media (min-width: 768px) {
             .cards-scroll {
                 display: grid;
@@ -287,7 +279,6 @@
         /* ── MODAL ── */
         .modal { transition: opacity 0.25s ease; }
         body.modal-active { overflow: hidden; }
-
         .modal-card {
             background: white;
             border-radius: 24px;
@@ -296,7 +287,7 @@
             overflow-y: auto;
         }
         .modal-header {
-            background: linear-gradient(135deg, var(--usep-blue-dark), var(--usep-blue));
+            background: linear-gradient(135deg, var(--theme-primary-dark), var(--theme-primary));
             border-radius: 20px 20px 0 0;
             padding: 24px 28px 20px;
         }
@@ -306,17 +297,17 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--usep-blue);
+            color: var(--theme-primary);
             margin-bottom: 6px;
         }
         .modal-variable-box {
             background: #fffbeb;
-            border-left: 4px solid var(--usep-yellow);
+            border-left: 4px solid var(--theme-accent);
             border-radius: 0 14px 14px 0;
             padding: 14px 16px;
         }
 
-        /* ── FIL ROUGE BADGE ── */
+        /* ── FIL ROUGE / TRANSFERT BADGE ── */
         .fil-rouge-badge {
             display: inline-flex;
             align-items: center;
@@ -333,64 +324,20 @@
             border-radius: 999px;
             white-space: nowrap;
         }
-        .activity-card.has-fil-rouge {
-            border-color: #fcd34d;
-            box-shadow: 0 0 0 1px #fcd34d33;
-        }
-        .activity-card.has-fil-rouge:hover {
-            border-color: #f59e0b;
-            box-shadow: 0 10px 30px rgba(245,158,11,0.18);
-        }
-        /* Transfer table in Généralités */
-        .transfer-table th {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            padding: 10px 14px;
-            text-align: left;
-        }
-        .transfer-table td {
-            font-size: 0.8rem;
-            padding: 10px 14px;
-            vertical-align: middle;
-            border-top: 1px solid #f1f5f9;
-        }
-        .transfer-dot {
-            width: 28px; height: 28px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-        }
-
+        .activity-card.has-fil-rouge { border-color: #fcd34d; box-shadow: 0 0 0 1px #fcd34d33; }
+        .activity-card.has-fil-rouge:hover { border-color: #f59e0b; box-shadow: 0 10px 30px rgba(245,158,11,0.18); }
 
         /* ── PRINT BASKET ── */
-        .card-checkbox-wrapper {
-            position: absolute;
-            top: 10px; right: 10px;
-            z-index: 10;
-        }
-        .card-checkbox {
-            width: 20px; height: 20px;
-            accent-color: var(--usep-blue);
-            cursor: pointer;
-            border-radius: 4px;
-        }
+        .card-checkbox-wrapper { position: absolute; top: 10px; right: 10px; z-index: 10; }
+        .card-checkbox { width: 20px; height: 20px; accent-color: var(--theme-primary); cursor: pointer; border-radius: 4px; }
         .activity-card { position: relative; }
-        .activity-card.in-basket {
-            border-color: var(--usep-blue) !important;
-            background: var(--usep-blue-light) !important;
-        }
-        .activity-card.in-basket h4 { color: var(--usep-blue); }
+        .activity-card.in-basket { border-color: var(--theme-primary) !important; background: var(--theme-primary-light) !important; }
+        .activity-card.in-basket h4 { color: var(--theme-primary); }
 
-        /* Floating basket button */
         #print-basket-btn {
             position: fixed;
             bottom: 28px; right: 28px;
-            background: var(--usep-blue);
+            background: var(--theme-primary);
             color: white;
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
@@ -411,7 +358,7 @@
         #print-basket-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,85,164,0.45); }
         #print-basket-btn.hidden-btn { display: none; }
         #basket-count {
-            background: var(--usep-yellow);
+            background: var(--theme-accent);
             color: #1a1a1a;
             font-weight: 900;
             width: 24px; height: 24px;
@@ -420,24 +367,6 @@
             align-items: center;
             justify-content: center;
             font-size: 0.78rem;
-        }
-        #select-all-bar {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 20px;
-            background: var(--usep-blue-light);
-            border-radius: 12px;
-            margin-bottom: 12px;
-            font-size: 0.82rem;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            color: var(--usep-blue);
-        }
-
-        /* ── PRINT BASKET MODAL ── */
-        #basket-modal {
-            transition: opacity 0.2s;
         }
         #basket-modal.hidden-btn { display: none; }
 
@@ -454,658 +383,77 @@
             }
             .cards-scroll-wrapper::after { display: none !important; }
         }
+        .transfer-table th { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 14px; text-align: left; }
+        .transfer-table td { font-size: 0.8rem; padding: 10px 14px; vertical-align: middle; border-top: 1px solid #f1f5f9; }
+        .transfer-dot { width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; }
     </style>
 </head>
 <body>
 
-    <!-- TOPBAR -->
+    <!-- ══════════════════════════════════════════════════════════════════
+         TOPBAR & NAVBAR — MOTEUR (ne pas modifier)
+         Le contenu dynamique est injecté par CONFIG via JS
+    ══════════════════════════════════════════════════════════════════ -->
     <div class="topbar no-print py-1.5 px-5 flex items-center justify-between">
-        <span>USEP 66 — Pyrénées-Orientales</span>
+        <span id="topbar-org">USEP — Dossier Pédagogique</span>
         <div class="flex gap-5">
-            <span class="hidden sm:inline"><i class="fas fa-envelope mr-1"></i> usep66@usep.org</span>
-            <a href="https://usep66.org" target="_blank" class="underline opacity-80 hover:opacity-100">usep66.org</a>
+            <span id="topbar-email" class="hidden sm:inline"></span>
+            <a id="topbar-site" href="#" target="_blank" class="underline opacity-80 hover:opacity-100"></a>
         </div>
     </div>
 
-    <!-- NAVBAR -->
     <nav class="navbar no-print px-5 py-3">
         <div class="max-w-6xl mx-auto flex items-center justify-between gap-3">
             <div class="flex items-center gap-3 shrink-0">
-                <span class="nav-logo-badge">USEP <span class="text-white font-normal text-xs">66</span></span>
-                <span class="hidden lg:block text-slate-400 text-xs font-medium montserrat">Union Sportive de l'Enseignement du Premier degré</span>
+                <span class="nav-logo-badge" id="nav-logo">USEP</span>
+                <span class="hidden lg:block text-slate-400 text-xs font-medium montserrat" id="nav-subtitle"></span>
             </div>
-            <div class="hidden md:flex items-center gap-1">
-                <a href="#" class="nav-link">Accueil</a>
-                <a href="#" class="nav-link">Rencontres</a>
-                <a href="#" class="nav-link">Ressources</a>
-                <a href="#" class="nav-link">Actualités</a>
-                <a href="#" class="nav-link">Contact</a>
-            </div>
-            <button onclick="openBasketModal()" id="nav-basket-btn" class="no-print shrink-0 flex items-center gap-2 text-xs font-bold montserrat uppercase tracking-wider px-3 py-2 rounded-lg transition" style="color:var(--usep-blue);background:var(--usep-blue-light)">
+            <div class="hidden md:flex items-center gap-1" id="nav-links"></div>
+            <button onclick="openBasketModal()" id="nav-basket-btn" class="no-print shrink-0 flex items-center gap-2 text-xs font-bold montserrat uppercase tracking-wider px-3 py-2 rounded-lg transition" style="color:var(--theme-primary);background:var(--theme-primary-light)">
                 <i class="fas fa-print"></i>
                 <span class="hidden sm:inline">Imprimer</span>
-                <span id="nav-basket-count" class="hidden w-5 h-5 rounded-full text-xs font-black flex items-center justify-center" style="background:var(--usep-yellow);color:#1a1a1a">0</span>
+                <span id="nav-basket-count" class="hidden w-5 h-5 rounded-full text-xs font-black flex items-center justify-center" style="background:var(--theme-accent);color:#1a1a1a">0</span>
             </button>
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- ══════════════════════════════════════════════════════════════════
+         HERO — MOTEUR (structure fixe, contenu injecté par CONFIG)
+    ══════════════════════════════════════════════════════════════════ -->
     <header class="hero py-14 px-5 mb-10 relative">
-        <!-- SVG décos -->
-        <svg class="svg-float" style="width:150px;top:8%;right:5%;transform:rotate(15deg)" viewBox="0 0 100 60">
-            <ellipse cx="50" cy="30" rx="47" ry="27" stroke="#FFD700" stroke-width="3.5" fill="none"/>
-            <path d="M3 30 Q26 10 50 30 Q74 50 97 30" stroke="#FFD700" stroke-width="2.5" fill="none"/>
-            <path d="M50 3 Q30 26 50 57 Q70 26 50 3" stroke="#FFD700" stroke-width="2.5" fill="none"/>
-        </svg>
-        <svg class="svg-float" style="width:80px;bottom:10%;left:5%" viewBox="0 0 60 80">
-            <polygon points="30,4 55,76 5,76" stroke="#FFD700" stroke-width="3.5" fill="none" stroke-linejoin="round"/>
-            <line x1="13" y1="56" x2="47" y2="56" stroke="#FFD700" stroke-width="2.5"/>
-        </svg>
-        <svg class="svg-float" style="width:105px;top:18%;left:10%;opacity:0.1" viewBox="0 0 120 40">
-            <rect x="4" y="12" width="68" height="17" rx="8.5" stroke="white" stroke-width="2.5" fill="none"/>
-            <circle cx="90" cy="21" r="13" stroke="white" stroke-width="2.5" fill="none"/>
-            <circle cx="90" cy="21" r="5" stroke="white" stroke-width="2" fill="none"/>
-            <line x1="73" y1="21" x2="79" y2="21" stroke="white" stroke-width="2.5"/>
-        </svg>
-        <svg class="svg-float" style="width:120px;bottom:6%;right:12%;opacity:0.08" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" stroke="#FFD700" stroke-width="3" fill="none"/>
-            <polygon points="50,10 62,34 88,34 68,52 76,78 50,62 24,78 32,52 12,34 38,34" stroke="#FFD700" stroke-width="2" fill="none" stroke-linejoin="round"/>
-        </svg>
-
+        <div id="hero-svgs"></div><!-- SVG décoratifs injectés selon discipline -->
         <div class="max-w-6xl mx-auto text-center relative z-10">
-            <span class="hero-badge mb-4 inline-block">Rencontres de circonscription · Avril 2026</span>
-            <h1 class="montserrat text-4xl md:text-5xl font-black text-white leading-tight mb-3 mt-4" style="text-shadow:0 2px 16px rgba(0,0,0,0.2)">
-                Vers les Sports Collectifs
+            <span class="hero-badge mb-4 inline-block" id="hero-badge">Rencontres · 2026</span>
+            <h1 class="montserrat text-4xl md:text-5xl font-black text-white leading-tight mb-3 mt-4" id="hero-title" style="text-shadow:0 2px 16px rgba(0,0,0,0.2)">
+                Titre du Dossier
             </h1>
-            <p class="text-blue-100 text-base md:text-lg font-medium mb-6">Dossier Pédagogique Interactif · Circonscription de Prades</p>
-            <div class="flex flex-wrap justify-center gap-4 text-white text-sm">
-                <span class="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
-                    <i class="fas fa-map-marker-alt" style="color:var(--usep-yellow)"></i>
-                    Estavar (C2, 9 avril) &amp; Matemale (C3, 10 avril)
-                </span>
-                <span class="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
-                    <i class="fas fa-layer-group" style="color:var(--usep-yellow)"></i>
-                    4 plateaux · Rotation 30 min
-                </span>
-            </div>
+            <p class="text-blue-100 text-base md:text-lg font-medium mb-6" id="hero-subtitle">Dossier Pédagogique Interactif</p>
+            <div class="flex flex-wrap justify-center gap-4 text-white text-sm" id="hero-infos"></div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 sm:px-6">
-
-        <!-- TABS NAV -->
-        <div class="flex justify-center mb-10 no-print">
-            <div class="tabs-wrapper">
-                <button onclick="switchTab('gen')" id="tab-gen-btn" class="tab-btn tab-pill-active">
-                    <i class="fas fa-graduation-cap mr-1.5"></i>Généralités
-                </button>
-                <button onclick="switchTab('c2')" id="tab-c2-btn" class="tab-btn">
-                    <i class="fas fa-child mr-1.5"></i>Cycle 2 — Estavar
-                </button>
-                <button onclick="switchTab('c3')" id="tab-c3-btn" class="tab-btn">
-                    <i class="fas fa-running mr-1.5"></i>Cycle 3 — Matemale
-                </button>
-            </div>
+    <!-- TABS NAVIGATION -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
+        <div class="flex justify-center mb-8 no-print">
+            <div class="tabs-wrapper" id="tabs-container"></div>
         </div>
 
-        <!-- ═══════════ GÉNÉRALITÉS ═══════════ -->
+        <!-- ONGLET GÉNÉRALITÉS — rempli par CONFIG -->
         <section id="content-gen" class="tab-content">
-            <div class="grid md:grid-cols-3 gap-6 mb-8">
-                <div class="info-card p-6" style="border-top: 4px solid var(--usep-blue)">
-                    <h3 class="montserrat font-extrabold text-base mb-3" style="color:var(--usep-blue)">
-                        <i class="fas fa-layer-group mr-2" style="color:var(--usep-blue)"></i>La Progression
-                    </h3>
-                    <p class="text-sm text-slate-600 mb-4">Elle guide l'élève de la manipulation à la réversibilité (Étapes 1 à 5).</p>
-                    <div class="space-y-2">
-                        <div class="text-xs rounded-lg px-3 py-2" style="background:var(--usep-blue-light);color:var(--usep-blue);font-weight:600">C2 : Focus Étapes 1 à 3</div>
-                        <div class="text-xs rounded-lg px-3 py-2" style="background:var(--usep-blue-light);color:var(--usep-blue);font-weight:600">C3 : Focus Étapes 3 à 5</div>
-                    </div>
-                </div>
-                <div class="info-card p-6" style="border-top: 4px solid var(--usep-yellow)">
-                    <h3 class="montserrat font-extrabold text-base mb-3 text-amber-800">
-                        <i class="fas fa-clock mr-2" style="color:var(--usep-blue)"></i>Déroulé de la Journée
-                    </h3>
-                    <div class="space-y-3">
-                        <div>
-                            <p class="montserrat font-bold text-xs uppercase tracking-wider mb-2" style="color:var(--usep-blue)">Matin — 4 rotations de 30 min</p>
-                            <div class="space-y-1.5">
-                                <div class="flex items-center gap-2 text-xs bg-slate-50 rounded-lg px-3 py-2"><span class="w-5 h-5 rounded-full flex items-center justify-center text-white font-black text-xs shrink-0" style="background:var(--usep-blue)">1</span> Plateau 1 · 30 min</div>
-                                <div class="flex items-center gap-2 text-xs bg-slate-50 rounded-lg px-3 py-2"><span class="w-5 h-5 rounded-full flex items-center justify-center text-white font-black text-xs shrink-0" style="background:var(--usep-blue)">2</span> Plateau 2 · 30 min</div>
-                                <div class="flex items-center gap-2 text-xs bg-slate-50 rounded-lg px-3 py-2"><span class="w-5 h-5 rounded-full flex items-center justify-center text-white font-black text-xs shrink-0" style="background:var(--usep-blue)">3</span> Plateau 3 · 30 min</div>
-                                <div class="flex items-center gap-2 text-xs bg-slate-50 rounded-lg px-3 py-2"><span class="w-5 h-5 rounded-full flex items-center justify-center text-white font-black text-xs shrink-0" style="background:var(--usep-blue)">4</span> Plateau 4 · 30 min</div>
-                            </div>
-                        </div>
-                        <div class="border-t pt-3">
-                            <p class="montserrat font-bold text-xs uppercase tracking-wider mb-2" style="color:#b45309">Après-midi — Tournoi multisports</p>
-                            <div class="rounded-xl px-3 py-2 text-xs" style="background:#fffbeb;color:#92400e;font-weight:600">
-                                <i class="fas fa-trophy mr-1.5" style="color:var(--usep-yellow)"></i> 1 mini-tournoi par discipline · Score cumulé
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="info-card p-6" style="border-top: 4px solid #1e293b">
-                    <h3 class="montserrat font-extrabold text-base mb-3 text-slate-900">
-                        <i class="fas fa-map-marker-alt mr-2" style="color:var(--usep-blue)"></i>Sites Validés
-                    </h3>
-                    <div class="space-y-4">
-                        <div class="flex justify-between items-center gap-2">
-                            <span class="text-sm font-semibold">C2 : Estavar (9 Avril)</span>
-                            <span class="text-xs px-2 py-1 rounded-full" style="background:var(--usep-blue-light);color:var(--usep-blue);font-weight:700">École</span>
-                        </div>
-                        <div class="flex justify-between items-center gap-2">
-                            <span class="text-sm font-semibold">C3 : Matemale (10 Avril)</span>
-                            <span class="text-xs px-2 py-1 rounded-full" style="background:var(--usep-blue-light);color:var(--usep-blue);font-weight:700">École</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Étapes recap -->
-            <div class="info-card p-6 mb-8">
-                <h3 class="montserrat font-extrabold text-base mb-5" style="color:var(--usep-blue)">
-                    <i class="fas fa-stairs mr-2"></i>La Trame des 5 Étapes
-                </h3>
-                <div class="grid sm:grid-cols-5 gap-3">
-                    <div class="rounded-2xl p-4 text-center" style="background:#dcfce7">
-                        <div class="montserrat font-black text-2xl" style="color:#166534">1</div>
-                        <div class="text-xs font-bold mt-1 text-green-800">Parmi les autres</div>
-                        <div class="text-xs text-green-700 mt-1">Manipulation libre</div>
-                    </div>
-                    <div class="rounded-2xl p-4 text-center border-2" style="background:#dcfce7;border-color:#166534">
-                        <div class="montserrat font-black text-2xl" style="color:#166534">2</div>
-                        <div class="text-xs font-bold mt-1 text-green-800">Coopérer</div>
-                        <div class="text-xs text-green-700 mt-1">Échange partenaire</div>
-                    </div>
-                    <div class="rounded-2xl p-4 text-center" style="background:#fef9c3">
-                        <div class="montserrat font-black text-2xl" style="color:#854d0e">3</div>
-                        <div class="text-xs font-bold mt-1 text-amber-800">Opposition directe</div>
-                        <div class="text-xs text-amber-700 mt-1">Adversaire gênant</div>
-                    </div>
-                    <div class="rounded-2xl p-4 text-center" style="background:#fee2e2">
-                        <div class="montserrat font-black text-2xl" style="color:#991b1b">4</div>
-                        <div class="text-xs font-bold mt-1 text-red-800">Attaque / Défense</div>
-                        <div class="text-xs text-red-700 mt-1">Rôles fixes</div>
-                    </div>
-                    <div class="rounded-2xl p-4 text-center" style="background:#991b1b">
-                        <div class="montserrat font-black text-2xl text-white">5</div>
-                        <div class="text-xs font-bold mt-1 text-red-100">Réversibilité</div>
-                        <div class="text-xs text-red-200 mt-1">Transition rapide</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ══ ENCART SITUATIONS FIL ROUGE ══ -->
-            <div class="info-card overflow-hidden mb-2">
-                <!-- Header -->
-                <div class="p-5 pb-4" style="background:linear-gradient(135deg,#78350f,#b45309)">
-                    <div class="flex items-start gap-3">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style="background:var(--usep-yellow)">
-                            <i class="fas fa-rotate text-lg" style="color:#78350f"></i>
-                        </div>
-                        <div>
-                            <h3 class="montserrat font-black text-lg text-white leading-tight">Les Situations Fil Rouge</h3>
-                            <p class="text-amber-200 text-xs mt-1 font-medium">Pourquoi retrouver la même situation dans plusieurs disciplines ?</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Corps -->
-                <div class="p-6 space-y-6">
-
-                    <!-- Explication pédagogique -->
-                    <div class="rounded-2xl p-5 border-l-4" style="background:#fffbeb;border-color:var(--usep-yellow)">
-                        <p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-3" style="color:#92400e">Le principe</p>
-                        <p class="text-sm text-slate-700 leading-relaxed mb-3">
-                            Tous les sports collectifs partagent des <strong>invariants tactiques communs</strong> : progresser vers la cible, conserver le ballon, défendre en groupe. Retrouver la même structure de jeu dans plusieurs disciplines n'est pas une redondance — c'est volontaire.
-                        </p>
-                        <p class="text-sm text-slate-700 leading-relaxed">
-                            Lorsqu'un élève reconnaît qu'il joue <em>"les Déménageurs"</em> en rugby, puis en football, puis en hockey, il réalise que ce qu'il a appris n'est pas lié à un engin mais à une <strong>compétence tactique</strong>. Ce mécanisme s'appelle le <strong>transfert inter-disciplines</strong>.
-                        </p>
-                    </div>
-
-                    <!-- Bénéfices pour les enseignants -->
-                    <div class="grid sm:grid-cols-3 gap-4">
-                        <div class="rounded-2xl p-4 text-center" style="background:var(--usep-blue-light)">
-                            <i class="fas fa-brain text-2xl mb-2" style="color:var(--usep-blue)"></i>
-                            <p class="montserrat font-bold text-xs mb-1" style="color:var(--usep-blue)">Pour les élèves</p>
-                            <p class="text-xs text-slate-600">Ils consolident un concept tactique à travers des contextes variés, sans repartir de zéro à chaque plateau.</p>
-                        </div>
-                        <div class="rounded-2xl p-4 text-center" style="background:#fef9c3">
-                            <i class="fas fa-chalkboard-user text-2xl mb-2 text-amber-700"></i>
-                            <p class="montserrat font-bold text-xs mb-1 text-amber-800">Pour les enseignants</p>
-                            <p class="text-xs text-slate-600">Un seul temps d'explication suffit : les règles sont identiques, seul l'engin change. La gestion est simplifiée.</p>
-                        </div>
-                        <div class="rounded-2xl p-4 text-center" style="background:#f0fdf4">
-                            <i class="fas fa-arrows-rotate text-2xl mb-2 text-emerald-700"></i>
-                            <p class="montserrat font-bold text-xs mb-1 text-emerald-800">Pour la rencontre</p>
-                            <p class="text-xs text-slate-600">Les rotations entre plateaux sont plus fluides : les élèves s'adaptent vite à un contexte déjà connu.</p>
-                        </div>
-                    </div>
-
-                    <!-- Tableau de correspondance -->
-                    <div>
-                        <p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-3" style="color:var(--usep-blue)">Tableau de correspondance des situations fil rouge</p>
-                        <div class="rounded-2xl overflow-hidden border border-slate-100">
-                            <table class="transfer-table w-full text-sm">
-                                <thead style="background:var(--usep-blue)">
-                                    <tr>
-                                        <th class="text-white">Situation fil rouge</th>
-                                        <th class="text-white">Objectif tactique</th>
-                                        <th class="text-white text-center">Rugby</th>
-                                        <th class="text-white text-center">Football</th>
-                                        <th class="text-white text-center">Hockey</th>
-                                        <th class="text-white text-center">Tchouk.</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr style="background:#fffbeb">
-                                        <td>
-                                            <span class="fil-rouge-badge"><i class="fas fa-rotate"></i> Les Déménageurs</span>
-                                        </td>
-                                        <td class="text-slate-600 text-xs">Progresser vers son camp avec l'engin · Étape 2</td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#dcfce7;color:#166534" title="Rugby C2">✓</span></td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#dcfce7;color:#166534" title="Football C2">✓</span></td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#dcfce7;color:#166534" title="Hockey C2">✓</span></td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#f1f5f9;color:#94a3b8">—</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span class="fil-rouge-badge"><i class="fas fa-rotate"></i> Conservation / Toro</span>
-                                        </td>
-                                        <td class="text-slate-600 text-xs">Garder le ballon en supériorité numérique · Étape 3</td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#f1f5f9;color:#94a3b8">—</span></td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#fef9c3;color:#854d0e" title="Football C3">✓</span></td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#fef9c3;color:#854d0e" title="Hockey C3">✓</span></td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#f1f5f9;color:#94a3b8">—</span></td>
-                                    </tr>
-                                    <tr style="background:#fffbeb">
-                                        <td>
-                                            <span class="fil-rouge-badge"><i class="fas fa-rotate"></i> Contre-Attaque Éclair</span>
-                                        </td>
-                                        <td class="text-slate-600 text-xs">Transition défense → attaque rapide · Étape 4</td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#f1f5f9;color:#94a3b8">—</span></td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#fee2e2;color:#991b1b" title="Football C3">✓</span></td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#fee2e2;color:#991b1b" title="Hockey C3">✓</span></td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#f1f5f9;color:#94a3b8">—</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span class="fil-rouge-badge"><i class="fas fa-rotate"></i> Le Rideau de Fer</span>
-                                        </td>
-                                        <td class="text-slate-600 text-xs">Défense collective en ligne coulissante · Étape 4</td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#fee2e2;color:#991b1b" title="Rugby C3">✓</span></td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#fee2e2;color:#991b1b" title="Football C3">✓</span></td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#f1f5f9;color:#94a3b8">—</span></td>
-                                        <td class="text-center"><span class="transfer-dot" style="background:#f1f5f9;color:#94a3b8">—</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <p class="text-xs text-slate-400 mt-2 italic">Les ✓ colorés indiquent dans quel cycle la situation est présente (vert = C2, jaune = C3 étape 3, rouge = C3 étape 4).</p>
-                    </div>
-
-                    <!-- Conseil pratique -->
-                    <div class="rounded-2xl p-4 flex gap-4 items-start" style="background:var(--usep-blue-light)">
-                        <i class="fas fa-lightbulb text-xl mt-0.5 shrink-0" style="color:var(--usep-yellow)"></i>
-                        <div>
-                            <p class="montserrat font-bold text-sm mb-1" style="color:var(--usep-blue)">Conseil pour la mise en œuvre</p>
-                            <p class="text-sm text-slate-600">Lors du bilan de fin de rencontre, posez cette question aux élèves : <em>"Avez-vous reconnu une situation que vous avez déjà jouée aujourd'hui dans une autre discipline ?"</em> Ce moment de verbalisation est clé pour ancrer le transfert.</p>
-                        </div>
-                    </div>
-
-            <!-- PRINT THEORY CHECKBOX -->
-            <div id="theory-print-option" class="info-card p-5 flex items-center gap-4 no-print" style="border-top:4px solid var(--usep-blue);cursor:pointer" onclick="toggleTheory()">
-                <input type="checkbox" id="include-theory" class="card-checkbox w-5 h-5 shrink-0" onclick="event.stopPropagation();toggleTheory()">
-                <div>
-                    <p class="montserrat font-bold text-sm" style="color:var(--usep-blue)"><i class="fas fa-file-lines mr-2"></i>Inclure les principes théoriques dans l'impression</p>
-                    <p class="text-xs text-slate-500 mt-0.5">Trame des 5 étapes, situations fil rouge et conseil pédagogique — ajoutés en page 1 du dossier imprimé.</p>
-                </div>
-            </div>
-                </div>
-            </div>
+            <div id="gen-content"></div>
         </section>
 
-        <!-- ═══════════ CYCLE 2 ═══════════ -->
-        <section id="content-c2" class="tab-content hidden">
-            <h2 class="montserrat font-black text-2xl mb-8 section-title-bar" style="color:var(--usep-blue)">
-                Plateaux Cycle 2 <span class="font-normal text-slate-500">— Estavar</span>
-            </h2>
-            <div class="space-y-6">
-
-                <!-- P1 RUGBY C2 -->
-                <div class="sport-block">
-                    <div class="sport-block-header" style="background:linear-gradient(135deg,#047857,#059669)">
-                        <span class="sport-block-title text-white flex items-center gap-2">
-                            <i class="fas fa-rugby-ball" style="color:var(--usep-yellow)"></i>P1. Rugby à Toucher
-                        </span>
-                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
-                    </div>
-                    <div class="cards-scroll-wrapper">
-                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
-                        <div class="cards-scroll">
-                            <div onclick="openModal('r1-c2')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('r1-c2', this.checked)" data-id="r1-c2"></label>
-                                <span class="card-step" style="background:#dcfce7;color:#166534">Étape 1</span>
-                                <h4>Queue du Diable</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('r2-c2')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('r2-c2', this.checked)" data-id="r2-c2"></label>
-                                <span class="card-step" style="background:#dcfce7;color:#166534;border:1.5px solid #166534">Étape 2</span>
-                                <h4>La Rivière</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('r3-c2')" class="activity-card has-fil-rouge">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('r3-c2', this.checked)" data-id="r3-c2"></label>
-                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
-                                <h4>Déménageurs</h4>
-                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('r4-c2')" class="activity-card match-card" style="background:#047857;color:white">
-                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
-                                <h4 style="color:white">Match 4v4 Toucher</h4>
-                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- P2 FOOTBALL C2 -->
-                <div class="sport-block">
-                    <div class="sport-block-header" style="background:linear-gradient(135deg,#0369a1,#0284c7)">
-                        <span class="sport-block-title text-white flex items-center gap-2">
-                            <i class="fas fa-futbol" style="color:var(--usep-yellow)"></i>P2. Football Adapté
-                        </span>
-                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
-                    </div>
-                    <div class="cards-scroll-wrapper">
-                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
-                        <div class="cards-scroll">
-                            <div onclick="openModal('f1-c2')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('f1-c2', this.checked)" data-id="f1-c2"></label>
-                                <span class="card-step" style="background:#dcfce7;color:#166534">Étape 1</span>
-                                <h4>Béret Slalom</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('f2-c2')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('f2-c2', this.checked)" data-id="f2-c2"></label>
-                                <span class="card-step" style="background:#dcfce7;color:#166534;border:1.5px solid #166534">Étape 2</span>
-                                <h4>L'Horloge</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('f3-c2')" class="activity-card has-fil-rouge">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('f3-c2', this.checked)" data-id="f3-c2"></label>
-                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
-                                <h4>Déménageurs Pied</h4>
-                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('f4-c2')" class="activity-card match-card" style="background:#0369a1;color:white">
-                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
-                                <h4 style="color:white">Match sans Gardien</h4>
-                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- P3 TCHOUKBALL C2 -->
-                <div class="sport-block">
-                    <div class="sport-block-header" style="background:linear-gradient(135deg,#c2410c,#ea580c)">
-                        <span class="sport-block-title text-white flex items-center gap-2">
-                            <i class="fas fa-bullseye" style="color:var(--usep-yellow)"></i>P3. Tchoukball
-                        </span>
-                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
-                    </div>
-                    <div class="cards-scroll-wrapper">
-                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
-                        <div class="cards-scroll">
-                            <div onclick="openModal('t1-c2')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('t1-c2', this.checked)" data-id="t1-c2"></label>
-                                <span class="card-step" style="background:#dcfce7;color:#166534">Étape 1</span>
-                                <h4>Chasse au Rebond</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('t2-c2')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('t2-c2', this.checked)" data-id="t2-c2"></label>
-                                <span class="card-step" style="background:#dcfce7;color:#166534;border:1.5px solid #166534">Étape 2</span>
-                                <h4>Passe &amp; Tir</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('t3-c2')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('t3-c2', this.checked)" data-id="t3-c2"></label>
-                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
-                                <h4>Zones Interdites</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('t4-c2')" class="activity-card match-card" style="background:#c2410c;color:white">
-                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
-                                <h4 style="color:white">Match 3v3</h4>
-                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- P4 HOCKEY C2 -->
-                <div class="sport-block">
-                    <div class="sport-block-header" style="background:linear-gradient(135deg,#334155,#475569)">
-                        <span class="sport-block-title text-white flex items-center gap-2">
-                            <i class="fas fa-hockey-puck" style="color:var(--usep-yellow)"></i>P4. Hockey (Jeux de crosse)
-                        </span>
-                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
-                    </div>
-                    <div class="cards-scroll-wrapper">
-                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
-                        <div class="cards-scroll">
-                            <div onclick="openModal('hy1-c2')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('hy1-c2', this.checked)" data-id="hy1-c2"></label>
-                                <span class="card-step" style="background:#dcfce7;color:#166534">Étape 1</span>
-                                <h4>Le Slalom Géant</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('hy2-c2')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('hy2-c2', this.checked)" data-id="hy2-c2"></label>
-                                <span class="card-step" style="background:#dcfce7;color:#166534;border:1.5px solid #166534">Étape 2</span>
-                                <h4>La Balle à l'un</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('hy3-c2')" class="activity-card has-fil-rouge">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('hy3-c2', this.checked)" data-id="hy3-c2"></label>
-                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
-                                <h4>Déménageurs Crosse</h4>
-                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('hy4-c2')" class="activity-card match-card" style="background:#334155;color:white">
-                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
-                                <h4 style="color:white">Match aux Portes</h4>
-                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ═══════════ CYCLE 3 ═══════════ -->
-        <section id="content-c3" class="tab-content hidden">
-            <h2 class="montserrat font-black text-2xl mb-8 section-title-bar" style="color:var(--usep-blue)">
-                Plateaux Cycle 3 <span class="font-normal text-slate-500">— Matemale</span>
-            </h2>
-            <div class="space-y-6">
-
-                <!-- P1 FOOTBALL C3 -->
-                <div class="sport-block">
-                    <div class="sport-block-header" style="background:linear-gradient(135deg,#0c4a6e,#0369a1)">
-                        <span class="sport-block-title text-white flex items-center gap-2">
-                            <i class="fas fa-futbol" style="color:var(--usep-yellow)"></i>P1. Football Tactique
-                        </span>
-                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
-                    </div>
-                    <div class="cards-scroll-wrapper">
-                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
-                        <div class="cards-scroll">
-                            <div onclick="openModal('f1-c3')" class="activity-card has-fil-rouge">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('f1-c3', this.checked)" data-id="f1-c3"></label>
-                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
-                                <h4>Conservation 3v1</h4>
-                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('f2-c3')" class="activity-card has-fil-rouge">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('f2-c3', this.checked)" data-id="f2-c3"></label>
-                                <span class="card-step" style="background:#fee2e2;color:#991b1b">Étape 4</span>
-                                <h4>Contre-Attaque</h4>
-                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('f3-c3')" class="activity-card has-fil-rouge">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('f3-c3', this.checked)" data-id="f3-c3"></label>
-                                <span class="card-step" style="background:#fee2e2;color:#991b1b">Étape 4</span>
-                                <h4>Défense en Ligne</h4>
-                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('f4-c3')" class="activity-card match-card" style="background:#0c4a6e;color:white">
-                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
-                                <h4 style="color:white">Match Appuis</h4>
-                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- P2 HOCKEY C3 -->
-                <div class="sport-block">
-                    <div class="sport-block-header" style="background:linear-gradient(135deg,#334155,#475569)">
-                        <span class="sport-block-title text-white flex items-center gap-2">
-                            <i class="fas fa-hockey-puck" style="color:var(--usep-yellow)"></i>P2. Hockey Tactique
-                        </span>
-                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
-                    </div>
-                    <div class="cards-scroll-wrapper">
-                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
-                        <div class="cards-scroll">
-                            <div onclick="openModal('hy1-c3')" class="activity-card has-fil-rouge">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('hy1-c3', this.checked)" data-id="hy1-c3"></label>
-                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
-                                <h4>Toro à la crosse</h4>
-                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('hy2-c3')" class="activity-card has-fil-rouge">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('hy2-c3', this.checked)" data-id="hy2-c3"></label>
-                                <span class="card-step" style="background:#fee2e2;color:#991b1b">Étape 4</span>
-                                <h4>Contre-Attaque Éclair</h4>
-                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('hy3-c3')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('hy3-c3', this.checked)" data-id="hy3-c3"></label>
-                                <span class="card-step" style="background:#991b1b;color:white">Étape 5</span>
-                                <h4>Repli Défensif</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('hy4-c3')" class="activity-card match-card" style="background:#334155;color:white">
-                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
-                                <h4 style="color:white">Match 5v5</h4>
-                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- P3 RUGBY C3 -->
-                <div class="sport-block">
-                    <div class="sport-block-header" style="background:linear-gradient(135deg,#065f46,#047857)">
-                        <span class="sport-block-title text-white flex items-center gap-2">
-                            <i class="fas fa-rugby-ball" style="color:var(--usep-yellow)"></i>P3. Rugby Stratégie
-                        </span>
-                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
-                    </div>
-                    <div class="cards-scroll-wrapper">
-                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
-                        <div class="cards-scroll">
-                            <div onclick="openModal('r1-c3')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('r1-c3', this.checked)" data-id="r1-c3"></label>
-                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
-                                <h4>Fixer pour donner</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('r2-c3')" class="activity-card has-fil-rouge">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('r2-c3', this.checked)" data-id="r2-c3"></label>
-                                <span class="card-step" style="background:#fee2e2;color:#991b1b">Étape 4</span>
-                                <h4>Le Rideau de Fer</h4>
-                                <span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('r3-c3')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('r3-c3', this.checked)" data-id="r3-c3"></label>
-                                <span class="card-step" style="background:#991b1b;color:white">Étape 5</span>
-                                <h4>Play the ball</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('r4-c3')" class="activity-card match-card" style="background:#065f46;color:white">
-                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
-                                <h4 style="color:white">Rugby à 5</h4>
-                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- P4 TCHOUKBALL C3 -->
-                <div class="sport-block">
-                    <div class="sport-block-header" style="background:linear-gradient(135deg,#9a3412,#c2410c)">
-                        <span class="sport-block-title text-white flex items-center gap-2">
-                            <i class="fas fa-crosshairs" style="color:var(--usep-yellow)"></i>P4. Tchoukball Tactique
-                        </span>
-                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
-                    </div>
-                    <div class="cards-scroll-wrapper">
-                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
-                        <div class="cards-scroll">
-                            <div onclick="openModal('t1-c3')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('t1-c3', this.checked)" data-id="t1-c3"></label>
-                                <span class="card-step" style="background:#fef9c3;color:#854d0e">Étape 3</span>
-                                <h4>L'Angle Mort</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('t2-c3')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('t2-c3', this.checked)" data-id="t2-c3"></label>
-                                <span class="card-step" style="background:#fee2e2;color:#991b1b">Étape 4</span>
-                                <h4>Blocage de Tir</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('t3-c3')" class="activity-card">
-                                <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier d'impression"><input type="checkbox" class="card-checkbox" onchange="toggleBasket('t3-c3', this.checked)" data-id="t3-c3"></label>
-                                <span class="card-step" style="background:#991b1b;color:white">Étape 5</span>
-                                <h4>Attaque Bilatérale</h4>
-                                <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
-                            </div>
-                            <div onclick="openModal('t4-c3')" class="activity-card match-card" style="background:#9a3412;color:white">
-                                <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">Match Réf.</span>
-                                <h4 style="color:white">Tournoi 5v5</h4>
-                                <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
+        <!-- ONGLETS CYCLES — remplis par CONFIG -->
+        <div id="cycles-content"></div>
     </main>
 
     <!-- FOOTER -->
     <footer class="max-w-6xl mx-auto mt-16 mb-10 px-4">
-        <div class="rounded-3xl p-6 text-center" style="background:var(--usep-blue)">
-            <div class="montserrat font-black text-base mb-1" style="color:var(--usep-yellow)">USEP 66 · Pyrénées-Orientales</div>
-            <p class="text-blue-200 text-sm">© 2026 — Dossier Pédagogique Interactif, Circonscription de Prades</p>
-            <p class="text-blue-300 text-xs mt-1 italic">Contenu finalisé le 20/02/2026 · Rencontres d'avril 2026</p>
-            <a href="https://usep66.org" target="_blank" class="mt-3 inline-block text-xs font-bold underline montserrat" style="color:var(--usep-yellow)">usep66.org</a>
+        <div class="rounded-3xl p-6 text-center" style="background:var(--theme-primary)">
+            <div class="montserrat font-black text-base mb-1" id="footer-org" style="color:var(--theme-accent)"></div>
+            <p class="text-blue-200 text-sm" id="footer-copy"></p>
+            <p class="text-blue-300 text-xs mt-1 italic" id="footer-date"></p>
+            <a id="footer-link" href="#" target="_blank" class="mt-3 inline-block text-xs font-bold underline montserrat" style="color:var(--theme-accent)"></a>
         </div>
     </footer>
 
@@ -1116,7 +464,7 @@
         <span id="basket-count">0</span>
     </button>
 
-    <!-- BASKET MODAL -->
+    <!-- BASKET MODAL — MOTEUR -->
     <div id="basket-modal" class="hidden-btn modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50 p-4 no-print">
         <div class="absolute w-full h-full bg-slate-900/70 backdrop-blur-sm" onclick="closeBasketModal()"></div>
         <div class="modal-card w-full max-w-lg mx-auto relative z-50">
@@ -1126,9 +474,7 @@
                         <p class="text-blue-200 text-xs font-bold uppercase tracking-widest montserrat mb-1">Impression à la carte</p>
                         <h2 class="montserrat text-xl font-black text-white">Panier d'impression</h2>
                     </div>
-                    <button onclick="closeBasketModal()" class="text-blue-200 hover:text-white transition ml-4 mt-1">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
+                    <button onclick="closeBasketModal()" class="text-blue-200 hover:text-white transition ml-4 mt-1"><i class="fas fa-times text-xl"></i></button>
                 </div>
             </div>
             <div class="p-6 space-y-4">
@@ -1137,25 +483,21 @@
                     <label class="flex items-center gap-3 cursor-pointer rounded-xl p-3 hover:bg-slate-50 border">
                         <input type="checkbox" id="include-theory-basket" class="card-checkbox w-5 h-5 shrink-0">
                         <div>
-                            <p class="montserrat font-bold text-sm" style="color:var(--usep-blue)">Inclure la page théorique</p>
-                            <p class="text-xs text-slate-500">Trame des 5 étapes + situations fil rouge + conseil pédagogique</p>
+                            <p class="montserrat font-bold text-sm" style="color:var(--theme-primary)">Inclure la page théorique</p>
+                            <p class="text-xs text-slate-500" id="theory-label-basket">Récapitulatif pédagogique</p>
                         </div>
                     </label>
                 </div>
                 <div class="flex gap-3">
-                    <button onclick="clearBasket()" class="flex-1 py-2.5 rounded-xl border border-slate-200 text-sm font-bold montserrat text-slate-500 hover:bg-slate-50 transition">
-                        <i class="fas fa-trash mr-2"></i>Vider
-                    </button>
-                    <button onclick="preparePrint()" class="flex-2 py-2.5 px-6 rounded-xl text-sm font-bold montserrat text-white transition" style="background:var(--usep-blue);flex:2">
-                        <i class="fas fa-print mr-2"></i>Imprimer <span id="basket-print-count">0</span> fiche(s)
-                    </button>
+                    <button onclick="clearBasket()" class="flex-1 py-2.5 rounded-xl border border-slate-200 text-sm font-bold montserrat text-slate-500 hover:bg-slate-50 transition"><i class="fas fa-trash mr-2"></i>Vider</button>
+                    <button onclick="preparePrint()" class="flex-2 py-2.5 px-6 rounded-xl text-sm font-bold montserrat text-white transition" style="background:var(--theme-primary);flex:2"><i class="fas fa-print mr-2"></i>Imprimer <span id="basket-print-count">0</span> fiche(s)</button>
                 </div>
                 <p class="text-xs text-slate-400 text-center italic">Cochez les fiches souhaitées directement sur les cartes pour les ajouter au panier.</p>
             </div>
         </div>
     </div>
 
-    <!-- MODAL -->
+    <!-- DETAIL MODAL — MOTEUR -->
     <div id="detail-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50 p-4">
         <div class="modal-overlay absolute w-full h-full bg-slate-900/70 backdrop-blur-sm" onclick="closeModal()"></div>
         <div class="modal-card w-full max-w-2xl mx-auto relative z-50">
@@ -1165,18 +507,278 @@
                         <p class="text-blue-200 text-xs font-bold uppercase tracking-widest montserrat mb-1">Fiche Situation</p>
                         <h2 class="montserrat text-2xl font-black text-white" id="modal-title">Situation</h2>
                     </div>
-                    <button onclick="closeModal()" class="text-blue-200 hover:text-white transition ml-4 mt-1">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
+                    <button onclick="closeModal()" class="text-blue-200 hover:text-white transition ml-4 mt-1"><i class="fas fa-times text-xl"></i></button>
                 </div>
             </div>
             <div id="modal-body" class="p-6 space-y-5"></div>
         </div>
     </div>
 
-    
     <script>
-        const situations = {
+    /* ══════════════════════════════════════════════════════════════════════
+    ██████████████████████████████████████████████████████████████████████
+    ██                                                                  ██
+    ██   BLOC CONFIG — TOUT CE QUE TU MODIFIES POUR CHAQUE NOUVEAU     ██
+    ██   DOSSIER EST ICI. LE RESTE DU FICHIER N'EST JAMAIS TOUCHÉ.     ██
+    ██                                                                  ██
+    ██████████████████████████████████████████████████████████████████████
+    ══════════════════════════════════════════════════════════════════════ */
+
+    const CONFIG = {
+
+        /* ── 1. IDENTITÉ DU DOSSIER ── */
+        titre:        "Vers les Sports Collectifs",
+        sousTitre:    "Dossier Pédagogique Interactif · Circonscription de Prades",
+        badge:        "Rencontres de circonscription · Avril 2026",
+        organisation: "USEP 66 · Pyrénées-Orientales",
+        logoLabel:    "USEP 66",
+        navSubtitle:  "Union Sportive de l'Enseignement du Premier degré",
+        email:        "contact@usep66.fr",
+        site:         "usep66.org",
+        copyright:    "© 2026 — Dossier Pédagogique Interactif, Circonscription de Prades",
+        dateFin:      "Contenu finalisé le 20/02/2026 · Rencontres d'avril 2026",
+
+        /* ── 2. PALETTE DE COULEURS ──
+           Pour un nouveau dossier, change juste ces 4 valeurs.
+           Exemples :
+           → Savoir rouler à vélo : primary="#2d7a22" (vert), accent="#f97316" (orange)
+           → Natation : primary="#0891b2" (cyan), accent="#fbbf24" (jaune)
+           → Athlétisme : primary="#7c3aed" (violet), accent="#f43f5e" (rose)
+        */
+        colors: {
+            primary:      "#0055A4",    // couleur principale (navbar, hero, boutons)
+            primaryDark:  "#003f7d",    // version sombre (modal header, hover)
+            primaryLight: "#e8f0fb",    // version très claire (backgrounds, badges)
+            accent:       "#FFD700",    // couleur d'accent (soulignements, badges étape)
+        },
+
+        /* ── 3. INFOS PRATIQUES (affichées dans le hero) ── */
+        infosHero: [
+            { icone: "fa-map-marker-alt", texte: "Estavar (C2, 9 avril) &amp; Matemale (C3, 10 avril)" },
+            { icone: "fa-users",          texte: "Rugby · Football · Tchoukball · Hockey" },
+        ],
+
+        /* ── 4. ONGLETS / CYCLES ──
+           Tu peux avoir 2 onglets (C2/C3), 3 onglets (C1/C2/C3), ou juste 1 cycle.
+           Chaque onglet a un id, un label affiché, et une icône FontAwesome.
+        */
+        onglets: [
+            { id: "gen", label: "Généralités",  icone: "fa-graduation-cap" },
+            { id: "c2",  label: "Cycle 2",      icone: "fa-child"          },
+            { id: "c3",  label: "Cycle 3",      icone: "fa-person-running" },
+        ],
+
+        /* ── 5. CONTENU ONGLET GÉNÉRALITÉS ──
+           Modifie chaque sous-section pour l'adapter à ton nouveau dossier.
+        */
+        generalites: {
+
+            /* Dalle "La Progression" */
+            progressionDesc: "Elle guide l'élève de la manipulation à la réversibilité (Étapes 1 à 5).",
+            progressionCycles: [
+                "C2 : Focus Étapes 1 à 3",
+                "C3 : Focus Étapes 3 à 5",
+            ],
+
+            /* Dalle "Déroulé de la journée" */
+            deroulement: {
+                matinLabel: "Matin — 4 rotations de 30 min",
+                matin: [
+                    "Plateau 1 · 30 min",
+                    "Plateau 2 · 30 min",
+                    "Plateau 3 · 30 min",
+                    "Plateau 4 · 30 min",
+                ],
+                apmLabel:  "Après-midi — Tournoi multisports",
+                apmTexte:  "1 mini-tournoi par discipline · Score cumulé",
+            },
+
+            /* Dalle "Sites validés" */
+            sites: [
+                { label: "C2 : Estavar (9 Avril)",   type: "École" },
+                { label: "C3 : Matemale (10 Avril)", type: "École" },
+            ],
+
+            /* Trame des étapes */
+            etapes: [
+                { num: "1", label: "Parmi les autres",  desc: "Manipulation libre",   style: "background:#dcfce7",                      textColor: "#166534" },
+                { num: "2", label: "Coopérer",          desc: "Échange partenaire",   style: "background:#dcfce7;border:2px solid #166534", textColor: "#166534" },
+                { num: "3", label: "Opposition directe",desc: "Adversaire gênant",    style: "background:#fef9c3",                      textColor: "#854d0e" },
+                { num: "4", label: "Attaque / Défense", desc: "Rôles fixes",          style: "background:#fee2e2",                      textColor: "#991b1b" },
+                { num: "5", label: "Réversibilité",     desc: "Transition rapide",    style: "background:#991b1b",                      textColor: "white"   },
+            ],
+
+            /* Encart Fil Rouge — texte d'explication */
+            filRougeExplication: {
+                para1: `Tous les sports collectifs partagent des <strong>invariants tactiques communs</strong> : progresser vers la cible, conserver le ballon, défendre en groupe. Retrouver la même structure de jeu dans plusieurs disciplines n'est pas une redondance — c'est volontaire.`,
+                para2: `Lorsqu'un élève reconnaît qu'il joue <em>"les Déménageurs"</em> en rugby, puis en football, puis en hockey, il réalise que ce qu'il a appris n'est pas lié à un engin mais à une <strong>compétence tactique</strong>. Ce mécanisme s'appelle le <strong>transfert inter-disciplines</strong>.`,
+                benefices: [
+                    { icone: "fa-brain",           iconColor: "var(--theme-primary)", bg: "var(--theme-primary-light)", titleColor: "var(--theme-primary)", titre: "Pour les élèves",     texte: "Ils consolident un concept tactique à travers des contextes variés, sans repartir de zéro à chaque plateau." },
+                    { icone: "fa-chalkboard-user", iconColor: "#b45309",              bg: "#fef9c3",                    titleColor: "#92400e",              titre: "Pour les enseignants",texte: "Un seul temps d'explication suffit : les règles sont identiques, seul l'engin change. La gestion est simplifiée." },
+                    { icone: "fa-arrows-rotate",   iconColor: "#047857",              bg: "#f0fdf4",                    titleColor: "#065f46",              titre: "Pour la rencontre",   texte: "Les rotations entre plateaux sont plus fluides : les élèves s'adaptent vite à un contexte déjà connu." },
+                ],
+            },
+
+            /* Tableau fil rouge — entêtes et lignes
+               Pour chaque ligne, dotStyles définit le style visuel de chaque point (✓/—).
+               Couleurs : vert = C2, jaune = étape 3, rouge = étape 4, gris = absent
+            */
+            filsRougeHeaders: ["Rugby","Football","Hockey","Tchouk."],
+            filsRouge: [
+                {
+                    nom: "Les Déménageurs",
+                    objectif: "Progresser vers son camp avec l'engin · Étape 2",
+                    cols: ["✓","✓","✓","—"],
+                    dotStyles: ["background:#dcfce7;color:#166534","background:#dcfce7;color:#166534","background:#dcfce7;color:#166534","background:#f1f5f9;color:#94a3b8"],
+                },
+                {
+                    nom: "Conservation / Toro",
+                    objectif: "Garder le ballon en supériorité numérique · Étape 3",
+                    cols: ["—","✓","✓","—"],
+                    dotStyles: ["background:#f1f5f9;color:#94a3b8","background:#fef9c3;color:#854d0e","background:#fef9c3;color:#854d0e","background:#f1f5f9;color:#94a3b8"],
+                },
+                {
+                    nom: "Contre-Attaque Éclair",
+                    objectif: "Transition défense → attaque rapide · Étape 4",
+                    cols: ["—","✓","✓","—"],
+                    dotStyles: ["background:#f1f5f9;color:#94a3b8","background:#fee2e2;color:#991b1b","background:#fee2e2;color:#991b1b","background:#f1f5f9;color:#94a3b8"],
+                },
+                {
+                    nom: "Le Rideau de Fer",
+                    objectif: "Défense collective en ligne coulissante · Étape 4",
+                    cols: ["✓","✓","—","—"],
+                    dotStyles: ["background:#fee2e2;color:#991b1b","background:#fee2e2;color:#991b1b","background:#f1f5f9;color:#94a3b8","background:#f1f5f9;color:#94a3b8"],
+                },
+            ],
+            filRougeLegende: "Les ✓ colorés indiquent dans quel cycle la situation est présente (vert = C2, jaune = C3 étape 3, rouge = C3 étape 4).",
+
+            /* Conseil pédagogique */
+            conseilPedago: `Lors du bilan de fin de rencontre, posez cette question aux élèves : <em>"Avez-vous reconnu une situation que vous avez déjà jouée aujourd'hui dans une autre discipline ?"</em> Ce moment de verbalisation est clé pour ancrer le transfert.`,
+        },
+
+        /* ── 6. CYCLES ET PLATEAUX ──
+           Structure : un tableau de cycles, chacun contenant des plateaux (disciplines).
+           Chaque plateau a : id, label, icone, couleurHeader (gradient CSS), et ses cartes.
+        */
+        cycles: [
+            {
+                id: "c2",
+                titre:     "Plateaux Cycle 2",   /* ← Titre affiché au-dessus des plateaux */
+                sousTitre: "Estavar",             /* ← Affiché en gris après le tiret        */
+                plateaux: [
+                    {
+                        id:            "rugby-c2",
+                        label:         "P1. Rugby à Toucher",
+                        icone:         "fa-rugby-ball",
+                        couleurHeader: "background:linear-gradient(135deg,#047857,#059669)",
+                        cartes: [
+                            { id: "r1-c2", etape: "Étape 1", etapeStyle: "background:#dcfce7;color:#166534", titre: "La Queue du Diable" },
+                            { id: "r2-c2", etape: "Étape 2", etapeStyle: "background:#dcfce7;color:#166534;border:1.5px solid #166534", titre: "La Rivière" },
+                            { id: "r3-c2", etape: "Étape 2–3", etapeStyle: "background:#fef9c3;color:#854d0e", titre: "Déménageurs Rugby", filRouge: true },
+                            { id: "r4-c2", etape: "Match Réf.", titre: "Match 4v4 Toucher", isMatch: true, matchStyle: "background:#047857;color:white" },
+                        ]
+                    },
+                    {
+                        id:            "foot-c2",
+                        label:         "P2. Football Adapté",
+                        icone:         "fa-futbol",
+                        couleurHeader: "background:linear-gradient(135deg,#0369a1,#0284c7)",
+                        cartes: [
+                            { id: "f1-c2", etape: "Étape 1",   etapeStyle: "background:#dcfce7;color:#166534", titre: "Béret Slalom" },
+                            { id: "f2-c2", etape: "Étape 2",   etapeStyle: "background:#dcfce7;color:#166534;border:1.5px solid #166534", titre: "L'Horloge" },
+                            { id: "f3-c2", etape: "Étape 2–3", etapeStyle: "background:#fef9c3;color:#854d0e", titre: "Déménageurs Pied", filRouge: true },
+                            { id: "f4-c2", etape: "Match Réf.", titre: "Match sans Gardien", isMatch: true, matchStyle: "background:#0369a1;color:white" },
+                        ]
+                    },
+                    {
+                        id:            "tchouk-c2",
+                        label:         "P3. Tchoukball",
+                        icone:         "fa-bullseye",
+                        couleurHeader: "background:linear-gradient(135deg,#c2410c,#ea580c)",
+                        cartes: [
+                            { id: "t1-c2", etape: "Étape 1", etapeStyle: "background:#dcfce7;color:#166534", titre: "Chasse au Rebond" },
+                            { id: "t2-c2", etape: "Étape 2", etapeStyle: "background:#dcfce7;color:#166534;border:1.5px solid #166534", titre: "Passe & Tir" },
+                            { id: "t3-c2", etape: "Étape 3", etapeStyle: "background:#fef9c3;color:#854d0e", titre: "Zones Interdites" },
+                            { id: "t4-c2", etape: "Match Réf.", titre: "Match 3v3", isMatch: true, matchStyle: "background:#c2410c;color:white" },
+                        ]
+                    },
+                    {
+                        id:            "hockey-c2",
+                        label:         "P4. Hockey / Jeux de Crosse",
+                        icone:         "fa-hockey-puck",
+                        couleurHeader: "background:linear-gradient(135deg,#334155,#475569)",
+                        cartes: [
+                            { id: "hy1-c2", etape: "Étape 1",   etapeStyle: "background:#dcfce7;color:#166534", titre: "Le Slalom Géant" },
+                            { id: "hy2-c2", etape: "Étape 2",   etapeStyle: "background:#dcfce7;color:#166634;border:1.5px solid #166534", titre: "La Balle à l'un" },
+                            { id: "hy3-c2", etape: "Étape 2–3", etapeStyle: "background:#fef9c3;color:#854d0e", titre: "Déménageurs Crosse", filRouge: true },
+                            { id: "hy4-c2", etape: "Match Réf.", titre: "Match aux Portes", isMatch: true, matchStyle: "background:#334155;color:white" },
+                        ]
+                    },
+                ]
+            },
+            {
+                id: "c3",
+                titre:     "Plateaux Cycle 3",
+                sousTitre: "Matemale",
+                plateaux: [
+                    {
+                        id:            "foot-c3",
+                        label:         "P1. Football Tactique",
+                        icone:         "fa-futbol",
+                        couleurHeader: "background:linear-gradient(135deg,#0c4a6e,#0369a1)",
+                        cartes: [
+                            { id: "f1-c3", etape: "Étape 3",   etapeStyle: "background:#fef9c3;color:#854d0e", titre: "Conservation 3v1 (Toro)", filRouge: true },
+                            { id: "f2-c3", etape: "Étape 4–5", etapeStyle: "background:#fee2e2;color:#991b1b", titre: "Contre-Attaque Éclair", filRouge: true },
+                            { id: "f3-c3", etape: "Étape 4",   etapeStyle: "background:#fee2e2;color:#991b1b", titre: "Défense en Ligne — Le Rideau", filRouge: true },
+                            { id: "f4-c3", etape: "Match Réf.", titre: "Match avec Appuis", isMatch: true, matchStyle: "background:#0c4a6e;color:white" },
+                        ]
+                    },
+                    {
+                        id:            "hockey-c3",
+                        label:         "P2. Hockey Stratégie",
+                        icone:         "fa-hockey-puck",
+                        couleurHeader: "background:linear-gradient(135deg,#334155,#475569)",
+                        cartes: [
+                            { id: "hy1-c3", etape: "Étape 3",   etapeStyle: "background:#fef9c3;color:#854d0e", titre: "Toro à la crosse", filRouge: true },
+                            { id: "hy2-c3", etape: "Étape 4–5", etapeStyle: "background:#fee2e2;color:#991b1b", titre: "Contre-Attaque Éclair", filRouge: true },
+                            { id: "hy3-c3", etape: "Étape 4",   etapeStyle: "background:#fee2e2;color:#991b1b", titre: "Jeu des Intervalles" },
+                            { id: "hy4-c3", etape: "Match Réf.", titre: "Match 5v5", isMatch: true, matchStyle: "background:#334155;color:white" },
+                        ]
+                    },
+                    {
+                        id:            "rugby-c3",
+                        label:         "P3. Rugby Stratégie",
+                        icone:         "fa-rugby-ball",
+                        couleurHeader: "background:linear-gradient(135deg,#065f46,#047857)",
+                        cartes: [
+                            { id: "r1-c3", etape: "Étape 3",   etapeStyle: "background:#fef9c3;color:#854d0e", titre: "Fixer pour donner" },
+                            { id: "r2-c3", etape: "Étape 4",   etapeStyle: "background:#fee2e2;color:#991b1b", titre: "Le Rideau de Fer", filRouge: true },
+                            { id: "r3-c3", etape: "Étape 5",   etapeStyle: "background:#991b1b;color:white",   titre: "Play the ball" },
+                            { id: "r4-c3", etape: "Match Réf.", titre: "Rugby à 5", isMatch: true, matchStyle: "background:#065f46;color:white" },
+                        ]
+                    },
+                    {
+                        id:            "tchouk-c3",
+                        label:         "P4. Tchoukball Tactique",
+                        icone:         "fa-crosshairs",
+                        couleurHeader: "background:linear-gradient(135deg,#9a3412,#c2410c)",
+                        cartes: [
+                            { id: "t1-c3", etape: "Étape 3",   etapeStyle: "background:#fef9c3;color:#854d0e", titre: "L'Angle Mort" },
+                            { id: "t2-c3", etape: "Étape 4",   etapeStyle: "background:#fee2e2;color:#991b1b", titre: "Blocage de Tir" },
+                            { id: "t3-c3", etape: "Étape 5",   etapeStyle: "background:#991b1b;color:white",   titre: "Attaque Bilatérale" },
+                            { id: "t4-c3", etape: "Match Réf.", titre: "Tournoi 5v5", isMatch: true, matchStyle: "background:#9a3412;color:white" },
+                        ]
+                    },
+                ]
+            },
+        ],
+
+        /* ── 7. FICHES SITUATIONS (les données de chaque carte) ──
+           Chaque clé doit correspondre à un id de carte défini dans cycles ci-dessus.
+           Champs disponibles : title, etape, goal, but, setup, rules, variables,
+                                rolesSociaux (optionnel), filRouge (optionnel)
+        */
+        situations: {
 
             /* ═══════ HOCKEY / JEUX DE CROSSE ═══════ */
 
@@ -1515,257 +1117,499 @@
                 variables: "Intégrer un arbitre officiel parmi les élèves avec carton jaune (avertissement) pour fautes répétées.",
                 rolesSociaux: "Jeune Officiel : applique le code 3-3 (3 pas, 3 s) et explique chaque décision. Bon Compteur : tableau de score affiché."
             }
-        };
+        },
 
+    }; /* FIN DU BLOC CONFIG */
 
-        /* ═══ PRINT BASKET SYSTEM ═══ */
-        var printBasket = new Set();
+    /* ══════════════════════════════════════════════════════════════════════
+       MOTEUR D'INITIALISATION — NE PAS MODIFIER
+       Ce code lit CONFIG et construit toute la page automatiquement.
+    ══════════════════════════════════════════════════════════════════════ */
 
-        function toggleBasket(id, checked) {
-            if (checked) {
-                printBasket.add(id);
-            } else {
-                printBasket.delete(id);
+    // Appliquer les couleurs CSS
+    (function applyColors() {
+        const r = document.documentElement.style;
+        r.setProperty('--theme-primary',       CONFIG.colors.primary);
+        r.setProperty('--theme-primary-dark',  CONFIG.colors.primaryDark);
+        r.setProperty('--theme-primary-light', CONFIG.colors.primaryLight);
+        r.setProperty('--theme-accent',        CONFIG.colors.accent);
+        // Gradient hero
+        r.setProperty('--theme-primary-mid',   CONFIG.colors.primaryDark);
+    })();
+
+    // Remplir les textes statiques
+    document.title = CONFIG.titre + ' — ' + CONFIG.organisation;
+    document.getElementById('page-title').textContent = CONFIG.titre + ' — ' + CONFIG.organisation;
+    document.getElementById('topbar-org').textContent = CONFIG.organisation;
+    if (CONFIG.email) document.getElementById('topbar-email').innerHTML = '<i class="fas fa-envelope mr-1"></i>' + CONFIG.email;
+    const siteEl = document.getElementById('topbar-site');
+    siteEl.textContent = CONFIG.site;
+    siteEl.href = 'https://' + CONFIG.site;
+    document.getElementById('nav-logo').innerHTML = CONFIG.logoLabel;
+    document.getElementById('nav-subtitle').textContent = CONFIG.navSubtitle;
+    document.getElementById('hero-badge').textContent = CONFIG.badge;
+    document.getElementById('hero-title').textContent = CONFIG.titre;
+    document.getElementById('hero-subtitle').textContent = CONFIG.sousTitre;
+    document.getElementById('footer-org').textContent = CONFIG.organisation;
+    document.getElementById('footer-copy').textContent = CONFIG.copyright;
+    document.getElementById('footer-date').textContent = CONFIG.dateFin;
+    const footLink = document.getElementById('footer-link');
+    footLink.textContent = CONFIG.site;
+    footLink.href = 'https://' + CONFIG.site;
+
+    // Liens navbar
+    const navLinks = document.getElementById('nav-links');
+    ['Accueil','Rencontres','Ressources','Actualités','Contact'].forEach(l => {
+        const a = document.createElement('a');
+        a.href = '#'; a.className = 'nav-link'; a.textContent = l;
+        navLinks.appendChild(a);
+    });
+
+    // Infos héro
+    const heroInfos = document.getElementById('hero-infos');
+    CONFIG.infosHero.forEach(info => {
+        heroInfos.innerHTML += `<span class="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
+            <i class="fas ${info.icone}" style="color:var(--theme-accent)"></i>${info.texte}</span>`;
+    });
+
+    // Onglets
+    const tabsContainer = document.getElementById('tabs-container');
+    CONFIG.onglets.forEach((tab, i) => {
+        const btn = document.createElement('button');
+        btn.id = 'tab-' + tab.id + '-btn';
+        btn.className = 'tab-btn' + (i === 0 ? ' tab-pill-active' : '');
+        btn.innerHTML = `<i class="fas ${tab.icone} mr-1.5"></i>${tab.label}`;
+        btn.onclick = () => switchTab(tab.id);
+        tabsContainer.appendChild(btn);
+    });
+
+    // Généralités
+    function buildGeneralites() {
+        const g = CONFIG.generalites;
+        const container = document.getElementById('gen-content');
+
+        // ── 3 dalles supérieures : Progression / Déroulé / Sites ──
+        let sitesHtml = (g.sites || []).map(s => `
+            <div class="flex justify-between items-center gap-2">
+                <span class="text-sm font-semibold">${s.label}</span>
+                <span class="text-xs px-2 py-1 rounded-full font-bold" style="background:var(--theme-primary-light);color:var(--theme-primary)">${s.type}</span>
+            </div>`).join('');
+
+        let matinHtml = (g.deroulement.matin || []).map((m,i) => `
+            <div class="flex items-center gap-2 text-xs bg-slate-50 rounded-lg px-3 py-2">
+                <span class="w-5 h-5 rounded-full flex items-center justify-center text-white font-black text-xs shrink-0" style="background:var(--theme-primary)">${i+1}</span>
+                ${m}
+            </div>`).join('');
+
+        container.innerHTML = `
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+
+            <!-- Dalle 1 : La Progression -->
+            <div class="info-card p-6" style="border-top: 4px solid var(--theme-primary)">
+                <h3 class="montserrat font-extrabold text-base mb-3" style="color:var(--theme-primary)">
+                    <i class="fas fa-layer-group mr-2"></i>La Progression
+                </h3>
+                <p class="text-sm text-slate-600 mb-4">${g.progressionDesc}</p>
+                <div class="space-y-2">
+                    ${g.progressionCycles.map(c => `<div class="text-xs rounded-lg px-3 py-2 font-semibold" style="background:var(--theme-primary-light);color:var(--theme-primary)">${c}</div>`).join('')}
+                </div>
+            </div>
+
+            <!-- Dalle 2 : Déroulé de la journée -->
+            <div class="info-card p-6" style="border-top: 4px solid var(--theme-accent)">
+                <h3 class="montserrat font-extrabold text-base mb-3 text-amber-800">
+                    <i class="fas fa-clock mr-2" style="color:var(--theme-primary)"></i>Déroulé de la Journée
+                </h3>
+                <div class="space-y-3">
+                    <div>
+                        <p class="montserrat font-bold text-xs uppercase tracking-wider mb-2" style="color:var(--theme-primary)">${g.deroulement.matinLabel}</p>
+                        <div class="space-y-1.5">${matinHtml}</div>
+                    </div>
+                    <div class="border-t pt-3">
+                        <p class="montserrat font-bold text-xs uppercase tracking-wider mb-2" style="color:#b45309">${g.deroulement.apmLabel}</p>
+                        <div class="rounded-xl px-3 py-2 text-xs font-semibold" style="background:#fffbeb;color:#92400e">
+                            <i class="fas fa-trophy mr-1.5" style="color:var(--theme-accent)"></i>${g.deroulement.apmTexte}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dalle 3 : Sites validés -->
+            <div class="info-card p-6" style="border-top: 4px solid #1e293b">
+                <h3 class="montserrat font-extrabold text-base mb-3 text-slate-900">
+                    <i class="fas fa-map-marker-alt mr-2" style="color:var(--theme-primary)"></i>Sites Validés
+                </h3>
+                <div class="space-y-4">${sitesHtml}</div>
+            </div>
+        </div>`;
+
+        // ── Trame des étapes ──
+        container.innerHTML += `
+        <div class="info-card p-6 mb-8">
+            <h3 class="montserrat font-extrabold text-base mb-5" style="color:var(--theme-primary)">
+                <i class="fas fa-stairs mr-2"></i>La Trame des ${g.etapes.length} Étapes
+            </h3>
+            <div class="${g.etapes.length === 5 ? 'grid sm:grid-cols-5 gap-3' : g.etapes.length === 4 ? 'grid sm:grid-cols-4 gap-3' : 'grid sm:grid-cols-3 gap-3'}">
+                ${g.etapes.map(e => `<div class="rounded-2xl p-4 text-center" style="${e.style}">
+                    <div class="montserrat font-black text-2xl" style="color:${e.textColor}">${e.num}</div>
+                    <div class="text-xs font-bold mt-1" style="color:${e.textColor}">${e.label}</div>
+                    <div class="text-xs mt-1" style="color:${e.textColor};opacity:0.8">${e.desc}</div>
+                </div>`).join('')}
+            </div>
+        </div>`;
+
+        // ── Encart Situations Fil Rouge (complet, fidèle à l'original) ──
+        if (g.filsRouge && g.filsRouge.length > 0) {
+            let tableRows = g.filsRouge.map((fr, idx) => {
+                const rowBg = idx % 2 === 0 ? 'style="background:#fffbeb"' : '';
+                const dotStyles = fr.dotStyles || [];
+                const dots = fr.cols.map((c, ci) => {
+                    const ds = dotStyles[ci] || (c === '—' ? 'background:#f1f5f9;color:#94a3b8' : 'background:#dcfce7;color:#166534');
+                    return `<td class="text-center"><span class="transfer-dot" style="${ds}">${c}</span></td>`;
+                }).join('');
+                return `<tr ${rowBg}>
+                    <td><span class="fil-rouge-badge"><i class="fas fa-rotate"></i> ${fr.nom}</span></td>
+                    <td class="text-slate-600 text-xs">${fr.objectif}</td>
+                    ${dots}
+                </tr>`;
+            }).join('');
+
+            container.innerHTML += `
+            <div class="info-card overflow-hidden mb-2">
+                <div class="p-5 pb-4" style="background:linear-gradient(135deg,#78350f,#b45309)">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style="background:var(--theme-accent)">
+                            <i class="fas fa-rotate text-lg" style="color:#78350f"></i>
+                        </div>
+                        <div>
+                            <h3 class="montserrat font-black text-lg text-white leading-tight">Les Situations Fil Rouge</h3>
+                            <p class="text-amber-200 text-xs mt-1 font-medium">Pourquoi retrouver la même situation dans plusieurs disciplines ?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 space-y-6">
+
+                    <!-- Explication pédagogique -->
+                    <div class="rounded-2xl p-5 border-l-4" style="background:#fffbeb;border-color:var(--theme-accent)">
+                        <p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-3" style="color:#92400e">Le principe</p>
+                        <p class="text-sm text-slate-700 leading-relaxed mb-3">${g.filRougeExplication.para1}</p>
+                        <p class="text-sm text-slate-700 leading-relaxed">${g.filRougeExplication.para2}</p>
+                    </div>
+
+                    <!-- Bénéfices -->
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        ${(g.filRougeExplication.benefices || []).map(b => `
+                        <div class="rounded-2xl p-4 text-center" style="background:${b.bg}">
+                            <i class="fas ${b.icone} text-2xl mb-2" style="color:${b.iconColor}"></i>
+                            <p class="montserrat font-bold text-xs mb-1" style="color:${b.titleColor}">${b.titre}</p>
+                            <p class="text-xs text-slate-600">${b.texte}</p>
+                        </div>`).join('')}
+                    </div>
+
+                    <!-- Tableau de correspondance -->
+                    <div>
+                        <p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-3" style="color:var(--theme-primary)">Tableau de correspondance des situations fil rouge</p>
+                        <div class="rounded-2xl overflow-hidden border border-slate-100">
+                            <table class="transfer-table w-full text-sm">
+                                <thead style="background:var(--theme-primary)">
+                                    <tr>
+                                        <th class="text-white">Situation fil rouge</th>
+                                        <th class="text-white">Objectif tactique</th>
+                                        ${g.filsRougeHeaders.map(h => `<th class="text-white text-center">${h}</th>`).join('')}
+                                    </tr>
+                                </thead>
+                                <tbody>${tableRows}</tbody>
+                            </table>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2 italic">${g.filRougeLegende}</p>
+                    </div>
+
+                    <!-- Conseil pratique -->
+                    <div class="rounded-2xl p-4 flex gap-4 items-start" style="background:var(--theme-primary-light)">
+                        <i class="fas fa-lightbulb text-xl mt-0.5 shrink-0" style="color:var(--theme-accent)"></i>
+                        <div>
+                            <p class="montserrat font-bold text-sm mb-1" style="color:var(--theme-primary)">Conseil pour la mise en œuvre</p>
+                            <p class="text-sm text-slate-600">${g.conseilPedago}</p>
+                        </div>
+                    </div>
+
+                    <!-- Case à cocher : inclure principes théoriques dans l'impression -->
+                    <div id="theory-print-option" class="info-card p-5 flex items-center gap-4 no-print" style="border-top:4px solid var(--theme-primary);cursor:pointer" onclick="toggleTheory()">
+                        <input type="checkbox" id="include-theory" class="card-checkbox w-5 h-5 shrink-0" onclick="event.stopPropagation();toggleTheory()">
+                        <div>
+                            <p class="montserrat font-bold text-sm" style="color:var(--theme-primary)"><i class="fas fa-file-lines mr-2"></i>Inclure les principes théoriques dans l'impression</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Trame des 5 étapes, situations fil rouge et conseil pédagogique — ajoutés en page 1 du dossier imprimé.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>`;
+        }
+    }
+    buildGeneralites();
+
+    // Cycles et plateaux
+    function buildCycles() {
+        const container = document.getElementById('cycles-content');
+        CONFIG.cycles.forEach(cycle => {
+            const section = document.createElement('section');
+            section.id = 'content-' + cycle.id;
+            section.className = 'tab-content hidden';
+            // Titre H2 de section (ex: "Plateaux Cycle 2 — Estavar")
+            const titreH2 = cycle.titre
+                ? `<h2 class="montserrat font-black text-2xl mb-8 section-title-bar" style="color:var(--theme-primary)">${cycle.titre}${cycle.sousTitre ? ` <span class="font-normal text-slate-500">— ${cycle.sousTitre}</span>` : ''}</h2>`
+                : '';
+            section.innerHTML = titreH2 + `<div class="space-y-6">${
+                cycle.plateaux.map(plateau => `
+                <div class="sport-block">
+                    <div class="sport-block-header" style="${plateau.couleurHeader}">
+                        <span class="sport-block-title text-white flex items-center gap-2">
+                            <i class="fas ${plateau.icone}" style="color:var(--theme-accent)"></i>${plateau.label}
+                        </span>
+                        <span class="scroll-hint-label text-white/60 no-print"><i class="fas fa-hand-point-right mr-1"></i>Faire défiler</span>
+                    </div>
+                    <div class="cards-scroll-wrapper">
+                        <div class="scroll-hint-label no-print"><i class="fas fa-arrows-left-right"></i> Faire défiler pour voir tous les ateliers</div>
+                        <div class="cards-scroll">
+                            ${plateau.cartes.map(carte => {
+                                if (carte.isMatch) return `
+                                <div onclick="openModal('${carte.id}')" class="activity-card match-card" style="${carte.matchStyle}">
+                                    <span class="card-step" style="background:rgba(255,255,255,0.2);color:white">${carte.etape}</span>
+                                    <h4 style="color:white">${carte.titre}</h4>
+                                    <span class="card-hint" style="color:rgba(255,255,255,0.6)"><i class="fas fa-trophy"></i> Match de référence</span>
+                                </div>`;
+                                return `
+                                <div onclick="openModal('${carte.id}')" class="activity-card${carte.filRouge ? ' has-fil-rouge' : ''}">
+                                    <label class="card-checkbox-wrapper" onclick="event.stopPropagation()" title="Ajouter au panier">
+                                        <input type="checkbox" class="card-checkbox" onchange="toggleBasket('${carte.id}', this.checked)" data-id="${carte.id}">
+                                    </label>
+                                    <span class="card-step" style="${carte.etapeStyle}">${carte.etape}</span>
+                                    <h4>${carte.titre}</h4>
+                                    ${carte.filRouge ? '<span class="fil-rouge-badge mt-1"><i class="fas fa-rotate"></i> Fil rouge</span>' : ''}
+                                    <span class="card-hint"><i class="fas fa-info-circle"></i> Voir détails</span>
+                                </div>`;
+                            }).join('')}
+                        </div>
+                    </div>
+                </div>`).join('')
+            }</div>`;
+            container.appendChild(section);
+        });
+    }
+    buildCycles();
+
+    /* ═══ MOTEUR : PANIER D'IMPRESSION ═══ */
+    var printBasket = new Set();
+
+    function toggleBasket(id, checked) {
+        checked ? printBasket.add(id) : printBasket.delete(id);
+        updateBasketUI();
+    }
+
+    function updateBasketUI() {
+        var count = printBasket.size;
+        var floatBtn = document.getElementById('print-basket-btn');
+        var countBadge = document.getElementById('basket-count');
+        var navCount = document.getElementById('nav-basket-count');
+        if (count > 0) {
+            floatBtn.classList.remove('hidden-btn');
+            countBadge.textContent = count;
+            navCount.textContent = count;
+            navCount.classList.remove('hidden');
+        } else {
+            floatBtn.classList.add('hidden-btn');
+            navCount.classList.add('hidden');
+        }
+        document.querySelectorAll('.activity-card').forEach(function(card) {
+            var cb = card.querySelector('.card-checkbox');
+            if (cb) {
+                card.classList.toggle('in-basket', printBasket.has(cb.dataset.id));
             }
-            updateBasketUI();
-        }
+        });
+    }
 
-        function updateBasketUI() {
-            var count = printBasket.size;
-            // Update floating button
-            var floatBtn = document.getElementById('print-basket-btn');
-            var countBadge = document.getElementById('basket-count');
-            var navCount = document.getElementById('nav-basket-count');
-            if (count > 0) {
-                floatBtn.classList.remove('hidden-btn');
-                countBadge.textContent = count;
-                navCount.textContent = count;
-                navCount.classList.remove('hidden');
-            } else {
-                floatBtn.classList.add('hidden-btn');
-                navCount.classList.add('hidden');
-            }
-            // Update card visual state
-            document.querySelectorAll('.activity-card').forEach(function(card) {
-                var cb = card.querySelector('.card-checkbox');
-                if (cb) {
-                    if (printBasket.has(cb.dataset.id)) {
-                        card.classList.add('in-basket');
-                    } else {
-                        card.classList.remove('in-basket');
-                    }
-                }
-            });
-        }
+    function clearBasket() {
+        printBasket.clear();
+        document.querySelectorAll('.card-checkbox').forEach(cb => cb.checked = false);
+        updateBasketUI();
+        closeBasketModal();
+    }
 
-        function clearBasket() {
-            printBasket.clear();
-            document.querySelectorAll('.card-checkbox').forEach(function(cb) { cb.checked = false; });
-            updateBasketUI();
-            closeBasketModal();
-        }
-
-        function openBasketModal() {
-            var modal = document.getElementById('basket-modal');
-            modal.classList.remove('hidden-btn', 'opacity-0', 'pointer-events-none');
-            // Sync theory checkbox
-            var mainCb = document.getElementById('include-theory');
-            var basketCb = document.getElementById('include-theory-basket');
-            if (mainCb && basketCb) basketCb.checked = mainCb.checked;
-            // Populate list
-            var list = document.getElementById('basket-list');
-            var printCount = document.getElementById('basket-print-count');
-            if (printBasket.size === 0) {
-                list.innerHTML = '<p class="text-sm text-slate-400 italic text-center py-4">Aucune fiche sélectionnée.<br>Cochez des cartes pour les ajouter.</p>';
-            } else {
-                var html = '';
-                printBasket.forEach(function(id) {
-                    var d = situations[id];
-                    var title = d ? d.title : id;
-                    var etape = d ? d.etape : '';
-                    html += '<div class="flex items-center justify-between rounded-lg px-3 py-2 bg-slate-50 border">'
-                        + '<div><span class="text-xs font-bold montserrat" style="color:var(--usep-blue)">' + etape + '</span>'
-                        + '<p class="text-sm font-semibold text-slate-700">' + title + '</p></div>'
-                        + '<button onclick="removeFromBasket('' + id + '')" class="text-slate-400 hover:text-red-500 transition ml-2"><i class="fas fa-times"></i></button>'
-                        + '</div>';
-                });
-                list.innerHTML = html;
-            }
-            if (printCount) printCount.textContent = printBasket.size;
-        }
-
-        function closeBasketModal() {
-            var modal = document.getElementById('basket-modal');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            setTimeout(function() { modal.classList.add('hidden-btn'); }, 250);
-        }
-
-        function removeFromBasket(id) {
-            printBasket.delete(id);
-            var cb = document.querySelector('.card-checkbox[data-id="' + id + '"]');
-            if (cb) cb.checked = false;
-            updateBasketUI();
-            openBasketModal(); // refresh modal
-        }
-
-        function toggleTheory() {
-            var main = document.getElementById('include-theory');
-            var basket = document.getElementById('include-theory-basket');
-            if (basket && main) main.checked = basket.checked;
-        }
-
-        function preparePrint() {
-            var includeTheory = document.getElementById('include-theory-basket');
-            var withTheory = includeTheory && includeTheory.checked;
-            var win = window.open('', '_blank', 'width=900,height=700');
-            if (!win) { alert('Autorisez les pop-ups pour imprimer.'); return; }
-
-            // Build theory page HTML
-            var theoryHtml = '';
-            if (withTheory) {
-                theoryHtml = '<div class="print-page theory-page">'
-                    + '<div class="print-header"><span class="print-discipline">USEP 66 · Principes Pédagogiques</span><span class="print-etape">Dossier 2026</span></div>'
-                    + '<h1 class="print-title">Vers les Sports Collectifs</h1>'
-                    + '<h2 class="print-section-title">La Trame des 5 Étapes</h2>'
-                    + '<table class="theory-table"><thead><tr><th>Étape</th><th>Nom</th><th>Objectif</th><th>Cycle</th></tr></thead><tbody>'
-                    + '<tr><td>1</td><td>Parmi les autres</td><td>Manipulation libre, découverte de l'engin et de la cible</td><td>C2</td></tr>'
-                    + '<tr><td>2</td><td>Coopérer</td><td>Échange avec un partenaire sans gêne adverse</td><td>C2</td></tr>'
-                    + '<tr><td>3</td><td>Opposition directe</td><td>Agir malgré un adversaire gênant (interception)</td><td>C2 / C3</td></tr>'
-                    + '<tr><td>4</td><td>Attaque / Défense</td><td>Rôles fixes, organisation collective vers la cible</td><td>C3</td></tr>'
-                    + '<tr><td>5</td><td>Réversibilité</td><td>Transition rapide attaque ↔ défense</td><td>C3</td></tr>'
-                    + '</tbody></table>'
-                    + '<h2 class="print-section-title" style="margin-top:24px">Situations Fil Rouge — Transfert Inter-disciplines</h2>'
-                    + '<table class="theory-table"><thead><tr><th>Situation</th><th>Objectif tactique</th><th>Rugby</th><th>Football</th><th>Hockey</th><th>Tchouk.</th></tr></thead><tbody>'
-                    + '<tr><td>Les Déménageurs</td><td>Progresser avec l'engin · Étape 2</td><td>C2 ✓</td><td>C2 ✓</td><td>C2 ✓</td><td>—</td></tr>'
-                    + '<tr><td>Conservation / Toro</td><td>Garder le ballon en supériorité · Étape 3</td><td>—</td><td>C3 ✓</td><td>C3 ✓</td><td>—</td></tr>'
-                    + '<tr><td>Contre-Attaque Éclair</td><td>Transition défense→attaque · Étape 4</td><td>—</td><td>C3 ✓</td><td>C3 ✓</td><td>—</td></tr>'
-                    + '<tr><td>Le Rideau de Fer</td><td>Défense collective en ligne · Étape 4</td><td>C3 ✓</td><td>C3 ✓</td><td>—</td><td>—</td></tr>'
-                    + '</tbody></table>'
-                    + '<div class="theory-tip"><strong>💡 Conseil de mise en œuvre :</strong> En fin de rencontre, demandez aux élèves : <em>"Avez-vous reconnu une situation déjà jouée dans une autre discipline ?"</em> Ce moment de verbalisation ancre le transfert.</div>'
-                    + '</div>';
-            }
-
-            // Build fiche pages
-            var fichesHtml = '';
+    function openBasketModal() {
+        // Sync case théorie
+        var mainCb = document.getElementById("include-theory");
+        var basketCb = document.getElementById("include-theory-basket");
+        if (mainCb && basketCb) basketCb.checked = mainCb.checked;
+        var modal = document.getElementById('basket-modal');
+        modal.classList.remove('hidden-btn', 'opacity-0', 'pointer-events-none');
+        var list = document.getElementById('basket-list');
+        var printCount = document.getElementById('basket-print-count');
+        if (printBasket.size === 0) {
+            list.innerHTML = '<p class="text-sm text-slate-400 italic text-center py-4">Aucune fiche sélectionnée.<br>Cochez des cartes pour les ajouter.</p>';
+        } else {
+            var html = '';
             printBasket.forEach(function(id) {
-                var d = situations[id];
-                if (!d) return;
-                var filRougeSection = d.filRouge
-                    ? '<div class="fiche-fil-rouge"><strong>🔁 Fil rouge :</strong> ' + d.filRouge + '</div>'
-                    : '';
-                var rolesSection = d.rolesSociaux
-                    ? '<div class="fiche-section"><div class="fiche-label">Rôles sociaux</div><div class="fiche-content">' + d.rolesSociaux + '</div></div>'
-                    : '';
-                fichesHtml += '<div class="print-page">'
-                    + '<div class="print-header"><span class="print-discipline">' + (id.includes('r') ? 'Rugby' : id.includes('f') ? 'Football' : id.includes('hy') ? 'Hockey' : 'Tchoukball') + ' · ' + (id.includes('c2') ? 'Cycle 2' : 'Cycle 3') + '</span><span class="print-etape">' + d.etape + '</span></div>'
-                    + '<h1 class="print-title">' + d.title + '</h1>'
-                    + filRougeSection
-                    + '<div class="fiche-grid">'
-                    + '<div class="fiche-section accent"><div class="fiche-label">Objectif prioritaire</div><div class="fiche-content">' + d.goal + '</div></div>'
-                    + '<div class="fiche-section"><div class="fiche-label">But du jeu</div><div class="fiche-content">' + d.but + '</div></div>'
-                    + '<div class="fiche-section"><div class="fiche-label">Dispositif &amp; Installation</div><div class="fiche-content">' + d.setup + '</div></div>'
-                    + '<div class="fiche-section"><div class="fiche-label">Règles</div><div class="fiche-content">' + d.rules + '</div></div>'
-                    + '<div class="fiche-section variables"><div class="fiche-label">Variables d'évolution</div><div class="fiche-content">' + d.variables + '</div></div>'
-                    + rolesSection
-                    + '</div>'
-                    + '<div class="print-footer">USEP 66 · Dossier Pédagogique 2026 · usep66.org</div>'
+                var d = CONFIG.situations[id];
+                html += '<div class="flex items-center justify-between rounded-lg px-3 py-2 bg-slate-50 border">'
+                    + '<div><span class="text-xs font-bold montserrat" style="color:var(--theme-primary)">' + (d ? d.etape : '') + '</span>'
+                    + '<p class="text-sm font-semibold text-slate-700">' + (d ? d.title : id) + '</p></div>'
+                    + '<button onclick="removeFromBasket(\'' + id + '\')" class="text-slate-400 hover:text-red-500 transition ml-2"><i class="fas fa-times"></i></button>'
                     + '</div>';
             });
+            list.innerHTML = html;
+        }
+        if (printCount) printCount.textContent = printBasket.size;
+    }
 
-            var printCSS = `
-                @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
-                * { box-sizing: border-box; margin: 0; padding: 0; }
-                body { font-family: 'Inter', sans-serif; background: white; color: #1e293b; }
-                .print-page { width: 100%; min-height: 100vh; padding: 32px 36px; page-break-after: always; display: flex; flex-direction: column; gap: 18px; }
-                .print-page:last-child { page-break-after: avoid; }
-                .print-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #0055A4; padding-bottom: 10px; }
-                .print-discipline { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.9rem; color: #0055A4; text-transform: uppercase; letter-spacing: 0.06em; }
-                .print-etape { background: #FFD700; color: #1a1a1a; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
-                .print-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.6rem; color: #1e293b; }
-                .fiche-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-                .fiche-section { border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; }
-                .fiche-section.accent { background: #e8f0fb; border-color: #bfdbfe; }
-                .fiche-section.variables { background: #fffbeb; border-color: #fcd34d; grid-column: 1 / -1; }
-                .fiche-label { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; color: #0055A4; margin-bottom: 5px; }
-                .fiche-content { font-size: 0.82rem; line-height: 1.55; color: #334155; }
-                .fiche-fil-rouge { background: #fff8e1; border-left: 4px solid #FFD700; border-radius: 0 10px 10px 0; padding: 8px 12px; font-size: 0.8rem; color: #92400e; }
-                .print-footer { margin-top: auto; text-align: center; font-size: 0.65rem; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 8px; }
-                /* Theory page */
-                .theory-page { gap: 14px; }
-                .theory-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-                .theory-table th { background: #0055A4; color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; padding: 8px 10px; text-align: left; }
-                .theory-table td { border: 1px solid #e2e8f0; padding: 7px 10px; vertical-align: top; }
-                .theory-table tr:nth-child(even) td { background: #f8fafc; }
-                .print-section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: #0055A4; border-left: 4px solid #FFD700; padding-left: 10px; }
-                .theory-tip { background: #e8f0fb; border-radius: 10px; padding: 12px 14px; font-size: 0.82rem; color: #334155; margin-top: 4px; }
-                @media print {
-                    .print-page { page-break-after: always; min-height: auto; padding: 20px 24px; }
-                    .print-page:last-child { page-break-after: avoid; }
-                }
-            `;
+    function closeBasketModal() {
+        var modal = document.getElementById('basket-modal');
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        setTimeout(() => modal.classList.add('hidden-btn'), 250);
+    }
 
-            win.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Fiches USEP 66</title>'
-                + '<style>' + printCSS + '</style></head><body>'
-                + theoryHtml + fichesHtml
-                + '<script>window.onload = function() { setTimeout(function() { window.print(); }, 600); };<\/script>'
-                + '</body></html>');
-            win.document.close();
-            closeBasketModal();
+    function removeFromBasket(id) {
+        printBasket.delete(id);
+        var cb = document.querySelector('.card-checkbox[data-id="' + id + '"]');
+        if (cb) cb.checked = false;
+        updateBasketUI();
+        openBasketModal();
+    }
+
+    function preparePrint() {
+        var includeTheory = document.getElementById('include-theory-basket');
+        var withTheory = includeTheory && includeTheory.checked;
+        var win = window.open('', '_blank', 'width=900,height=700');
+        if (!win) { alert('Autorisez les pop-ups pour imprimer.'); return; }
+
+        var theoryHtml = '';
+        if (withTheory) {
+            var etapesRows = CONFIG.generalites.etapes.map(e =>
+                '<tr><td>' + e.num + '</td><td>' + e.label + '</td><td>' + e.desc + '</td></tr>'
+            ).join('');
+            var filsRougesRows = (CONFIG.generalites.filsRouge || []).map(fr =>
+                '<tr><td>' + fr.nom + '</td><td>' + fr.objectif + '</td>' + fr.cols.map(c => '<td>' + c + '</td>').join('') + '</tr>'
+            ).join('');
+            theoryHtml = '<div class="print-page theory-page">'
+                + '<div class="print-header"><span class="print-discipline">' + CONFIG.organisation + '</span><span class="print-etape">Dossier 2026</span></div>'
+                + '<h1 class="print-title">' + CONFIG.titre + '</h1>'
+                + '<h2 class="print-section-title">La Trame des Étapes</h2>'
+                + '<table class="theory-table"><thead><tr><th>Étape</th><th>Nom</th><th>Objectif</th></tr></thead><tbody>' + etapesRows + '</tbody></table>'
+                + (filsRougesRows ? '<h2 class="print-section-title" style="margin-top:24px">Situations Fil Rouge</h2>'
+                + '<table class="theory-table"><thead><tr><th>Situation</th><th>Objectif</th>'
+                + CONFIG.generalites.filsRougeHeaders.map(h => '<th>' + h + '</th>').join('') + '</tr></thead><tbody>'
+                + filsRougesRows + '</tbody></table>' : '')
+                + '</div>';
         }
 
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.add('hidden'); });
-            document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('tab-pill-active'); });
-            document.getElementById('content-' + tabId).classList.remove('hidden');
-            document.getElementById('tab-' + tabId + '-btn').classList.add('tab-pill-active');
-        }
-
-        function openModal(id) {
-            var data = situations[id] || {
-                title: "Situation à venir",
-                etape: "—",
-                goal: "Basée sur la trame départementale",
-                but: "Détails en cours de rédaction.",
-                setup: "Dispositif standard.",
-                rules: "Règles adaptées au niveau.",
-                variables: "Modifier l'espace ou le nombre de joueurs.",
-                rolesSociaux: ""
-            };
-            document.getElementById('modal-title').innerText = data.title;
-            var filRougeBlock = data.filRouge
-                ? '<div class="rounded-2xl p-4 flex gap-3 items-start" style="background:linear-gradient(90deg,#fff8e1,#fffbeb);border:1.5px solid #fcd34d"><i class="fas fa-rotate text-lg mt-0.5 shrink-0" style="color:#b45309"></i><div><p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-1" style="color:#92400e">Situation fil rouge — Transfert inter-disciplines</p><p class="text-sm text-amber-900">' + data.filRouge + '</p></div></div>'
-                : '';
-            var rolesBlock = data.rolesSociaux
-                ? '<div class="rounded-2xl p-4 flex gap-3 items-start" style="background:#f0fdf4;border:1.5px solid #bbf7d0"><i class="fas fa-users text-base mt-0.5 shrink-0" style="color:#16a34a"></i><div><p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-1" style="color:#166534">Rôles Sociaux</p><p class="text-sm text-green-900">' + data.rolesSociaux + '</p></div></div>'
-                : '';
-            document.getElementById('modal-body').innerHTML =
-                '<div class="flex items-center gap-2 mb-1">'
-                + '<span class="montserrat font-extrabold text-xs uppercase tracking-widest" style="color:var(--usep-blue)">' + (data.etape || '') + '</span>'
+        var fichesHtml = '';
+        printBasket.forEach(function(id) {
+            var d = CONFIG.situations[id];
+            if (!d) return;
+            fichesHtml += '<div class="print-page">'
+                + '<div class="print-header"><span class="print-discipline">' + CONFIG.titre + '</span><span class="print-etape">' + d.etape + '</span></div>'
+                + '<h1 class="print-title">' + d.title + '</h1>'
+                + (d.filRouge ? '<div class="fiche-fil-rouge"><strong>🔁 Fil rouge :</strong> ' + d.filRouge + '</div>' : '')
+                + '<div class="fiche-grid">'
+                + '<div class="fiche-section accent"><div class="fiche-label">Objectif prioritaire</div><div class="fiche-content">' + d.goal + '</div></div>'
+                + '<div class="fiche-section"><div class="fiche-label">But du jeu</div><div class="fiche-content">' + d.but + '</div></div>'
+                + '<div class="fiche-section"><div class="fiche-label">Dispositif &amp; Installation</div><div class="fiche-content">' + d.setup + '</div></div>'
+                + '<div class="fiche-section"><div class="fiche-label">Règles</div><div class="fiche-content">' + d.rules + '</div></div>'
+                + '<div class="fiche-section variables"><div class="fiche-label">Variables d\'évolution</div><div class="fiche-content">' + d.variables + '</div></div>'
+                + (d.rolesSociaux ? '<div class="fiche-section"><div class="fiche-label">Rôles sociaux</div><div class="fiche-content">' + d.rolesSociaux + '</div></div>' : '')
                 + '</div>'
-                + filRougeBlock
-                + '<div class="grid sm:grid-cols-2 gap-4">'
-                + '<div class="rounded-2xl p-4" style="background:var(--usep-blue-light)"><p class="modal-section-title">Objectif prioritaire</p><p class="text-slate-700 font-semibold text-sm">' + data.goal + '</p></div>'
-                + '<div class="rounded-2xl p-4 border-2" style="border-color:var(--usep-blue-light)"><p class="modal-section-title">But du jeu</p><p class="text-slate-700 text-sm">' + data.but + '</p></div>'
-                + '</div>'
-                + '<div class="rounded-2xl p-4 border border-slate-100 bg-slate-50"><p class="modal-section-title">Dispositif &amp; Installation</p><p class="text-slate-600 text-sm leading-relaxed">' + data.setup + '</p></div>'
-                + '<div class="rounded-2xl p-4 border border-slate-100 bg-slate-50"><p class="modal-section-title">Règles</p><p class="text-slate-600 text-sm leading-relaxed">' + data.rules + '</p></div>'
-                + '<div class="modal-variable-box"><p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-2" style="color:#92400e"><i class="fas fa-sliders mr-1.5" style="color:var(--usep-yellow)"></i>Variables d\'évolution</p><p class="text-sm text-amber-900 italic">' + data.variables + '</p></div>'
-                + rolesBlock;
+                + '<div class="print-footer">' + CONFIG.organisation + ' · ' + CONFIG.titre + ' · ' + CONFIG.site + '</div>'
+                + '</div>';
+        });
 
-            var modal = document.getElementById('detail-modal');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            document.body.classList.add('modal-active');
-        }
+        const printCSS = `
+            @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
+            * { box-sizing: border-box; margin: 0; padding: 0; }
+            body { font-family: 'Inter', sans-serif; background: white; color: #1e293b; }
+            .print-page { width: 100%; min-height: 100vh; padding: 32px 36px; page-break-after: always; display: flex; flex-direction: column; gap: 18px; }
+            .print-page:last-child { page-break-after: avoid; }
+            .print-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid ${CONFIG.colors.primary}; padding-bottom: 10px; }
+            .print-discipline { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.9rem; color: ${CONFIG.colors.primary}; text-transform: uppercase; letter-spacing: 0.06em; }
+            .print-etape { background: ${CONFIG.colors.accent}; color: #1a1a1a; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
+            .print-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.6rem; color: #1e293b; }
+            .fiche-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+            .fiche-section { border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; }
+            .fiche-section.accent { background: #e8f0fb; border-color: #bfdbfe; }
+            .fiche-section.variables { background: #fffbeb; border-color: #fcd34d; grid-column: 1 / -1; }
+            .fiche-label { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; color: ${CONFIG.colors.primary}; margin-bottom: 5px; }
+            .fiche-content { font-size: 0.82rem; line-height: 1.55; color: #334155; }
+            .fiche-fil-rouge { background: #fff8e1; border-left: 4px solid ${CONFIG.colors.accent}; border-radius: 0 10px 10px 0; padding: 8px 12px; font-size: 0.8rem; color: #92400e; }
+            .print-footer { margin-top: auto; text-align: center; font-size: 0.65rem; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 8px; }
+            .theory-page { gap: 14px; }
+            .theory-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 10px; }
+            .theory-table th { background: ${CONFIG.colors.primary}; color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; padding: 8px 10px; text-align: left; }
+            .theory-table td { border: 1px solid #e2e8f0; padding: 7px 10px; vertical-align: top; }
+            .theory-table tr:nth-child(even) td { background: #f8fafc; }
+            .print-section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; color: ${CONFIG.colors.primary}; border-left: 4px solid ${CONFIG.colors.accent}; padding-left: 10px; margin-top: 20px; }
+            @media print { .print-page { page-break-after: always; min-height: auto; padding: 20px 24px; } .print-page:last-child { page-break-after: avoid; } }
+        `;
 
-        function closeModal() {
-            var modal = document.getElementById('detail-modal');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            document.body.classList.remove('modal-active');
-        }
+        win.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + CONFIG.titre + '</title>'
+            + '<style>' + printCSS + '</style></head><body>'
+            + theoryHtml + fichesHtml
+            + '<script>window.onload = function() { setTimeout(function() { window.print(); }, 600); };<\/script>'
+            + '</body></html>');
+        win.document.close();
+        closeBasketModal();
+    }
 
-        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { closeModal(); closeBasketModal(); } });
+    /* ═══ MOTEUR : SYNCHRONISATION CASE THÉORIE ═══ */
+    function toggleTheory() {
+        var main   = document.getElementById("include-theory");
+        var basket = document.getElementById("include-theory-basket");
+        if (basket && main) basket.checked = main.checked;
+    }
 
-        switchTab('gen');
+    /* ═══ MOTEUR : TABS ═══ */
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('tab-pill-active'));
+        const content = document.getElementById('content-' + tabId);
+        const btn = document.getElementById('tab-' + tabId + '-btn');
+        if (content) content.classList.remove('hidden');
+        if (btn) btn.classList.add('tab-pill-active');
+    }
+
+    /* ═══ MOTEUR : MODAL DÉTAIL ═══ */
+    function openModal(id) {
+        var data = CONFIG.situations[id] || {
+            title: "Situation à venir", etape: "—",
+            goal: "Basée sur la trame.", but: "Détails en cours.",
+            setup: "Dispositif standard.", rules: "Règles adaptées.",
+            variables: "Modifier l'espace ou le nombre de joueurs.", rolesSociaux: ""
+        };
+        document.getElementById('modal-title').innerText = data.title;
+        var filRougeBlock = data.filRouge
+            ? '<div class="rounded-2xl p-4 flex gap-3 items-start" style="background:linear-gradient(90deg,#fff8e1,#fffbeb);border:1.5px solid #fcd34d"><i class="fas fa-rotate text-lg mt-0.5 shrink-0" style="color:#b45309"></i><div><p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-1" style="color:#92400e">Situation fil rouge — Transfert inter-disciplines</p><p class="text-sm text-amber-900">' + data.filRouge + '</p></div></div>'
+            : '';
+        var rolesBlock = data.rolesSociaux
+            ? '<div class="rounded-2xl p-4 flex gap-3 items-start" style="background:#f0fdf4;border:1.5px solid #bbf7d0"><i class="fas fa-users text-base mt-0.5 shrink-0" style="color:#16a34a"></i><div><p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-1" style="color:#166534">Rôles Sociaux</p><p class="text-sm text-green-900">' + data.rolesSociaux + '</p></div></div>'
+            : '';
+        document.getElementById('modal-body').innerHTML =
+            '<div class="flex items-center gap-2 mb-1"><span class="montserrat font-extrabold text-xs uppercase tracking-widest" style="color:var(--theme-primary)">' + (data.etape || '') + '</span></div>'
+            + filRougeBlock
+            + '<div class="grid sm:grid-cols-2 gap-4">'
+            + '<div class="rounded-2xl p-4" style="background:var(--theme-primary-light)"><p class="modal-section-title">Objectif prioritaire</p><p class="text-slate-700 font-semibold text-sm">' + data.goal + '</p></div>'
+            + '<div class="rounded-2xl p-4 border-2" style="border-color:var(--theme-primary-light)"><p class="modal-section-title">But du jeu</p><p class="text-slate-700 text-sm">' + data.but + '</p></div>'
+            + '</div>'
+            + '<div class="rounded-2xl p-4 border border-slate-100 bg-slate-50"><p class="modal-section-title">Dispositif &amp; Installation</p><p class="text-slate-600 text-sm leading-relaxed">' + data.setup + '</p></div>'
+            + '<div class="rounded-2xl p-4 border border-slate-100 bg-slate-50"><p class="modal-section-title">Règles</p><p class="text-slate-600 text-sm leading-relaxed">' + data.rules + '</p></div>'
+            + '<div class="modal-variable-box"><p class="montserrat font-extrabold text-xs uppercase tracking-widest mb-2" style="color:#92400e"><i class="fas fa-sliders mr-1.5" style="color:var(--theme-accent)"></i>Variables d\'évolution</p><p class="text-sm text-amber-900 italic">' + data.variables + '</p></div>'
+            + rolesBlock;
+        document.getElementById('detail-modal').classList.remove('opacity-0', 'pointer-events-none');
+        document.body.classList.add('modal-active');
+    }
+
+    function closeModal() {
+        document.getElementById('detail-modal').classList.add('opacity-0', 'pointer-events-none');
+        document.body.classList.remove('modal-active');
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeBasketModal(); } });
+
     </script>
 </body>
 </html>
